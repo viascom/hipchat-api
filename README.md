@@ -32,7 +32,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 ##### Rooms API (9/44)
 - [x] Get all rooms
 - [x] Create room
-- [ ] Get room
+- [x] Get room
 - [x] Update room
 - [x] Delete room
 - [ ] Get room avatar
