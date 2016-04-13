@@ -4,6 +4,7 @@ import ch.viascom.hipchat.api.models.*;
 import ch.viascom.hipchat.api.request.models.GetAllMembers;
 import ch.viascom.hipchat.api.request.models.GetAllRooms;
 import ch.viascom.hipchat.api.request.models.UpdateRoom;
+import ch.viascom.hipchat.api.request.models.UpdateRoomAvatar;
 import ch.viascom.hipchat.api.response.CreateRoomResponse;
 import ch.viascom.hipchat.api.response.GetAllMembersResponse;
 import ch.viascom.hipchat.api.response.GetAllRoomsResponse;
@@ -151,7 +152,15 @@ public class RoomsAPI {
 
     }
 
-    public void updateRoomAvatar() {
+    /**
+     * Update a room avatar.
+     * <p>
+     * Method: PUT
+     * Url:    /v2/room/{room_id_or_name}/avatar
+     * Access: group clients, room clients, users
+     *
+     */
+    public void updateRoomAvatar(UpdateRoomAvatar updateRoomAvatar) {
 
     }
 
