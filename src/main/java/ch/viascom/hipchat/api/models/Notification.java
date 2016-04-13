@@ -22,7 +22,8 @@ public class Notification{
     private String message;
     private Card card;
 
-    public Notification(String message,MessageColor color,boolean notify){
+    public Notification(String roomId, String message,MessageColor color,boolean notify){
+        this.roomId = roomId;
         this.message = message;
         this.color = color;
         this.notify = notify;
