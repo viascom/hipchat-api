@@ -9,6 +9,7 @@ import ch.viascom.hipchat.api.response.CreateRoomResponse;
 import ch.viascom.hipchat.api.response.GetAllMembersResponse;
 import ch.viascom.hipchat.api.response.GetAllRoomsResponse;
 import ch.viascom.hipchat.api.request.*;
+import ch.viascom.hipchat.api.response.GetRoomResponse;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
@@ -116,8 +117,19 @@ public class RoomsAPI {
         return createRoomRequest.execute();
     }
 
-    public void getRoom() {
-        //TODO
+    /**
+     * Get room details.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}
+     * Access: group clients, room clients, users
+     *
+     * @param roomId
+     * @return
+     */
+    public GetRoomResponse getRoom(String roomId) {
+        GetRoomRequet getRoomRequet = new GetRoomRequet(roomId, accessToken, baseUrl, httpClient, executorService);
+        return getRoomRequet.execute();
     }
 
     /**
