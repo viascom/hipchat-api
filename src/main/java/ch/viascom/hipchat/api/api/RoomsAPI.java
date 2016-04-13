@@ -37,7 +37,6 @@ public class RoomsAPI {
      * Access: group clients, room clients, users
      *
      * @param notification
-     * @return
      */
     public void sendRoomNotification(Notification notification) {
         NotificationRequest notificationRequest = new NotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
