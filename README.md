@@ -29,7 +29,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 
 ### API-Methods:
 
-##### Rooms API (9/44)
+##### Rooms API (10/44)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
