@@ -2,6 +2,8 @@ hipchat-api
 ============
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
+### Build-Status:
+[![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/master)
 
 ###  Requirements:
 Java 8
@@ -9,12 +11,12 @@ Java 8
 ### Quick Start:
 To add this implementation into your project:
 
-#### maven
+#### maven (coming soon)
 ```xml
 <dependency>
     <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.0.o-ALPHA</version>
+    <version>2.0.0-ALPHA</version>
 </dependency>
 ```
 
