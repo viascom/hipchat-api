@@ -12,9 +12,9 @@ To add this implementation into your project:
 #### maven
 ```xml
 <dependency>
-    <groupId>ch.viascom.base</groupId>
+    <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.0</version>
+    <version>2.0.o-ALPHA</version>
 </dependency>
 ```
 
