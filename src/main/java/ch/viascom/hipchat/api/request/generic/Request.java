@@ -1,5 +1,9 @@
 package ch.viascom.hipchat.api.request.generic;
 
+import ch.viascom.hipchat.api.exception.APIException;
+import ch.viascom.hipchat.api.response.generic.ErrorResponse;
+import ch.viascom.hipchat.api.response.generic.Response;
+import ch.viascom.hipchat.api.response.generic.ResponseHeader;
 import com.google.gson.Gson;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.net.URLCodec;
@@ -18,7 +22,7 @@ import java.util.concurrent.Future;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public abstract class Request<T> {
+public abstract class Request<T extends Response> {
 
     private static final Logger log = LogManager.getLogger(Request.class);
 
@@ -58,33 +62,54 @@ public abstract class Request<T> {
         this.baseUrl = baseUrl;
     }
 
-    public Future<T> executeAsync() {
-        Future<T> future = executorService.submit(() -> execute());
+    public Future<Response> executeAsync() {
+        Future<Response> future = executorService.submit(() -> execute());
         return future;
     }
 
-    public T execute() {
+    public Response execute() throws APIException {
+        Response output;
+        ResponseHeader responseHeader = new ResponseHeader();
         try {
             HttpResponse response = request();
             int status = response.getStatusLine().getStatusCode();
+            responseHeader.setResponseHeaders(response.getAllHeaders());
+            responseHeader.setStatusCode(status);
+            responseHeader.setRequestPath(baseUrl + getEncodedPath());
             HttpEntity entity = response.getEntity();
             String content = entity != null ? EntityUtils.toString(entity) : null;
             if (status >= 200 && status < 300) {
                 log.debug("-> Response status: " + status);
-                if (content == null) {
-                    //should be NoContentResponse
-                    return getParameterClass().newInstance();
+
+                if (content != null) {
+                    Gson gson = new Gson();
+                    output = gson.fromJson(content, getParameterClass());
+                } else {
+                    //NoContentResponse
+                    output = getParameterClass().newInstance();
                 }
-                Gson gson = new Gson();
-                return gson.fromJson(content, getParameterClass());
+                output.setResponseHeader(responseHeader);
+                return output;
             } else {
-                log.error("Invalid response status: {}, content: {}", status, content);
-                return null;
+                log.error("-> Invalid response status: " + status);
+                ErrorResponse errorResponse = new ErrorResponse();
+                errorResponse.setRequestBody(getJsonBody());
+                errorResponse.setResponseBody(content);
+                errorResponse.setResponseHeader(responseHeader);
+                throw new APIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
             }
         } catch (Exception e) {
-            log.error("API-Error - " + e.getMessage());
+            if (e instanceof APIException) {
+                //Pass through APIException
+                throw (APIException) e;
+            } else {
+                log.error("API-Error - " + e.getMessage());
+                ErrorResponse errorResponse = new ErrorResponse();
+                errorResponse.setErrorMessage(e.getMessage());
+                errorResponse.setResponseHeader(responseHeader);
+                throw new APIException(errorResponse, e.getMessage());
+            }
         }
-        return null;
     }
 
     protected Class<T> getParameterClass() {

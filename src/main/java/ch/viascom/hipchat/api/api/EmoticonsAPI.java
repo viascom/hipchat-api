@@ -1,6 +1,7 @@
 package ch.viascom.hipchat.api.api;
 
-import ch.viascom.hipchat.api.models.Emoticon;
+import ch.viascom.hipchat.api.api.generic.GenericAPI;
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.GetAllEmoticonsRequest;
 import ch.viascom.hipchat.api.request.GetEmoticonRequest;
 import ch.viascom.hipchat.api.request.models.GetAllEmoticons;
@@ -29,9 +30,9 @@ public class EmoticonsAPI extends GenericAPI {
      * @param emoticonId
      * @return
      */
-    public GetEmoticonResponse getEmoticon(int emoticonId) {
+    public GetEmoticonResponse getEmoticon(int emoticonId) throws APIException {
         GetEmoticonRequest getEmoticonRequest = new GetEmoticonRequest(emoticonId, accessToken, baseUrl, httpClient, executorService);
-        return getEmoticonRequest.execute();
+        return (GetEmoticonResponse) getEmoticonRequest.execute();
     }
 
     /**
@@ -44,9 +45,9 @@ public class EmoticonsAPI extends GenericAPI {
      * @param getAllEmoticons
      * @return
      */
-    public GetAllEmoticonsResponse getAllEmoticons(GetAllEmoticons getAllEmoticons) {
+    public GetAllEmoticonsResponse getAllEmoticons(GetAllEmoticons getAllEmoticons) throws APIException {
         GetAllEmoticonsRequest getAllEmoticonsRequest = new GetAllEmoticonsRequest(getAllEmoticons, accessToken, baseUrl, httpClient, executorService);
-        return getAllEmoticonsRequest.execute();
+        return (GetAllEmoticonsResponse) getAllEmoticonsRequest.execute();
 
     }
 }

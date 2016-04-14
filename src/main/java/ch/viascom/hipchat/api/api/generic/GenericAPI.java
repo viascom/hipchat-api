@@ -1,4 +1,4 @@
-package ch.viascom.hipchat.api.api;
+package ch.viascom.hipchat.api.api.generic;
 
 import org.apache.http.client.HttpClient;
 

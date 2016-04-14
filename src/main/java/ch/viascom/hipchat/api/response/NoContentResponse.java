@@ -1,7 +1,13 @@
 package ch.viascom.hipchat.api.response;
 
+import ch.viascom.hipchat.api.response.generic.Response;
+import ch.viascom.hipchat.api.response.generic.ResponseHeader;
+import lombok.Data;
+
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public class NoContentResponse {
+@Data
+public class NoContentResponse implements Response {
+    private ResponseHeader responseHeader;
 }
