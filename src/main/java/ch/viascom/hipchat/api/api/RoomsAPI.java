@@ -17,18 +17,10 @@ import java.util.concurrent.ExecutorService;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public class RoomsAPI {
-
-    protected final String baseUrl;
-    protected final String accessToken;
-    protected final HttpClient httpClient;
-    protected final ExecutorService executorService;
+public class RoomsAPI extends GenericAPI{
 
     public RoomsAPI(String baseUrl, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        this.baseUrl = baseUrl;
-        this.accessToken = accessToken;
-        this.httpClient = httpClient;
-        this.executorService = executorService;
+        super(baseUrl, accessToken, httpClient, executorService);
     }
 
     /**

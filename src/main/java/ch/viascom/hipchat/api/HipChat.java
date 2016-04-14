@@ -1,6 +1,7 @@
 package ch.viascom.hipchat.api;
 
 
+import ch.viascom.hipchat.api.api.EmoticonsAPI;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -63,6 +64,10 @@ public class HipChat {
 
     public RoomsAPI roomsAPI() {
         return new RoomsAPI(baseUrl, accessToken, httpClient, executorService);
+    }
+
+    public EmoticonsAPI emoticonsAPI() {
+        return new EmoticonsAPI(baseUrl, accessToken, httpClient, executorService);
     }
 
     public void close() {

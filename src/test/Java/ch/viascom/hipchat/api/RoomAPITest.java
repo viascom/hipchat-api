@@ -24,31 +24,31 @@ public class RoomAPITest {
     private static final String clientToken = "";
     private static final String integrationToken = "";
 
-    @Test
+    //@Test
     public void sendRoomNotificationTest() {
         HipChat hipChat = new HipChat(integrationToken);
         hipChat.roomsAPI().sendRoomNotification(new Notification("Test-Room", "Hello World", MessageColor.RED, true));
     }
 
-    @Test
+    //@Test
     public void sendRoomMessageTest() {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.roomsAPI().sendRoomMessage(new Message("Test-Room", "Hello World"));
     }
 
-    @Test
+    //@Test
     public void replyToMessageTest() {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.roomsAPI().replyToMessage(new ReplyMessage("Test-Room", "Reply", "")); // Fill out last parameter with parentId
     }
 
-    @Test
+    //@Test
     public void setTopicTest() {
         HipChat hipChat = new HipChat(integrationToken);
         hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
     }
 
-    @Test
+    //@Test
     public void sendRoomNotificationCardTest() {
         HipChat hipChat = new HipChat(integrationToken);
         RoomsAPI roomsAPI = hipChat.roomsAPI();
