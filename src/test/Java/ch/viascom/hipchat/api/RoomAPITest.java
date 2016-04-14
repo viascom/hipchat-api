@@ -5,8 +5,10 @@ import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.*;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
+import ch.viascom.hipchat.api.request.models.GetAllParticipants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 /**
  * Created by patrickboesch on 11.04.16.
@@ -39,6 +41,13 @@ public class RoomAPITest {
     public void setTopicTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
         hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
+    }
+
+    @Test
+    public void getAllParticipantsTest() throws APIException {
+        HipChat hipChat = new HipChat(integrationToken);
+        log.debug(hipChat.roomsAPI().getAllParticipants(new GetAllParticipants("Test-Room", 0, 100, true)));
+
     }
 
     //@Test

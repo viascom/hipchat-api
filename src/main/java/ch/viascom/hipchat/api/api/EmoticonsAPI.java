@@ -29,6 +29,7 @@ public class EmoticonsAPI extends GenericAPI {
      *
      * @param emoticonId
      * @return
+     * @throws APIException
      */
     public GetEmoticonResponse getEmoticon(int emoticonId) throws APIException {
         GetEmoticonRequest getEmoticonRequest = new GetEmoticonRequest(emoticonId, accessToken, baseUrl, httpClient, executorService);
@@ -44,6 +45,7 @@ public class EmoticonsAPI extends GenericAPI {
      *
      * @param getAllEmoticons
      * @return
+     * @throws APIException
      */
     public GetAllEmoticonsResponse getAllEmoticons(GetAllEmoticons getAllEmoticons) throws APIException {
         GetAllEmoticonsRequest getAllEmoticonsRequest = new GetAllEmoticonsRequest(getAllEmoticons, accessToken, baseUrl, httpClient, executorService);
