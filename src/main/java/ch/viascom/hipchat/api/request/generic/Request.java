@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api.request.generic;
 
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.response.generic.ErrorResponse;
 import ch.viascom.hipchat.api.response.generic.Response;
 import ch.viascom.hipchat.api.response.generic.ResponseHeader;
@@ -66,7 +67,7 @@ public abstract class Request<T extends Response> {
         return future;
     }
 
-    public Response execute() {
+    public Response execute() throws APIException {
         Response output;
         ResponseHeader responseHeader = new ResponseHeader();
         try {
@@ -74,7 +75,7 @@ public abstract class Request<T extends Response> {
             int status = response.getStatusLine().getStatusCode();
             responseHeader.setResponseHeaders(response.getAllHeaders());
             responseHeader.setStatusCode(status);
-            responseHeader.setRequestPath(getEncodedPath());
+            responseHeader.setRequestPath(baseUrl + getEncodedPath());
             HttpEntity entity = response.getEntity();
             String content = entity != null ? EntityUtils.toString(entity) : null;
             if (status >= 200 && status < 300) {
@@ -94,17 +95,20 @@ public abstract class Request<T extends Response> {
                 ErrorResponse errorResponse = new ErrorResponse();
                 errorResponse.setRequestBody(getJsonBody());
                 errorResponse.setResponseBody(content);
-                output = errorResponse;
-                output.setResponseHeader(responseHeader);
-                return output;
+                errorResponse.setResponseHeader(responseHeader);
+                throw new APIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
             }
         } catch (Exception e) {
-            log.error("API-Error - " + e.getMessage());
-            ErrorResponse errorResponse = new ErrorResponse();
-            errorResponse.setErrorMessage(e.getMessage());
-            output = errorResponse;
-            output.setResponseHeader(responseHeader);
-            return output;
+            if (e instanceof APIException) {
+                //Pass through APIException
+                throw (APIException) e;
+            } else {
+                log.error("API-Error - " + e.getMessage());
+                ErrorResponse errorResponse = new ErrorResponse();
+                errorResponse.setErrorMessage(e.getMessage());
+                errorResponse.setResponseHeader(responseHeader);
+                throw new APIException(errorResponse, e.getMessage());
+            }
         }
     }
 

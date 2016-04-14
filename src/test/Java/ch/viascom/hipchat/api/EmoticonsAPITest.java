@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api;
 
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.models.GetAllEmoticons;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,15 +15,24 @@ public class EmoticonsAPITest {
     private static final String clientToken = "";
     private static final String integrationToken = "";
 
-    //@Test
+    @Test
     public void getEmoticonTest(){
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.emoticonsAPI().getEmoticon(19106);
+        try {
+            hipChat.emoticonsAPI().getEmoticon(19106);
+        } catch (APIException e) {
+            e.printStackTrace();
+            log.debug(e.getErrorResponse());
+        }
     }
 
     //@Test
     public void getAllEmoticons(){
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.emoticonsAPI().getAllEmoticons(new GetAllEmoticons());
+        try {
+            hipChat.emoticonsAPI().getAllEmoticons(new GetAllEmoticons());
+        } catch (APIException e) {
+            e.printStackTrace();
+        }
     }
 }

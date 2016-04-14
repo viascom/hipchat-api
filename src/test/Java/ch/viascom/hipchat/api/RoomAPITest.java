@@ -1,19 +1,12 @@
 package ch.viascom.hipchat.api;
 
 import ch.viascom.hipchat.api.api.RoomsAPI;
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.*;
-import ch.viascom.hipchat.api.request.models.GetAllMembers;
-import ch.viascom.hipchat.api.request.models.GetAllRooms;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
-import ch.viascom.hipchat.api.response.CreateRoomResponse;
-import ch.viascom.hipchat.api.response.GetAllMembersResponse;
-import ch.viascom.hipchat.api.response.GetAllRoomsResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-
-import java.util.concurrent.*;
 
 /**
  * Created by patrickboesch on 11.04.16.
@@ -25,31 +18,31 @@ public class RoomAPITest {
     private static final String integrationToken = "";
 
     //@Test
-    public void sendRoomNotificationTest() {
+    public void sendRoomNotificationTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
         hipChat.roomsAPI().sendRoomNotification(new Notification("Test-Room", "Hello World", MessageColor.RED, true));
     }
 
     //@Test
-    public void sendRoomMessageTest() {
+    public void sendRoomMessageTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.roomsAPI().sendRoomMessage(new Message("Test-Room", "Hello World"));
     }
 
     //@Test
-    public void replyToMessageTest() {
+    public void replyToMessageTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.roomsAPI().replyToMessage(new ReplyMessage("Test-Room", "Reply", "")); // Fill out last parameter with parentId
     }
 
     //@Test
-    public void setTopicTest() {
+    public void setTopicTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
         hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
     }
 
     //@Test
-    public void sendRoomNotificationCardTest() {
+    public void sendRoomNotificationCardTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
         RoomsAPI roomsAPI = hipChat.roomsAPI();
 

@@ -1,5 +1,7 @@
 package ch.viascom.hipchat.api.api;
 
+import ch.viascom.hipchat.api.api.generic.GenericAPI;
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.*;
 import ch.viascom.hipchat.api.request.models.GetAllMembers;
 import ch.viascom.hipchat.api.request.models.GetAllRooms;
@@ -17,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public class RoomsAPI extends GenericAPI{
+public class RoomsAPI extends GenericAPI {
 
     public RoomsAPI(String baseUrl, String accessToken, HttpClient httpClient, ExecutorService executorService) {
         super(baseUrl, accessToken, httpClient, executorService);
@@ -32,7 +34,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param notification
      */
-    public void sendRoomNotification(Notification notification) {
+    public void sendRoomNotification(Notification notification) throws APIException {
         NotificationRequest notificationRequest = new NotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
         notificationRequest.execute();
     }
@@ -46,7 +48,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param message
      */
-    public void sendRoomMessage(Message message) {
+    public void sendRoomMessage(Message message) throws APIException {
         MessageRequest messageRequest = new MessageRequest(message, accessToken, baseUrl, httpClient, executorService);
         messageRequest.execute();
     }
@@ -60,7 +62,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param replyMessage
      */
-    public void replyToMessage(ReplyMessage replyMessage) {
+    public void replyToMessage(ReplyMessage replyMessage) throws APIException {
         ReplyMessageRequest replyMessageRequest = new ReplyMessageRequest(replyMessage, accessToken, baseUrl, httpClient, executorService);
         replyMessageRequest.execute();
     }
@@ -74,7 +76,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param topic
      */
-    public void setTopic(Topic topic) {
+    public void setTopic(Topic topic) throws APIException {
         TopicRequest topicRequest = new TopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
         topicRequest.execute();
     }
@@ -89,7 +91,7 @@ public class RoomsAPI extends GenericAPI{
      * @param getAllRooms
      * @return
      */
-    public GetAllRoomsResponse getAllRooms(GetAllRooms getAllRooms) {
+    public GetAllRoomsResponse getAllRooms(GetAllRooms getAllRooms) throws APIException {
         GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(getAllRooms, accessToken, baseUrl, httpClient, executorService);
         return (GetAllRoomsResponse) getAllRoomsRequest.execute();
     }
@@ -104,7 +106,7 @@ public class RoomsAPI extends GenericAPI{
      * @param room
      * @return
      */
-    public CreateRoomResponse createRoom(Room room) {
+    public CreateRoomResponse createRoom(Room room) throws APIException {
         CreateRoomRequest createRoomRequest = new CreateRoomRequest(room, accessToken, baseUrl, httpClient, executorService);
         return (CreateRoomResponse) createRoomRequest.execute();
     }
@@ -119,7 +121,7 @@ public class RoomsAPI extends GenericAPI{
      * @param roomId
      * @return
      */
-    public GetRoomResponse getRoom(String roomId) {
+    public GetRoomResponse getRoom(String roomId) throws APIException {
         GetRoomRequet getRoomRequet = new GetRoomRequet(roomId, accessToken, baseUrl, httpClient, executorService);
         return (GetRoomResponse) getRoomRequet.execute();
     }
@@ -133,7 +135,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param updateRoom
      */
-    public void updateRoom(UpdateRoom updateRoom) {
+    public void updateRoom(UpdateRoom updateRoom) throws APIException {
         UpdateRoomRequest updateRoomRequest = new UpdateRoomRequest(updateRoom, accessToken, baseUrl, httpClient, executorService);
         updateRoomRequest.execute();
     }
@@ -147,7 +149,7 @@ public class RoomsAPI extends GenericAPI{
      *
      * @param roomId
      */
-    public void deleteRoom(String roomId) {
+    public void deleteRoom(String roomId) throws APIException {
         DeleteRoomRequest deleteRoomRequest = new DeleteRoomRequest(roomId, accessToken, baseUrl, httpClient, executorService);
         deleteRoomRequest.execute();
     }
@@ -271,7 +273,7 @@ public class RoomsAPI extends GenericAPI{
      * @param getAllMembers
      * @return
      */
-    public GetAllMembersResponse getAllMembers(GetAllMembers getAllMembers) {
+    public GetAllMembersResponse getAllMembers(GetAllMembers getAllMembers) throws APIException {
         GetAllMembersRequest getAllMembersRequest = new GetAllMembersRequest(getAllMembers, accessToken, baseUrl, httpClient, executorService);
         return (GetAllMembersResponse) getAllMembersRequest.execute();
     }
