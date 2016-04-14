@@ -8,7 +8,6 @@ import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.request.models.GetAllParticipants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
 
 /**
  * Created by patrickboesch on 11.04.16.
@@ -43,7 +42,7 @@ public class RoomAPITest {
         hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
     }
 
-    @Test
+    //@Test
     public void getAllParticipantsTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
         log.debug(hipChat.roomsAPI().getAllParticipants(new GetAllParticipants("Test-Room", 0, 100, true)));
