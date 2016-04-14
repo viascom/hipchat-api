@@ -1,6 +1,5 @@
 package ch.viascom.hipchat.api.response;
 
-import ch.viascom.hipchat.api.models.Room;
 import ch.viascom.hipchat.api.response.models.GetAllRoomsResponseItem;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  */
 @Data
 public class GetAllRoomsResponse {
-    private ArrayList<Room> items;
+    private ArrayList<GetAllRoomsResponseItem> items;
     private int startIndex;
     private int	maxResults;
 }
