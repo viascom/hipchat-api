@@ -7,7 +7,7 @@ master: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/b
 develop: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/develop)
 
 ###  Requirements:
-Java 8
+Java 8 (need for lambda)
 
 ### Quick Start:
 To add this implementation into your project:
@@ -29,7 +29,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 
 ### API-Methods:
 
-##### Rooms API (10/44)
+##### Rooms API (11/44)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -65,7 +65,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Remove member
 - [x] Send message
 - [x] Send room notification
-- [ ] Get all participants
+- [x] Get all participants
 - [x] Replay to message
 - [ ] Share file with room
 - [ ] Share link with room
