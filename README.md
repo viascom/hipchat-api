@@ -111,9 +111,9 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Delete group avatar
 - [ ] Group statistics
 
-##### Emoticons API (0/2)
-- [ ] Get emoticon
-- [ ] Get all emoticons
+##### Emoticons API (2/2)
+- [x] Get emoticon
+- [x] Get all emoticons
 
 ##### Capabilities API (0/2)
 - [ ] Get capabilities
