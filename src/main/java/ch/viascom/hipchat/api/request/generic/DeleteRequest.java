@@ -1,24 +1,21 @@
 package ch.viascom.hipchat.api.request.generic;
 
+import ch.viascom.hipchat.api.response.generic.Response;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public abstract class DeleteRequest<T> extends Request<T> {
+public abstract class DeleteRequest<T extends Response> extends Request<T> {
 
     private static final Logger log = LogManager.getLogger(PostRequest.class);
 

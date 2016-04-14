@@ -1,6 +1,6 @@
 package ch.viascom.hipchat.api.request.generic;
 
-import com.google.gson.*;
+import ch.viascom.hipchat.api.response.generic.Response;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -20,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public abstract class GetRequest<T> extends Request<T> {
+public abstract class GetRequest<T extends Response> extends Request<T> {
     private static final Logger log = LogManager.getLogger(PostRequest.class);
 
     protected GetRequest(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {

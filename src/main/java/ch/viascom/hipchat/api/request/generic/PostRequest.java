@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api.request.generic;
 
+import ch.viascom.hipchat.api.response.generic.Response;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public abstract class PostRequest<T> extends Request<T> {
+public abstract class PostRequest<T extends Response> extends Request<T> {
 
     private static final Logger log = LogManager.getLogger(PostRequest.class);
 

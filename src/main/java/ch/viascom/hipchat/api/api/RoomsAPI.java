@@ -91,7 +91,7 @@ public class RoomsAPI extends GenericAPI{
      */
     public GetAllRoomsResponse getAllRooms(GetAllRooms getAllRooms) {
         GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(getAllRooms, accessToken, baseUrl, httpClient, executorService);
-        return getAllRoomsRequest.execute();
+        return (GetAllRoomsResponse) getAllRoomsRequest.execute();
     }
 
     /**
@@ -106,7 +106,7 @@ public class RoomsAPI extends GenericAPI{
      */
     public CreateRoomResponse createRoom(Room room) {
         CreateRoomRequest createRoomRequest = new CreateRoomRequest(room, accessToken, baseUrl, httpClient, executorService);
-        return createRoomRequest.execute();
+        return (CreateRoomResponse) createRoomRequest.execute();
     }
 
     /**
@@ -121,7 +121,7 @@ public class RoomsAPI extends GenericAPI{
      */
     public GetRoomResponse getRoom(String roomId) {
         GetRoomRequet getRoomRequet = new GetRoomRequet(roomId, accessToken, baseUrl, httpClient, executorService);
-        return getRoomRequet.execute();
+        return (GetRoomResponse) getRoomRequet.execute();
     }
 
     /**
@@ -273,7 +273,7 @@ public class RoomsAPI extends GenericAPI{
      */
     public GetAllMembersResponse getAllMembers(GetAllMembers getAllMembers) {
         GetAllMembersRequest getAllMembersRequest = new GetAllMembersRequest(getAllMembers, accessToken, baseUrl, httpClient, executorService);
-        return getAllMembersRequest.execute();
+        return (GetAllMembersResponse) getAllMembersRequest.execute();
     }
 
     public void addMember() {
