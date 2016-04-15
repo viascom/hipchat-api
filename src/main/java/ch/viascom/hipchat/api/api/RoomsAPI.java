@@ -29,9 +29,9 @@ public class RoomsAPI extends GenericAPI {
      * @param notification
      * @throws APIException
      */
-    public void sendRoomNotification(Notification notification) throws APIException {
+    public NoContentResponse sendRoomNotification(Notification notification) throws APIException {
         NotificationRequest notificationRequest = new NotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
-        notificationRequest.execute();
+        return (NoContentResponse) notificationRequest.execute();
     }
 
     /**
@@ -44,9 +44,9 @@ public class RoomsAPI extends GenericAPI {
      * @param message
      * @throws APIException
      */
-    public void sendRoomMessage(Message message) throws APIException {
+    public NoContentResponse sendRoomMessage(Message message) throws APIException {
         MessageRequest messageRequest = new MessageRequest(message, accessToken, baseUrl, httpClient, executorService);
-        messageRequest.execute();
+        return (NoContentResponse) messageRequest.execute();
     }
 
     /**
@@ -59,9 +59,9 @@ public class RoomsAPI extends GenericAPI {
      * @param replyMessage
      * @throws APIException
      */
-    public void replyToMessage(ReplyMessage replyMessage) throws APIException {
+    public NoContentResponse replyToMessage(ReplyMessage replyMessage) throws APIException {
         ReplyMessageRequest replyMessageRequest = new ReplyMessageRequest(replyMessage, accessToken, baseUrl, httpClient, executorService);
-        replyMessageRequest.execute();
+        return (NoContentResponse) replyMessageRequest.execute();
     }
 
     /**
@@ -74,9 +74,9 @@ public class RoomsAPI extends GenericAPI {
      * @param topic
      * @throws APIException
      */
-    public void setTopic(Topic topic) throws APIException {
+    public NoContentResponse setTopic(Topic topic) throws APIException {
         TopicRequest topicRequest = new TopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
-        topicRequest.execute();
+        return (NoContentResponse) topicRequest.execute();
     }
 
     /**
@@ -137,9 +137,9 @@ public class RoomsAPI extends GenericAPI {
      * @param updateRoom
      * @throws APIException
      */
-    public void updateRoom(UpdateRoom updateRoom) throws APIException {
+    public NoContentResponse updateRoom(UpdateRoom updateRoom) throws APIException {
         UpdateRoomRequest updateRoomRequest = new UpdateRoomRequest(updateRoom, accessToken, baseUrl, httpClient, executorService);
-        updateRoomRequest.execute();
+        return (NoContentResponse) updateRoomRequest.execute();
     }
 
     /**
@@ -152,9 +152,9 @@ public class RoomsAPI extends GenericAPI {
      * @param roomId
      * @throws APIException
      */
-    public void deleteRoom(String roomId) throws APIException {
+    public NoContentResponse deleteRoom(String roomId) throws APIException {
         DeleteRoomRequest deleteRoomRequest = new DeleteRoomRequest(roomId, accessToken, baseUrl, httpClient, executorService);
-        deleteRoomRequest.execute();
+        return (NoContentResponse) deleteRoomRequest.execute();
     }
 
     public void getRoomAvatar() {
