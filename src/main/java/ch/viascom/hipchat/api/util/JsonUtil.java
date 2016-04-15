@@ -9,13 +9,17 @@ import com.google.gson.GsonBuilder;
 public class JsonUtil {
 
     public static String getJsonBody(Object o) {
+        return getJsonBody(o, "roomId");
+    }
+
+    public static String getJsonBody(Object o, String pathIdName) {
         Gson gson;
         GsonBuilder gb = new GsonBuilder();
         gson = gb.create();
         String json = gson.toJson(o);
 
         //Replace roomId from body
-        json = json.replaceAll("\"roomId\":\"(\\w+)\",", "");
+        json = json.replaceAll("\"" + pathIdName + "\":\"(\\w+)\",", "");
 
         return json;
     }
