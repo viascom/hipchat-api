@@ -104,12 +104,12 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 ##### Invites API (0/1)
 - [ ] Invite user to group
 
-##### Groups API (2/5)
+##### Groups API (5/5)
 - [x] View group
-- [ ] Get group avatar
+- [x] Get group avatar
 - [x] Update group avatar
-- [ ] Delete group avatar
-- [ ] Group statistics
+- [x] Delete group avatar
+- [x] Group statistics
 
 ##### Emoticons API (2/2)
 - [x] Get emoticon
