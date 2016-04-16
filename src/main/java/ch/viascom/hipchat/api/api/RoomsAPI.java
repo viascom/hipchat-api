@@ -31,7 +31,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse sendRoomNotification(Notification notification) throws APIException {
         NotificationRequest notificationRequest = new NotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) notificationRequest.execute();
+        return notificationRequest.execute();
     }
 
     /**
@@ -46,7 +46,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse sendRoomMessage(Message message) throws APIException {
         MessageRequest messageRequest = new MessageRequest(message, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) messageRequest.execute();
+        return messageRequest.execute();
     }
 
     /**
@@ -61,7 +61,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse replyToMessage(ReplyMessage replyMessage) throws APIException {
         ReplyMessageRequest replyMessageRequest = new ReplyMessageRequest(replyMessage, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) replyMessageRequest.execute();
+        return replyMessageRequest.execute();
     }
 
     /**
@@ -76,7 +76,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse setTopic(Topic topic) throws APIException {
         TopicRequest topicRequest = new TopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) topicRequest.execute();
+        return topicRequest.execute();
     }
 
     /**
@@ -92,7 +92,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public GetAllRoomsResponse getAllRooms(GetAllRooms getAllRooms) throws APIException {
         GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(getAllRooms, accessToken, baseUrl, httpClient, executorService);
-        return (GetAllRoomsResponse) getAllRoomsRequest.execute();
+        return getAllRoomsRequest.execute();
     }
 
     /**
@@ -108,7 +108,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public CreateRoomResponse createRoom(Room room) throws APIException {
         CreateRoomRequest createRoomRequest = new CreateRoomRequest(room, accessToken, baseUrl, httpClient, executorService);
-        return (CreateRoomResponse) createRoomRequest.execute();
+        return createRoomRequest.execute();
     }
 
     /**
@@ -124,7 +124,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public GetRoomResponse getRoom(String roomId) throws APIException {
         GetRoomRequet getRoomRequet = new GetRoomRequet(roomId, accessToken, baseUrl, httpClient, executorService);
-        return (GetRoomResponse) getRoomRequet.execute();
+        return getRoomRequet.execute();
     }
 
     /**
@@ -139,7 +139,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse updateRoom(UpdateRoom updateRoom) throws APIException {
         UpdateRoomRequest updateRoomRequest = new UpdateRoomRequest(updateRoom, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) updateRoomRequest.execute();
+        return updateRoomRequest.execute();
     }
 
     /**
@@ -154,7 +154,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public NoContentResponse deleteRoom(String roomId) throws APIException {
         DeleteRoomRequest deleteRoomRequest = new DeleteRoomRequest(roomId, accessToken, baseUrl, httpClient, executorService);
-        return (NoContentResponse) deleteRoomRequest.execute();
+        return deleteRoomRequest.execute();
     }
 
     public void getRoomAvatar() {
@@ -277,7 +277,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public GetAllMembersResponse getAllMembers(GetAllMembers getAllMembers) throws APIException {
         GetAllMembersRequest getAllMembersRequest = new GetAllMembersRequest(getAllMembers, accessToken, baseUrl, httpClient, executorService);
-        return (GetAllMembersResponse) getAllMembersRequest.execute();
+        return getAllMembersRequest.execute();
     }
 
     public void addMember() {
@@ -301,7 +301,7 @@ public class RoomsAPI extends GenericAPI {
      */
     public GetAllParticipantsResponse getAllParticipants(GetAllParticipants getAllParticipants) throws APIException {
         GetAllParticipantsRequest getAllParticipantsRequest = new GetAllParticipantsRequest(getAllParticipants, accessToken, baseUrl, httpClient, executorService);
-        return (GetAllParticipantsResponse) getAllParticipantsRequest.execute();
+        return getAllParticipantsRequest.execute();
     }
 
     public void shareFileWithRoom() {

@@ -33,7 +33,7 @@ public class EmoticonsAPI extends GenericAPI {
      */
     public GetEmoticonResponse getEmoticon(int emoticonId) throws APIException {
         GetEmoticonRequest getEmoticonRequest = new GetEmoticonRequest(emoticonId, accessToken, baseUrl, httpClient, executorService);
-        return (GetEmoticonResponse) getEmoticonRequest.execute();
+        return getEmoticonRequest.execute();
     }
 
     /**
@@ -49,7 +49,7 @@ public class EmoticonsAPI extends GenericAPI {
      */
     public GetAllEmoticonsResponse getAllEmoticons(GetAllEmoticons getAllEmoticons) throws APIException {
         GetAllEmoticonsRequest getAllEmoticonsRequest = new GetAllEmoticonsRequest(getAllEmoticons, accessToken, baseUrl, httpClient, executorService);
-        return (GetAllEmoticonsResponse) getAllEmoticonsRequest.execute();
+        return getAllEmoticonsRequest.execute();
 
     }
 }

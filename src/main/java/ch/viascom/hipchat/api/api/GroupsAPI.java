@@ -33,7 +33,7 @@ public class GroupsAPI extends GenericAPI {
      */
     public ViewGroupResponse viewGroup(String groupId) throws APIException {
         ViewGroupRequest viewGroupRequest = new ViewGroupRequest(groupId, baseUrl, accessToken, httpClient, executorService);
-        return (ViewGroupResponse) viewGroupRequest.execute();
+        return viewGroupRequest.execute();
     }
 
     /**
@@ -49,7 +49,7 @@ public class GroupsAPI extends GenericAPI {
      */
     public NoContentResponse getGroupAvatar(String groupId) throws APIException{
         GetGroupAvatarRequest getGroupAvatarRequest = new GetGroupAvatarRequest(groupId, baseUrl, accessToken, httpClient, executorService);
-        return (NoContentResponse) getGroupAvatarRequest.execute();
+        return getGroupAvatarRequest.execute();
     }
 
     /**
@@ -65,7 +65,7 @@ public class GroupsAPI extends GenericAPI {
      */
     public NoContentResponse updateGroupAvatar(UpdateGroupAvatar updateGroupAvatar) throws APIException {
         UpdateGroupAvatarRequest updateGroupAvatarRequest = new UpdateGroupAvatarRequest(updateGroupAvatar, baseUrl, accessToken, httpClient, executorService);
-        return (NoContentResponse) updateGroupAvatarRequest.execute();
+        return updateGroupAvatarRequest.execute();
     }
 
     /**
@@ -81,7 +81,7 @@ public class GroupsAPI extends GenericAPI {
      */
     public NoContentResponse deleteGroupAvatar(String groupId) throws APIException {
         DeleteGroupAvatarRequest deleteGroupAvatarRequest = new DeleteGroupAvatarRequest(groupId, baseUrl, accessToken, httpClient, executorService);
-        return (NoContentResponse) deleteGroupAvatarRequest.execute();
+        return deleteGroupAvatarRequest.execute();
     }
 
     /**
@@ -97,6 +97,6 @@ public class GroupsAPI extends GenericAPI {
      */
     public GroupStatisticsResponse groupStatistics(String groupId) throws APIException {
         GroupStatisticsRequest groupStatisticsRequest = new GroupStatisticsRequest(groupId, baseUrl, accessToken, httpClient, executorService);
-        return (GroupStatisticsResponse) groupStatisticsRequest.execute();
+        return groupStatisticsRequest.execute();
     }
 }

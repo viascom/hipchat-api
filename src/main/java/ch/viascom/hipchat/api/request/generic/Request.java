@@ -67,7 +67,7 @@ public abstract class Request<T extends Response> {
         return future;
     }
 
-    public Response execute() throws APIException {
+    public T execute() throws APIException {
         Response output;
         ResponseHeader responseHeader = new ResponseHeader();
         try {
@@ -89,7 +89,7 @@ public abstract class Request<T extends Response> {
                     output = getParameterClass().newInstance();
                 }
                 output.setResponseHeader(responseHeader);
-                return output;
+                return (T) output;
             } else {
                 log.error("-> Invalid response status: " + status);
                 ErrorResponse errorResponse = new ErrorResponse();
