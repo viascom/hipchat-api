@@ -18,7 +18,7 @@ public class JsonUtil {
         gson = gb.create();
         String json = gson.toJson(o);
 
-        //Replace roomId from body
+        //Replace pathIdName from body
         json = json.replaceAll("\"" + pathIdName + "\":\"(\\w+)\",", "");
 
         return json;

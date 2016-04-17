@@ -38,6 +38,12 @@ public class HipChat {
         setAccessToken(accessToken);
     }
 
+    public HipChat(String accessToken, String baseUrl) {
+        this();
+        setAccessToken(accessToken);
+        setBaseUrl(baseUrl);
+    }
+
     private static CloseableHttpClient createDefaultHttpClient() {
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
         cm.setMaxTotal(MAX_CONNECTIONS);
