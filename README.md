@@ -12,7 +12,7 @@ Java 8 (need for lambda)
 ### Quick Start:
 To add this implementation into your project:
 
-#### maven (coming soon)
+#### maven
 ```xml
 <dependency>
     <groupId>ch.viascom</groupId>
