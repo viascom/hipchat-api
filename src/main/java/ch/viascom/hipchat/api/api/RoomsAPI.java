@@ -236,8 +236,20 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
-    public void getRoomWebhook() {
-
+    /**
+     * Retrieve a webhook.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
+     * Access: group clients, room clients
+     *
+     * @param getRoomWebhook
+     * @return
+     * @throws APIException
+     */
+    public GetRoomWebhookResponse getRoomWebhook(GetRoomWebhook getRoomWebhook) throws APIException {
+        GetRoomWebhookRequest getRoomWebhookRequest = new GetRoomWebhookRequest(getRoomWebhook, accessToken, baseUrl, httpClient, executorService);
+        return getRoomWebhookRequest.execute();
     }
 
     public void createRoomWebhook() {
@@ -316,19 +328,28 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
-    public void getAllWebhooks() {
-
+    /**
+     * Gets all webhooks for this room.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/webhook
+     * Access: group clients, room clients, users
+     *
+     * @param getAllWebhooks
+     * @return
+     * @throws APIException
+     */
+    public GetAllWebhooksResponse getAllWebhooks(GetAllWebhooks getAllWebhooks) throws APIException {
+        GetAllWebhooksRequest getAllWebhooksRequest = new GetAllWebhooksRequest(getAllWebhooks, accessToken, baseUrl, httpClient, executorService);
+        return getAllWebhooksRequest.execute();
     }
 
-    public void createWebhook() {
+    @Deprecated
+    public void createWebhook() {}
 
-    }
+    @Deprecated
+    public void getWebhook() {}
 
-    public void getWebhook() {
-
-    }
-
-    public void deleteWebhook() {
-
-    }
+    @Deprecated
+    public void deleteWebhook() {}
 }

@@ -11,8 +11,6 @@ import java.util.concurrent.ExecutorService;
  * Created by patrickboesch on 13.04.16.
  */
 public class GetRoomRequet extends GetRequest<GetRoomResponse> {
-
-
     private String roomId;
 
     public GetRoomRequet(String roomId, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
