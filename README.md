@@ -5,6 +5,20 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 ### Version:
 [![Release-Version](https://img.shields.io/badge/hipchat--api-v2.0.0--ALPHA-red.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.0-ALPHA)
 
+### Service Implementation Status
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)](https://github.com/viascom/hipchat-api#rooms-api-1541)<br/>
+[![UsersAPI](https://img.shields.io/badge/Users%20API-0%20of%2015%20services-red.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
+[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
+[![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
+[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
+[![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
+[![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
+[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
+[![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
+[![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
+[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-017)
+
+
 ### Build-Status:
 master: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/master)<br/>
 develop: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/develop)
@@ -65,19 +79,6 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] JWT
 
 ### API-Methods:
-
-[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)](https://github.com/viascom/hipchat-api#rooms-api-1541)<br/>
-[![UsersAPI](https://img.shields.io/badge/Users%20API-0%20of%2015%20services-red.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
-[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
-[![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
-[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
-[![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
-[![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
-[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
-[![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
-[![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
-[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-017)
-
 
 ##### Rooms API (15/41)
 - [x] Get all rooms
