@@ -12,7 +12,9 @@ Java 8 (need for lambda)
 ### Quick Start:
 To add this implementation into your project:
 
-#### maven
+#### Dependency
+
+##### maven
 ```xml
 <dependency>
     <groupId>ch.viascom</groupId>
@@ -21,11 +23,39 @@ To add this implementation into your project:
 </dependency>
 ```
 
-Send a notification
+##### gradle
+```
+compile 'ch.viascom:hipchat-api:2.0.0-ALPHA'
+```
+
+#### Send a notification
 ```java
 HipChat hipChat = new HipChat("<ACCESS_CODE>");
 hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageColor.RED, true));
 ```
+---
+
+### HipChat-API
+
+#### Validation
+- [ ] Input validation
+
+#### Wiki, Documentation & JavaDoc
+- [ ] Quick-Start guide
+- [ ] JavaDoc *Ongoing*
+- [ ] Code coverage *Ongoing*
+- [ ] JUnit *Ongoing*
+
+### Inbounds
+
+#### Webhook-Inbound
+- [ ] Inbound models
+- [ ] JWT
+
+#### Glance-Inbound
+- [ ] Inbound models
+- [ ] Glance conditions
+- [ ] JWT
 
 ### API-Methods:
 
