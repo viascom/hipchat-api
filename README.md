@@ -40,6 +40,10 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 #### Validation
 - [ ] Input validation
 
+#### Exception handling
+- [ ] Scope-Exception handling
+- [ ] Access-Exception handling
+
 #### Wiki, Documentation & JavaDoc
 - [ ] Quick-Start guide
 - [ ] JavaDoc *Ongoing*
