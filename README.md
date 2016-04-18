@@ -3,9 +3,10 @@ hipchat-api
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
 ### Version:
-[![Release-Version](https://img.shields.io/badge/hipchat--api-v2.0.0--ALPHA-red.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.0-ALPHA)
+[![Release-Version](https://img.shields.io/badge/release-v2.0.0--ALPHA-red.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.0-ALPHA)
+![Develop-Version](https://img.shields.io/badge/develop-v2.0.1--ALPHA-red.svg)
 
-### Service Implementation Status
+### Service Implementation Status:
 [![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)](https://github.com/viascom/hipchat-api#rooms-api-1541)<br/>
 [![UsersAPI](https://img.shields.io/badge/Users%20API-0%20of%2015%20services-red.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
