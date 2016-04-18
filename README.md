@@ -66,6 +66,19 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 
 ### API-Methods:
 
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)]()<br/>
+[![UsersAPI](https://img.shields.io/badge/Users%20API-0%20of%2015%20services-red.svg)]()<br/>
+[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)]()<br/>
+[![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)]()<br/>
+[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)]()<br/>
+[![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)]()<br/>
+[![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)]()<br/>
+[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)]()<br/>
+[![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)]()<br/>
+[![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)]()<br/>
+[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)]()
+
+
 ##### Rooms API (15/41)
 - [x] Get all rooms
 - [x] Create room
