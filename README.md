@@ -55,7 +55,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Delete room web panel
 - [x] Get room webhook
 - [ ] Create room webhook
-- [ ] Delete room webhook
+- [x] Delete room webhook
 - [ ] Get room message
 - [ ] View room history
 - [ ] View recent room history
