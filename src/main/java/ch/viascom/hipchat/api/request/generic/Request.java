@@ -1,6 +1,8 @@
 package ch.viascom.hipchat.api.request.generic;
 
 import ch.viascom.hipchat.api.exception.APIException;
+import ch.viascom.hipchat.api.exception.AuthorizationAPIException;
+import ch.viascom.hipchat.api.exception.AccessAPIException;
 import ch.viascom.hipchat.api.response.generic.ErrorResponse;
 import ch.viascom.hipchat.api.response.generic.Response;
 import ch.viascom.hipchat.api.response.generic.ResponseHeader;
@@ -96,11 +98,19 @@ public abstract class Request<T extends Response> {
                 errorResponse.setRequestBody(getJsonBody());
                 errorResponse.setResponseBody(content);
                 errorResponse.setResponseHeader(responseHeader);
-                throw new APIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
+                switch (status) {
+                    case 401:
+                        throw new AuthorizationAPIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
+                    case 403:
+                        throw new AccessAPIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
+                    default:
+                        throw new APIException(errorResponse, "Response-Statuscode: " + String.valueOf(status));
+                }
+
             }
         } catch (Exception e) {
             if (e instanceof APIException) {
-                //Pass through APIException
+                //Pass through APIExceptions
                 throw (APIException) e;
             } else {
                 log.error("API-Error - " + e.getMessage());
