@@ -53,9 +53,9 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Get room web panel
 - [ ] Create room web panel
 - [ ] Delete room web panel
-- [ ] Get room webhook
-- [ ] Create room webhook
-- [ ] Delete room webhook
+- [x] Get room webhook
+- [x] Create room webhook
+- [x] Delete room webhook
 - [ ] Get room message
 - [ ] View room history
 - [ ] View recent room history
@@ -71,10 +71,10 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Share link with room
 - [ ] Get room statistics
 - [x] Set topic
-- [ ] Get all webhooks
-- [ ] Create webhook
-- [ ] Get webhook
-- [ ] Delete webhook
+- [x] Get all webhooks
+- [ ] *Create webhook* -> Deprecated
+- [ ] *Get webhook* -> Deprecated
+- [ ] *Delete webhook* -> Deprecated
 
 ##### Users API (0/15)
 - [ ] Get all users

@@ -236,16 +236,55 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
-    public void getRoomWebhook() {
-
+    /**
+     * Retrieve a webhook.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
+     * Access: group clients, room clients
+     *
+     * @param getRoomWebhook
+     * @return
+     * @throws APIException
+     */
+    public GetRoomWebhookResponse getRoomWebhook(GetRoomWebhook getRoomWebhook) throws APIException {
+        GetRoomWebhookRequest getRoomWebhookRequest = new GetRoomWebhookRequest(getRoomWebhook, accessToken, baseUrl, httpClient, executorService);
+        return getRoomWebhookRequest.execute();
     }
 
-    public void createRoomWebhook() {
-
+    /**
+     * Create a webhook.
+     * Dynamically created webhooks have the following restrictions:
+     *  - You can only create 10 webhooks in a room
+     *  - You cannot modify a webhook that was declared in the descriptor
+     * <p>
+     * Method: PUT
+     * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
+     * Access: group clients, room clients
+     *
+     * @param createRoomWebhook
+     * @return
+     * @throws APIException
+     */
+    public CreateRoomWebhookResponse createRoomWebhook(CreateRoomWebhook createRoomWebhook) throws APIException {
+        CreateRoomWebhookRequest createRoomWebhookRequest = new CreateRoomWebhookRequest(createRoomWebhook,accessToken, baseUrl, httpClient, executorService);
+        return createRoomWebhookRequest.execute();
     }
 
-    public void deleteRoomWebhook() {
-
+    /**
+     * Delete a webhook. You cannot delete a webhook that was declared in the descriptor.
+     * <p>
+     * Method: DELETE
+     * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
+     * Access: group clients, room clients
+     *
+     * @param deleteRoomWebhook
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse deleteRoomWebhook(DeleteRoomWebhook deleteRoomWebhook) throws APIException {
+        DeleteRoomWebhookRequest deleteRoomWebhookRequest = new DeleteRoomWebhookRequest(deleteRoomWebhook, accessToken, baseUrl, httpClient, executorService);
+        return deleteRoomWebhookRequest.execute();
     }
 
     public void getRoomMessage() {
@@ -316,19 +355,31 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
-    public void getAllWebhooks() {
-
+    /**
+     * Gets all webhooks for this room.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/webhook
+     * Access: group clients, room clients, users
+     *
+     * @param getAllWebhooks
+     * @return
+     * @throws APIException
+     */
+    public GetAllWebhooksResponse getAllWebhooks(GetAllWebhooks getAllWebhooks) throws APIException {
+        GetAllWebhooksRequest getAllWebhooksRequest = new GetAllWebhooksRequest(getAllWebhooks, accessToken, baseUrl, httpClient, executorService);
+        return getAllWebhooksRequest.execute();
     }
 
+    @Deprecated
     public void createWebhook() {
-
     }
 
+    @Deprecated
     public void getWebhook() {
-
     }
 
+    @Deprecated
     public void deleteWebhook() {
-
     }
 }

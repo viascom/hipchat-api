@@ -14,4 +14,7 @@ public class Room {
     private String topic;
     private String owner_user_id;
     private boolean guest_access = false;
+    private boolean is_archived;
+    private String version;
+    private int id;
 }
