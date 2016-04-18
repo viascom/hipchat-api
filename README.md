@@ -29,7 +29,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 
 ### API-Methods:
 
-##### Rooms API (11/44)
+##### Rooms API (15/41)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -72,9 +72,9 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Get room statistics
 - [x] Set topic
 - [x] Get all webhooks
-- [ ] *Create webhook* -> Deprecated
-- [ ] *Get webhook* -> Deprecated
-- [ ] *Delete webhook* -> Deprecated
+- [ ] *Create webhook -> Deprecated*
+- [ ] *Get webhook -> Deprecated*
+- [ ] *Delete webhook -> Deprecated*
 
 ##### Users API (0/15)
 - [ ] Get all users
