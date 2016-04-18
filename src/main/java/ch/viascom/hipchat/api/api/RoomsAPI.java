@@ -252,8 +252,23 @@ public class RoomsAPI extends GenericAPI {
         return getRoomWebhookRequest.execute();
     }
 
-    public void createRoomWebhook() {
-
+    /**
+     * Create a webhook.
+     * Dynamically created webhooks have the following restrictions:
+     *  - You can only create 10 webhooks in a room
+     *  - You cannot modify a webhook that was declared in the descriptor
+     * <p>
+     * Method: PUT
+     * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
+     * Access: group clients, room clients
+     *
+     * @param createRoomWebhook
+     * @return
+     * @throws APIException
+     */
+    public CreateRoomWebhookResponse createRoomWebhook(CreateRoomWebhook createRoomWebhook) throws APIException {
+        CreateRoomWebhookRequest createRoomWebhookRequest = new CreateRoomWebhookRequest(createRoomWebhook,accessToken, baseUrl, httpClient, executorService);
+        return createRoomWebhookRequest.execute();
     }
 
     /**
