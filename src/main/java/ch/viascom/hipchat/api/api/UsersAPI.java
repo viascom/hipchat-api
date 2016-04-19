@@ -36,7 +36,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public GetAllUsersResponse getAllUsers(GetAllUsers getAllUsers) throws APIException {
-        GetAllUsersRequest getAllUsersRequest = new GetAllUsersRequest(getAllUsers, baseUrl, accessToken, httpClient, executorService);
+        GetAllUsersRequest getAllUsersRequest = new GetAllUsersRequest(getAllUsers, accessToken, baseUrl, httpClient, executorService);
         return getAllUsersRequest.execute();
     }
 
@@ -52,7 +52,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public ViewUserResponse viewUser(String userId) throws APIException {
-        ViewUserRequest viewUserRequest = new ViewUserRequest(userId, baseUrl, accessToken, httpClient, executorService);
+        ViewUserRequest viewUserRequest = new ViewUserRequest(userId, accessToken, baseUrl, httpClient, executorService);
         return viewUserRequest.execute();
     }
 
@@ -70,7 +70,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public CreateUserResponse createUser(CreateUser createUser) throws APIException {
-        CreateUserRequest createUserRequest = new CreateUserRequest(createUser, baseUrl, accessToken, httpClient, executorService);
+        CreateUserRequest createUserRequest = new CreateUserRequest(createUser, accessToken, baseUrl, httpClient, executorService);
         return createUserRequest.execute();
     }
 
@@ -86,7 +86,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse deleteUser(String userId) throws APIException {
-        DeleteUserRequest deleteUserRequest = new DeleteUserRequest(userId, baseUrl, accessToken, httpClient, executorService);
+        DeleteUserRequest deleteUserRequest = new DeleteUserRequest(userId, accessToken, baseUrl, httpClient, executorService);
         return deleteUserRequest.execute();
     }
 
@@ -106,7 +106,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse updateUser(UpdateUser updateUser) throws APIException{
-        UpdateUserRequest updateUserRequest = new UpdateUserRequest(updateUser, baseUrl, accessToken, httpClient, executorService);
+        UpdateUserRequest updateUserRequest = new UpdateUserRequest(updateUser, accessToken, baseUrl, httpClient, executorService);
         return updateUserRequest.execute();
 
     }
@@ -129,7 +129,7 @@ public class UsersAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse sendPrivateMessage(PrivateMessage privateMessage) throws APIException {
-        PrivateMessageUserRequest privateMessageUserRequest = new PrivateMessageUserRequest(privateMessage, baseUrl, accessToken, httpClient, executorService);
+        PrivateMessageUserRequest privateMessageUserRequest = new PrivateMessageUserRequest(privateMessage, accessToken, baseUrl, httpClient, executorService);
         return privateMessageUserRequest.execute();
 
     }

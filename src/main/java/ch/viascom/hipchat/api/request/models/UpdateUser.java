@@ -8,5 +8,6 @@ import lombok.Data;
  */
 @Data
 public class UpdateUser extends CreateUser {
+    private String userId;
     private UserPresence presence;
 }

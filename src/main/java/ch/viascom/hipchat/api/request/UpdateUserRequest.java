@@ -21,11 +21,11 @@ public class UpdateUserRequest extends PutRequest<NoContentResponse> {
 
     @Override
     protected String getJsonBody() {
-        return JsonUtil.getJsonBody(updateUser);
+        return JsonUtil.getJsonBody(updateUser,"userId");
     }
 
     @Override
     protected String getPath() {
-        return "/user/" + updateUser.getName();
+        return "/user/" + updateUser.getUserId();
     }
 }

@@ -32,7 +32,7 @@ public class GroupsAPI extends GenericAPI {
      * @throws APIException
      */
     public ViewGroupResponse viewGroup(String groupId) throws APIException {
-        ViewGroupRequest viewGroupRequest = new ViewGroupRequest(groupId, baseUrl, accessToken, httpClient, executorService);
+        ViewGroupRequest viewGroupRequest = new ViewGroupRequest(groupId, accessToken, baseUrl, httpClient, executorService);
         return viewGroupRequest.execute();
     }
 
@@ -48,7 +48,7 @@ public class GroupsAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse getGroupAvatar(String groupId) throws APIException{
-        GetGroupAvatarRequest getGroupAvatarRequest = new GetGroupAvatarRequest(groupId, baseUrl, accessToken, httpClient, executorService);
+        GetGroupAvatarRequest getGroupAvatarRequest = new GetGroupAvatarRequest(groupId, accessToken, baseUrl, httpClient, executorService);
         return getGroupAvatarRequest.execute();
     }
 
@@ -64,7 +64,7 @@ public class GroupsAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse updateGroupAvatar(UpdateGroupAvatar updateGroupAvatar) throws APIException {
-        UpdateGroupAvatarRequest updateGroupAvatarRequest = new UpdateGroupAvatarRequest(updateGroupAvatar, baseUrl, accessToken, httpClient, executorService);
+        UpdateGroupAvatarRequest updateGroupAvatarRequest = new UpdateGroupAvatarRequest(updateGroupAvatar, accessToken, baseUrl, httpClient, executorService);
         return updateGroupAvatarRequest.execute();
     }
 
@@ -80,7 +80,7 @@ public class GroupsAPI extends GenericAPI {
      * @throws APIException
      */
     public NoContentResponse deleteGroupAvatar(String groupId) throws APIException {
-        DeleteGroupAvatarRequest deleteGroupAvatarRequest = new DeleteGroupAvatarRequest(groupId, baseUrl, accessToken, httpClient, executorService);
+        DeleteGroupAvatarRequest deleteGroupAvatarRequest = new DeleteGroupAvatarRequest(groupId, accessToken, baseUrl, httpClient, executorService);
         return deleteGroupAvatarRequest.execute();
     }
 
@@ -96,7 +96,7 @@ public class GroupsAPI extends GenericAPI {
      * @throws APIException
      */
     public GroupStatisticsResponse groupStatistics(String groupId) throws APIException {
-        GroupStatisticsRequest groupStatisticsRequest = new GroupStatisticsRequest(groupId, baseUrl, accessToken, httpClient, executorService);
+        GroupStatisticsRequest groupStatisticsRequest = new GroupStatisticsRequest(groupId, accessToken, baseUrl, httpClient, executorService);
         return groupStatisticsRequest.execute();
     }
 }

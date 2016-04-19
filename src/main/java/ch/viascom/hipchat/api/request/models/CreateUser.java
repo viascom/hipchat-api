@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api.request.models;
 
+import ch.viascom.hipchat.api.models.user.UserRole;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 @Data
 public class CreateUser {
     private String name;
-    private ArrayList<String> roles;
+    private ArrayList<UserRole> roles = new ArrayList<>();
     private String title;
     private String mention_name;
     @SerializedName("is_group_admin")

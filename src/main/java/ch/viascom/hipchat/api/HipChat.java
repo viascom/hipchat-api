@@ -4,6 +4,7 @@ package ch.viascom.hipchat.api;
 import ch.viascom.hipchat.api.api.EmoticonsAPI;
 import ch.viascom.hipchat.api.api.GroupsAPI;
 import ch.viascom.hipchat.api.api.RoomsAPI;
+import ch.viascom.hipchat.api.api.UsersAPI;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -79,6 +80,10 @@ public class HipChat {
 
     public GroupsAPI groupsAPI() {
         return new GroupsAPI(baseUrl, accessToken, httpClient, executorService);
+    }
+
+    public UsersAPI usersAPI() {
+        return new UsersAPI(baseUrl, accessToken, httpClient, executorService);
     }
 
     public void close() {
