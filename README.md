@@ -8,7 +8,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 
 ### Service Implementation Status:
 [![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)](https://github.com/viascom/hipchat-api#rooms-api-1541)<br/>
-[![UsersAPI](https://img.shields.io/badge/Users%20API-1%20of%2015%20services-orange.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
+[![UsersAPI](https://img.shields.io/badge/Users%20API-4%20of%2015%20services-orange.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
 [![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
@@ -128,12 +128,12 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] *Get webhook -> Deprecated*
 - [ ] *Delete webhook -> Deprecated*
 
-##### Users API (1/15)
+##### Users API (4/15)
 - [x] Get all users
-- [ ] Create user
-- [ ] View user
+- [x] Create user
+- [x] View user
 - [ ] Update user
-- [ ] Delete user
+- [x] Delete user
 - [ ] Get privatechat message
 - [ ] View privatechat history
 - [ ] View recent privatechat history
