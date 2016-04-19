@@ -2,6 +2,7 @@ package ch.viascom.hipchat.api.api;
 
 import ch.viascom.hipchat.api.api.generic.GenericAPI;
 import ch.viascom.hipchat.api.exception.APIException;
+import ch.viascom.hipchat.api.models.PrivateMessage;
 import ch.viascom.hipchat.api.request.*;
 import ch.viascom.hipchat.api.request.models.CreateUser;
 import ch.viascom.hipchat.api.request.models.GetAllUsers;
@@ -107,6 +108,29 @@ public class UsersAPI extends GenericAPI {
     public NoContentResponse updateUser(UpdateUser updateUser) throws APIException{
         UpdateUserRequest updateUserRequest = new UpdateUserRequest(updateUser, baseUrl, accessToken, httpClient, executorService);
         return updateUserRequest.execute();
+
+    }
+
+    /**
+     * Sends a user a private message. This API can only be called using a user token which can be obtained through:
+     * - Your own Personal API Token
+     * - Generating a token using one of the following grant_types:
+     *      - authorization_code -- This is the authorization step of a 3-legged OAuth 2 flow
+     *      - refresh_token -- When a 3-legged OAuth token expires, you can request a new one through this grant_type
+     *      - password -- This grant_type allows you to request a user token by providing a username/password
+     * The message can also be sent as text/plain
+     * <p>
+     * Method: POST
+     * Url:    /v2/user/{id_or_email}/message
+     * Access: users
+     *
+     * @param privateMessage
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse sendPrivateMessage(PrivateMessage privateMessage) throws APIException {
+        PrivateMessageUserRequest privateMessageUserRequest = new PrivateMessageUserRequest(privateMessage, baseUrl, accessToken, httpClient, executorService);
+        return privateMessageUserRequest.execute();
 
     }
 }
