@@ -3,8 +3,10 @@ package ch.viascom.hipchat.api.api;
 import ch.viascom.hipchat.api.api.generic.GenericAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.GetAllUsersRequest;
+import ch.viascom.hipchat.api.request.ViewUserRequest;
 import ch.viascom.hipchat.api.request.models.GetAllUsers;
 import ch.viascom.hipchat.api.response.GetAllUsersResponse;
+import ch.viascom.hipchat.api.response.ViewUserResponse;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
@@ -32,5 +34,21 @@ public class UsersAPI extends GenericAPI {
     public GetAllUsersResponse getAllUsers(GetAllUsers getAllUsers) throws APIException {
         GetAllUsersRequest getAllUsersRequest = new GetAllUsersRequest(getAllUsers, baseUrl, accessToken, httpClient, executorService);
         return getAllUsersRequest.execute();
+    }
+
+    /**
+     * Get a user's details.
+     * <p>
+     * Method: GET
+     * Url:    /v2/user/{id_or_email}
+     * Access: group clients, users
+     *
+     * @param userId
+     * @return
+     * @throws APIException
+     */
+    public ViewUserResponse viewUser(String userId) throws APIException {
+        ViewUserRequest viewUserRequest = new ViewUserRequest(userId,  baseUrl, accessToken, httpClient, executorService);
+        return viewUserRequest.execute();
     }
 }
