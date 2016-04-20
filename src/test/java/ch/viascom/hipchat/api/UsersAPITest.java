@@ -7,6 +7,7 @@ import ch.viascom.hipchat.api.models.user.UserPhotoSize;
 import ch.viascom.hipchat.api.models.user.UserRole;
 import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.CreateUserResponse;
+import ch.viascom.hipchat.api.response.GenericResponse;
 import ch.viascom.hipchat.api.response.GetAllUsersResponse;
 import ch.viascom.hipchat.api.response.ViewUserResponse;
 import org.apache.logging.log4j.LogManager;
@@ -85,7 +86,7 @@ public class UsersAPITest {
     //@Test
     public void getPhotoTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        String link = hipChat.usersAPI().getPhoto(new GetUserPhoto(testBotUserId, UserPhotoSize.SMALL));
+        GenericResponse response = hipChat.usersAPI().getPhoto(new GetUserPhoto(testBotUserId, UserPhotoSize.SMALL));
     }
 
     //@Test

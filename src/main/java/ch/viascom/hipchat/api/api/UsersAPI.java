@@ -130,9 +130,9 @@ public class UsersAPI extends GenericAPI {
     }
 
 
-    public String getPhoto(GetUserPhoto getUserPhoto) throws APIException {
+    public GenericResponse getPhoto(GetUserPhoto getUserPhoto) throws APIException {
         GetUserPhotoRequest getUserPhotoRequest = new GetUserPhotoRequest(getUserPhoto, accessToken, baseUrl, httpClient, executorService);
-        return getUserPhotoRequest.execute().getResponseHeader().getResponseHeaders().get("Location");
+        return getUserPhotoRequest.execute();
     }
 
     /**
