@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class UsersAPITest {
 
-    private static final Logger log = LogManager.getLogger(RoomAPITest.class);
+    private static final Logger log = LogManager.getLogger(UsersAPITest.class);
     private static final String clientToken = "";
     private static final String integrationToken = "";
 
