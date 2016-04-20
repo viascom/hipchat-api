@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notification{
-    private String roomId;
+public class Notification {
     private String from;
     private MessageFormat message_format;
     private MessageColor color;
@@ -21,11 +20,4 @@ public class Notification{
     private boolean notify;
     private String message;
     private Card card;
-
-    public Notification(String roomId, String message,MessageColor color,boolean notify){
-        this.roomId = roomId;
-        this.message = message;
-        this.color = color;
-        this.notify = notify;
-    }
 }

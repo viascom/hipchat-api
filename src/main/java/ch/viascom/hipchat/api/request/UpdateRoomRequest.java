@@ -1,12 +1,12 @@
 package ch.viascom.hipchat.api.request;
 
-import ch.viascom.hipchat.api.models.Room;
 import ch.viascom.hipchat.api.request.generic.PutRequest;
 import ch.viascom.hipchat.api.request.models.UpdateRoom;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -23,6 +23,11 @@ public class UpdateRoomRequest extends PutRequest<NoContentResponse> {
     @Override
     protected String getJsonBody() {
         return JsonUtil.getJsonBody(updateRoom);
+    }
+
+    @Override
+    protected HashMap<String, String> getQueryParam() {
+        return null;
     }
 
     @Override
