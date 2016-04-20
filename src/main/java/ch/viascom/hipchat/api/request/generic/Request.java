@@ -1,8 +1,9 @@
 package ch.viascom.hipchat.api.request.generic;
 
 import ch.viascom.hipchat.api.exception.APIException;
-import ch.viascom.hipchat.api.exception.AuthorizationAPIException;
 import ch.viascom.hipchat.api.exception.AccessAPIException;
+import ch.viascom.hipchat.api.exception.AuthorizationAPIException;
+import ch.viascom.hipchat.api.response.GenericResponse;
 import ch.viascom.hipchat.api.response.generic.ErrorResponse;
 import ch.viascom.hipchat.api.response.generic.Response;
 import ch.viascom.hipchat.api.response.generic.ResponseHeader;
@@ -90,8 +91,12 @@ public abstract class Request<T extends Response> {
                 log.debug("-> Response status: " + status);
 
                 if (content != null) {
-                    Gson gson = new Gson();
-                    output = gson.fromJson(content, getParameterClass());
+                    if (getParameterClass() == GenericResponse.class) {
+                        output = new GenericResponse(entity);
+                    } else {
+                        Gson gson = new Gson();
+                        output = gson.fromJson(content, getParameterClass());
+                    }
                 } else {
                     //NoContentResponse
                     output = getParameterClass().newInstance();
