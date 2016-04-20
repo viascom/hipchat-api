@@ -6,6 +6,7 @@ import ch.viascom.hipchat.api.request.generic.PostRequest;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -22,6 +23,11 @@ public class CreateRoomRequest extends PostRequest<CreateRoomResponse> {
     @Override
     protected String getJsonBody() {
         return JsonUtil.getJsonBody(room);
+    }
+
+    @Override
+    protected HashMap<String, String> getQueryParam() {
+        return null;
     }
 
     @Override

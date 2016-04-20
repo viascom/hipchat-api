@@ -3,7 +3,6 @@ package ch.viascom.hipchat.api;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.Card;
-import ch.viascom.hipchat.api.models.Notification;
 import ch.viascom.hipchat.api.models.ReplyMessage;
 import ch.viascom.hipchat.api.models.Topic;
 import ch.viascom.hipchat.api.models.card.*;

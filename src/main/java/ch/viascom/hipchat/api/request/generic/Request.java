@@ -18,6 +18,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
+import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -32,10 +34,13 @@ public abstract class Request<T extends Response> {
     protected String baseUrl;
     protected String accessToken;
     protected HttpClient httpClient;
+    protected AuthorizationMethod authorizationMethod = AuthorizationMethod.HEADER;
 
-    protected abstract HttpResponse request() throws IOException;
+    protected abstract HttpResponse request(AuthorizationMethod authorizationMethod) throws IOException, URISyntaxException;
 
     protected abstract String getJsonBody();
+
+    protected abstract HashMap<String, String> getQueryParam();
 
     protected abstract String getPath();
 
@@ -57,11 +62,12 @@ public abstract class Request<T extends Response> {
         return encodedPath;
     }
 
-    protected Request(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+    protected Request(String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService, AuthorizationMethod authorizationMethod) {
         this.executorService = executorService;
         this.accessToken = accessToken;
         this.httpClient = httpClient;
         this.baseUrl = baseUrl;
+        this.authorizationMethod = authorizationMethod;
     }
 
     public Future<Response> executeAsync() {
@@ -73,7 +79,7 @@ public abstract class Request<T extends Response> {
         Response output;
         ResponseHeader responseHeader = new ResponseHeader();
         try {
-            HttpResponse response = request();
+            HttpResponse response = request(this.authorizationMethod);
             int status = response.getStatusLine().getStatusCode();
             responseHeader.setResponseHeaders(response.getAllHeaders());
             responseHeader.setStatusCode(status);

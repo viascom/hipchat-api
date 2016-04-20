@@ -6,6 +6,7 @@ import ch.viascom.hipchat.api.request.generic.PutRequest;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -22,6 +23,11 @@ public class TopicRequest extends PutRequest<NoContentResponse> {
     @Override
     protected String getJsonBody() {
         return JsonUtil.getJsonBody(topic);
+    }
+
+    @Override
+    protected HashMap<String, String> getQueryParam() {
+        return null;
     }
 
     @Override
