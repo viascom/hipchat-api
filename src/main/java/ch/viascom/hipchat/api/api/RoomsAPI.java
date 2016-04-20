@@ -29,9 +29,9 @@ public class RoomsAPI extends GenericAPI {
      * @param notification
      * @throws APIException
      */
-    public NoContentResponse sendRoomNotification(Notification notification) throws APIException {
-        NotificationRequest notificationRequest = new NotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
-        return notificationRequest.execute();
+    public NoContentResponse sendRoomNotification(SendNotification notification) throws APIException {
+        SendNotificationRequest sendNotificationRequest = new SendNotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
+        return sendNotificationRequest.execute();
     }
 
     /**
@@ -44,7 +44,7 @@ public class RoomsAPI extends GenericAPI {
      * @param message
      * @throws APIException
      */
-    public NoContentResponse sendRoomMessage(Message message) throws APIException {
+    public NoContentResponse sendRoomMessage(SendMessage message) throws APIException {
         MessageRequest messageRequest = new MessageRequest(message, accessToken, baseUrl, httpClient, executorService);
         return messageRequest.execute();
     }

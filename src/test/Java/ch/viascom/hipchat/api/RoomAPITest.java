@@ -2,10 +2,15 @@ package ch.viascom.hipchat.api;
 
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.exception.APIException;
-import ch.viascom.hipchat.api.models.*;
+import ch.viascom.hipchat.api.models.Card;
+import ch.viascom.hipchat.api.models.Notification;
+import ch.viascom.hipchat.api.models.ReplyMessage;
+import ch.viascom.hipchat.api.models.Topic;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.request.models.GetAllParticipants;
+import ch.viascom.hipchat.api.request.models.SendMessage;
+import ch.viascom.hipchat.api.request.models.SendNotification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,13 +26,13 @@ public class RoomAPITest {
     //@Test
     public void sendRoomNotificationTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
-        hipChat.roomsAPI().sendRoomNotification(new Notification("Test-Room", "Hello World", MessageColor.RED, true));
+        hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
     }
 
     //@Test
     public void sendRoomMessageTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.roomsAPI().sendRoomMessage(new Message("Test-Room", "Hello World"));
+        hipChat.roomsAPI().sendRoomMessage(new SendMessage("Test-Room", "Hello World"));
     }
 
     //@Test
@@ -54,7 +59,7 @@ public class RoomAPITest {
         HipChat hipChat = new HipChat(integrationToken);
         RoomsAPI roomsAPI = hipChat.roomsAPI();
 
-        Notification notification = new Notification();
+        SendNotification notification = new SendNotification();
         notification.setRoomId("Test-Room");
         notification.setMessage("Hi from (puzzle) HipChat-API v2");
         notification.setColor(MessageColor.RED);
