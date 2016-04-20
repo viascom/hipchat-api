@@ -9,7 +9,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 ### Service Implementation Status:
 [![RoomsAPI](https://img.shields.io/badge/Rooms%20API-15%20of%2041%20services-yellow.svg)](https://github.com/viascom/hipchat-api#rooms-api-1541)<br/>
 [![UsersAPI](https://img.shields.io/badge/Users%20API-10%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-015)<br/>
-[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
+[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-01)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
 [![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
 [![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
@@ -145,8 +145,8 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Share file with user
 - [ ] Share link with user
 
-##### Prefs Publics API (0/1)
-- [ ] Get auto join rooms
+##### Prefs Publics API (1/1)
+- [x] Get auto join rooms
 
 ##### OAuth Sessions API (0/3)
 - [ ] Get session
