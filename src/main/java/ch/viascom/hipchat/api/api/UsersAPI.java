@@ -4,13 +4,8 @@ import ch.viascom.hipchat.api.api.generic.GenericAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.PrivateMessage;
 import ch.viascom.hipchat.api.request.*;
-import ch.viascom.hipchat.api.request.models.CreateUser;
-import ch.viascom.hipchat.api.request.models.GetAllUsers;
-import ch.viascom.hipchat.api.request.models.UpdateUser;
-import ch.viascom.hipchat.api.response.CreateUserResponse;
-import ch.viascom.hipchat.api.response.GetAllUsersResponse;
-import ch.viascom.hipchat.api.response.NoContentResponse;
-import ch.viascom.hipchat.api.response.ViewUserResponse;
+import ch.viascom.hipchat.api.request.models.*;
+import ch.viascom.hipchat.api.response.*;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
@@ -95,7 +90,7 @@ public class UsersAPI extends GenericAPI {
      * Changing a user's name or admin status will cause them to be briefly disconnected.
      * Only works on non-deleted users.
      * Any missing fields will be treated as deleted, so it is recommended to get the user, modify what you need, then call this resource to update.
-     *
+     * <p>
      * <p>
      * Method: PUT
      * Url:    /v2/user/{id_or_email}
@@ -105,7 +100,7 @@ public class UsersAPI extends GenericAPI {
      * @return
      * @throws APIException
      */
-    public NoContentResponse updateUser(UpdateUser updateUser) throws APIException{
+    public NoContentResponse updateUser(UpdateUser updateUser) throws APIException {
         UpdateUserRequest updateUserRequest = new UpdateUserRequest(updateUser, accessToken, baseUrl, httpClient, executorService);
         return updateUserRequest.execute();
 
@@ -115,9 +110,9 @@ public class UsersAPI extends GenericAPI {
      * Sends a user a private message. This API can only be called using a user token which can be obtained through:
      * - Your own Personal API Token
      * - Generating a token using one of the following grant_types:
-     *      - authorization_code -- This is the authorization step of a 3-legged OAuth 2 flow
-     *      - refresh_token -- When a 3-legged OAuth token expires, you can request a new one through this grant_type
-     *      - password -- This grant_type allows you to request a user token by providing a username/password
+     * - authorization_code -- This is the authorization step of a 3-legged OAuth 2 flow
+     * - refresh_token -- When a 3-legged OAuth token expires, you can request a new one through this grant_type
+     * - password -- This grant_type allows you to request a user token by providing a username/password
      * The message can also be sent as text/plain
      * <p>
      * Method: POST
@@ -132,5 +127,59 @@ public class UsersAPI extends GenericAPI {
         PrivateMessageUserRequest privateMessageUserRequest = new PrivateMessageUserRequest(privateMessage, accessToken, baseUrl, httpClient, executorService);
         return privateMessageUserRequest.execute();
 
+    }
+
+
+    public String getPhoto(GetUserPhoto getUserPhoto) throws APIException {
+        GetUserPhotoRequest getUserPhotoRequest = new GetUserPhotoRequest(getUserPhoto, accessToken, baseUrl, httpClient, executorService);
+        return getUserPhotoRequest.execute().getResponseHeader().getResponseHeaders().get("Location");
+    }
+
+    /**
+     * Update a user photo. A guest cannot be updated.
+     * <p>
+     * Method: PUT
+     * Url:    /v2/user/{id_or_email}/photo
+     * Access: group clients, users
+     *
+     * @param updateUserPhoto
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse updatePhoto(UpdateUserPhoto updateUserPhoto) throws APIException {
+        UpdateUserPhotoRequest updateUserPhotoRequest = new UpdateUserPhotoRequest(updateUserPhoto, accessToken, baseUrl, httpClient, executorService);
+        return updateUserPhotoRequest.execute();
+    }
+
+    /**
+     * Delete a user photo. A guest cannot be updated.
+     * <p>
+     * Method: DELETE
+     * Url:    /v2/user/{id_or_email}/photo
+     * Access: group clients, users
+     *
+     * @param userId
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse deletePhoto(String userId) throws APIException {
+        DeleteUserPhotoRequest deleteUserPhotoRequest = new DeleteUserPhotoRequest(userId, accessToken, baseUrl, httpClient, executorService);
+        return deleteUserPhotoRequest.execute();
+    }
+
+    /**
+     * Get the list of rooms a user joins when they log in.
+     * <p>
+     * Method: GET
+     * Url:    /v2/user/{id_or_email}/preference/auto-join
+     * Access: group clients, users
+     *
+     * @param getAutoJoinRooms
+     * @return
+     * @throws APIException
+     */
+    public GetAutoJoinRoomsResponse getAutoJoinRooms(GetAutoJoinRooms getAutoJoinRooms) throws APIException {
+        GetAutoJoinRoomsRequest getAutoJoinRoomsRequest = new GetAutoJoinRoomsRequest(getAutoJoinRooms, accessToken, baseUrl, httpClient, executorService);
+        return getAutoJoinRoomsRequest.execute();
     }
 }
