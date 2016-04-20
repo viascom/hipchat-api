@@ -138,7 +138,7 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] View privatechat history
 - [ ] View recent privatechat history
 - [x] Private message user
-- [x] *Get Photo -> 400 Bad Request*
+- [x] Get Photo
 - [x] Update photo
 - [x] Delete photo
 - [x] Get auto join rooms
