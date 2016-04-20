@@ -319,8 +319,20 @@ public class RoomsAPI extends GenericAPI {
         return getAllMembersRequest.execute();
     }
 
-    public void addMember() {
-
+    /**
+     * Adds a member to a private room and sends member's unavailable presence to all room members asynchronously.
+     * <p>
+     * Method: PUT
+     * Url:    /v2/room/{room_id_or_name}/member/{user_id_or_email}
+     * Access: group clients, room clients, users
+     *
+     * @param addMember
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse addMember(AddMember addMember) throws APIException {
+        AddMemberRequest addMemberRequest = new AddMemberRequest(addMember, accessToken, baseUrl, httpClient, executorService);
+        return addMemberRequest.execute();
     }
 
     public void removeMember() {

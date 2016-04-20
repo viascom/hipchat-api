@@ -7,6 +7,7 @@ import ch.viascom.hipchat.api.models.ReplyMessage;
 import ch.viascom.hipchat.api.models.Topic;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
+import ch.viascom.hipchat.api.request.models.AddMember;
 import ch.viascom.hipchat.api.request.models.GetAllParticipants;
 import ch.viascom.hipchat.api.request.models.SendMessage;
 import ch.viascom.hipchat.api.request.models.SendNotification;
@@ -21,6 +22,8 @@ public class RoomAPITest {
     private static final Logger log = LogManager.getLogger(RoomAPITest.class);
     private static final String clientToken = "";
     private static final String integrationToken = "";
+
+    private static int testBotUserId;
 
     //@Test
     public void sendRoomNotificationTest() throws APIException {
@@ -51,6 +54,12 @@ public class RoomAPITest {
         HipChat hipChat = new HipChat(integrationToken);
         log.debug(hipChat.roomsAPI().getAllParticipants(new GetAllParticipants("Test-Room", 0, 100, true)));
 
+    }
+
+    //@Test
+    public void addMemberTest() throws APIException {
+        HipChat hipChat = new HipChat(clientToken);
+        hipChat.roomsAPI().addMember(new AddMember(testBotUserId, "Private-Test-Room", null));
     }
 
     //@Test
