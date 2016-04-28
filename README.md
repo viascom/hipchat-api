@@ -49,7 +49,7 @@ compile 'ch.viascom:hipchat-api:2.0.0-ALPHA'
 #### Send a notification
 ```java
 HipChat hipChat = new HipChat("<ACCESS_CODE>");
-hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageColor.RED, true));
+hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
 ```
 ---
 
