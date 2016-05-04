@@ -43,6 +43,11 @@ public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> 
         HashMap<String, String> param = new HashMap<>();
         param.put("start-index", String.valueOf(viewRoomHostory.getStart_index()));
         param.put("max-results", String.valueOf(viewRoomHostory.getMax_results()));
+        param.put("reverse", String.valueOf(viewRoomHostory.isReverse()));
+        param.put("include_deleted", String.valueOf(viewRoomHostory.isInclude_deleted()));
+        param.put("date", String.valueOf(viewRoomHostory.getDate()));
+        param.put("timezone", String.valueOf(viewRoomHostory.getTimezone()));
+        param.put("end-date", String.valueOf(viewRoomHostory.getEnd_date()));
         return param;
     }
 }
