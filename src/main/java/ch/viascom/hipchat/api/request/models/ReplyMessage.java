@@ -1,4 +1,4 @@
-package ch.viascom.hipchat.api.models;
+package ch.viascom.hipchat.api.request.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

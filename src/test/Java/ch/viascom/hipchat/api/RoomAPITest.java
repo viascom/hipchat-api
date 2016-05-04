@@ -3,8 +3,12 @@ package ch.viascom.hipchat.api;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.Card;
+<<<<<<< HEAD
 import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.ReplyMessage;
+=======
+import ch.viascom.hipchat.api.request.models.ReplyMessage;
+>>>>>>> develop
 import ch.viascom.hipchat.api.models.Topic;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
