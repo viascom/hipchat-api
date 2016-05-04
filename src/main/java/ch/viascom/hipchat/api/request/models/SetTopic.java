@@ -1,4 +1,4 @@
-package ch.viascom.hipchat.api.models;
+package ch.viascom.hipchat.api.request.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Topic {
+public class SetTopic {
     private String roomId;
     private String topic;
 }

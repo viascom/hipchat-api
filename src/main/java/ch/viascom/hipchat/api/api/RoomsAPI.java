@@ -74,9 +74,9 @@ public class RoomsAPI extends GenericAPI {
      * @param topic
      * @throws APIException
      */
-    public NoContentResponse setTopic(Topic topic) throws APIException {
-        TopicRequest topicRequest = new TopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
-        return topicRequest.execute();
+    public NoContentResponse setTopic(SetTopic topic) throws APIException {
+        SetTopicRequest setTopicRequest = new SetTopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
+        return setTopicRequest.execute();
     }
 
     /**
