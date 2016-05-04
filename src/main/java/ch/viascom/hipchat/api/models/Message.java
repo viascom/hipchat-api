@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 
 /**
- * Created by patrickboesch on 11.04.16.
+ * Created by Patrick Bösch on 11.04.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Message {
-    private String from;
+    private MessageFrom from;
     private String date;
     private String message;
     private ArrayList<MessageMention> mentions;
