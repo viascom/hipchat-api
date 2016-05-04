@@ -291,6 +291,22 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
+    /**
+     * Fetch chat history for this room.
+     * NOTE:
+     * - According to ISO-8601 the plus sign '+' is used for specifying the time offset from UTC. But '+' in a GET query is recognized as a whitespace by the API HTTP-server. For specifying the time offset, replace the character by '%2B' in the GET query.
+     * - To fetch the history before '2015-06-16T15:33:30+01:00' you would use the query 'http://hipchat.com/v2/room/513/history?date=2015-06-16T15:33:30%2B01:00' (plus is replaced by '%2B').
+     * - It's possible to specify the date using UNIX timestamp format: 'http://hipchat.com/v2/room/513/history?date=1434465210'.
+     * - Same thing for the end-date parameter.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history
+     * Access: group clients, room clients, users
+     *
+     * @param viewRoomHistory
+     * @return
+     * @throws APIException
+     */
     public ViewRoomHistoryResponse viewRoomHistory(ViewRoomHistory viewRoomHistory) throws APIException {
         ViewRoomHistoryRequest viewRoomHistoryRequest = new ViewRoomHistoryRequest(viewRoomHistory, accessToken, baseUrl, httpClient, executorService);
         return viewRoomHistoryRequest.execute();
