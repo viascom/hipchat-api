@@ -3,13 +3,7 @@ package ch.viascom.hipchat.api;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.Card;
-<<<<<<< HEAD
 import ch.viascom.hipchat.api.models.Message;
-import ch.viascom.hipchat.api.models.ReplyMessage;
-=======
-import ch.viascom.hipchat.api.request.models.ReplyMessage;
->>>>>>> develop
-import ch.viascom.hipchat.api.models.Topic;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.request.models.*;
@@ -50,7 +44,7 @@ public class RoomAPITest {
     //@Test
     public void setTopicTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
-        hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
+        hipChat.roomsAPI().setTopic(new SetTopic("Test-Room", "New fancy topic for our test room"));
     }
 
     //@Test
@@ -69,7 +63,7 @@ public class RoomAPITest {
     //@Test
     public void viewRoomHistoryTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(new ViewRoomHistory("TestRoom",0,100)).getItems();
+        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(new ViewRoomHistory("TestRoom", 0, 100)).getItems();
     }
 
     //@Test
