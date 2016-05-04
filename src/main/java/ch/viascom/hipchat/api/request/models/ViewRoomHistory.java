@@ -57,7 +57,7 @@ public class ViewRoomHistory {
      * Your timezone. Must be a supported timezone name, please see wikipedia TZ database page
      * Defaults to 'UTC'.
      */
-    private String timezone = "UTZ";
+    private String timezone = "UTC";
 
     /**
      * Either the earliest date to fetch history for the ISO-8601 format, or 'null' to disable this filter.

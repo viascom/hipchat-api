@@ -287,8 +287,20 @@ public class RoomsAPI extends GenericAPI {
         return deleteRoomWebhookRequest.execute();
     }
 
-    public void getRoomMessage() {
-
+    /**
+     * Fetch one specific message by id
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history/{message_id}
+     * Access: group clients, room clients, users
+     *
+     * @param getRoomMessage
+     * @return
+     * @throws APIException
+     */
+    public GetRoomMessageResponse getRoomMessage(GetRoomMessage getRoomMessage) throws APIException {
+        GetRoomMessageRequest getRoomMessageRequest = new GetRoomMessageRequest(getRoomMessage, accessToken, baseUrl, httpClient, executorService);
+        return getRoomMessageRequest.execute();
     }
 
     /**
