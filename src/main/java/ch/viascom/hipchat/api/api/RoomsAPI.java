@@ -324,8 +324,20 @@ public class RoomsAPI extends GenericAPI {
         return viewRoomHistoryRequest.execute();
     }
 
-    public void viewRecentRoomHistory() {
-
+    /**
+     * Fetch latest chat history for this room.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history/latest
+     * Access: group clients, room clients, users
+     *
+     * @param viewRecentRoomHistory
+     * @return
+     * @throws APIException
+     */
+    public ViewRecentRoomHistoryResponse viewRecentRoomHistory(ViewRecentRoomHistory viewRecentRoomHistory) throws APIException {
+        ViewRecentRoomHistoryRequest viewRecentRoomHistoryRequest = new ViewRecentRoomHistoryRequest(viewRecentRoomHistory, accessToken, baseUrl, httpClient, executorService);
+        return viewRecentRoomHistoryRequest.execute();
     }
 
     public void inviteUser() {
