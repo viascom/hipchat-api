@@ -1,6 +1,7 @@
 package ch.viascom.hipchat.api.request;
 
 import ch.viascom.hipchat.api.deserializer.MessageFromDeserializer;
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetRoomMessage;
@@ -9,7 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -18,9 +20,10 @@ import java.util.concurrent.ExecutorService;
 public class GetRoomMessageRequest extends GetRequest<GetRoomMessageResponse> {
     private GetRoomMessage getRoomMessage;
 
-    public GetRoomMessageRequest(GetRoomMessage getRoomMessage, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+    public GetRoomMessageRequest(GetRoomMessage getRoomMessage, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.getRoomMessage = getRoomMessage;
+        setQueryParams(new ArrayList<>(Arrays.asList("timezone", "include_deleted")), getRoomMessage);
     }
 
     @Override
@@ -36,13 +39,5 @@ public class GetRoomMessageRequest extends GetRequest<GetRoomMessageResponse> {
         Gson gson = gsonBuilder.create();
 
         return gson;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        param.put("timezone", String.valueOf(getRoomMessage.getTimezone()));
-        param.put("include_deleted", String.valueOf(getRoomMessage.isInclude_deleted()));
-        return param;
     }
 }

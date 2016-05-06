@@ -4,7 +4,6 @@ import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.response.GroupStatisticsResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -21,11 +20,5 @@ public class GroupStatisticsRequest extends GetRequest<GroupStatisticsResponse> 
     @Override
     protected String getPath() {
         return "/group/" + groupId + "/statistics";
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        return param;
     }
 }
