@@ -7,7 +7,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 [![Develop-Version](https://img.shields.io/badge/develop-v2.0.1--ALPHA-red.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
-[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-19%20of%2041%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-1941)<br/>
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-20%20of%2041%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2041)<br/>
 [![UsersAPI](https://img.shields.io/badge/Users%20API-10%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-1015)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-11)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
@@ -80,7 +80,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 
 ### API-Methods:
 
-##### Rooms API (19/41)
+##### Rooms API (20/41)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -110,7 +110,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [x] Get room message
 - [x] View room history
 - [x] View recent room history
-- [ ] Invite user
+- [x] Invite user
 - [x] Get all members
 - [x] Add member
 - [ ] Remove member
