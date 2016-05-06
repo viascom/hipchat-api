@@ -182,4 +182,57 @@ public class UsersAPI extends GenericAPI {
         GetAutoJoinRoomsRequest getAutoJoinRoomsRequest = new GetAutoJoinRoomsRequest(getAutoJoinRooms, accessToken, baseUrl, httpClient, executorService);
         return getAutoJoinRoomsRequest.execute();
     }
+
+    /**
+     * Fetch one specific message by id
+     * <p>
+     * Method: GET
+     * Url:    /v2/user/{id_or_email}/history/{message_id}
+     * Access: group clients, users
+     *
+     * @param getPrivatechatMessage
+     * @return
+     * @throws APIException
+     */
+    public GetPrivatechatMessageResponse GetPrivatechatMessage(GetPrivatechatMessage getPrivatechatMessage) throws APIException {
+        GetPrivatechatMessageRequest getPrivatechatMessageRequest = new GetPrivatechatMessageRequest(getPrivatechatMessage, accessToken, baseUrl, httpClient, executorService);
+        return getPrivatechatMessageRequest.execute();
+    }
+
+    /**
+     * Fetch chat history for the 1:1 chat with the user identified by idoremail.
+     * NOTE:
+     * - According to ISO-8601 the plus sign '+' is used for specifying the time offset from UTC. But '+' in a GET query is recognized as a whitespace by the API HTTP-server. For specifying the time offset, replace the character by '%2B' in the GET query.
+     * - To fetch the history before '2015-06-16T15:33:30+01:00' you would use the query 'http://hipchat.com/v2/user/513/history?date=2015-06-16T15:33:30%2B01:00' (plus is replaced by '%2B').
+     * - It's possible to specify the date using UNIX timestamp format: 'http://hipchat.com/v2/user/513/history?date=1434465210'.
+     * - Same thing for the end-date parameter.
+     * <p>
+     * Method: GET
+     * Url:    /v2/user/{id_or_email}/history
+     * Access: users
+     *
+     * @param viewPrivatechatHistory
+     * @return
+     * @throws APIException
+     */
+    public ViewPrivatechatHistoryResponse viewPrivatechatHistory(ViewPrivatechatHistory viewPrivatechatHistory) throws APIException {
+        ViewPrivatechatHistoryRequest viewPrivatechatHistoryRequest = new ViewPrivatechatHistoryRequest(viewPrivatechatHistory, accessToken, baseUrl, httpClient, executorService);
+        return viewPrivatechatHistoryRequest.execute();
+    }
+
+    /**
+     * Fetch latest chat history for the 1:1 chat with the user identified by idoremail.
+     * <p>
+     * Method: GET
+     * Url:    /v2/user/{id_or_email}/history/latest
+     * Access: users
+     *
+     * @param viewRecentPrivatechatHistory
+     * @return
+     * @throws APIException
+     */
+    public ViewRecentPrivatechatHistoryResponse viewRecentPrivatechatHistory(ViewRecentPrivatechatHistory viewRecentPrivatechatHistory) throws APIException {
+        ViewRecentPrivatechatHistoryRequest viewRecentPrivatechatHistoryRequest = new ViewRecentPrivatechatHistoryRequest(viewRecentPrivatechatHistory, accessToken, baseUrl, httpClient, executorService);
+        return viewRecentPrivatechatHistoryRequest.execute();
+    }
 }
