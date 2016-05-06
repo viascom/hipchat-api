@@ -255,8 +255,8 @@ public class RoomsAPI extends GenericAPI {
     /**
      * Create a webhook.
      * Dynamically created webhooks have the following restrictions:
-     *  - You can only create 10 webhooks in a room
-     *  - You cannot modify a webhook that was declared in the descriptor
+     * - You can only create 10 webhooks in a room
+     * - You cannot modify a webhook that was declared in the descriptor
      * <p>
      * Method: PUT
      * Url:    /v2/room/{room_id_or_name}/extension/webhook/{key}
@@ -267,7 +267,7 @@ public class RoomsAPI extends GenericAPI {
      * @throws APIException
      */
     public CreateRoomWebhookResponse createRoomWebhook(CreateRoomWebhook createRoomWebhook) throws APIException {
-        CreateRoomWebhookRequest createRoomWebhookRequest = new CreateRoomWebhookRequest(createRoomWebhook,accessToken, baseUrl, httpClient, executorService);
+        CreateRoomWebhookRequest createRoomWebhookRequest = new CreateRoomWebhookRequest(createRoomWebhook, accessToken, baseUrl, httpClient, executorService);
         return createRoomWebhookRequest.execute();
     }
 
@@ -287,16 +287,57 @@ public class RoomsAPI extends GenericAPI {
         return deleteRoomWebhookRequest.execute();
     }
 
-    public void getRoomMessage() {
-
+    /**
+     * Fetch one specific message by id
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history/{message_id}
+     * Access: group clients, room clients, users
+     *
+     * @param getRoomMessage
+     * @return
+     * @throws APIException
+     */
+    public GetRoomMessageResponse getRoomMessage(GetRoomMessage getRoomMessage) throws APIException {
+        GetRoomMessageRequest getRoomMessageRequest = new GetRoomMessageRequest(getRoomMessage, accessToken, baseUrl, httpClient, executorService);
+        return getRoomMessageRequest.execute();
     }
 
-    public void viewRoomHistory() {
-
+    /**
+     * Fetch chat history for this room.
+     * NOTE:
+     * - According to ISO-8601 the plus sign '+' is used for specifying the time offset from UTC. But '+' in a GET query is recognized as a whitespace by the API HTTP-server. For specifying the time offset, replace the character by '%2B' in the GET query.
+     * - To fetch the history before '2015-06-16T15:33:30+01:00' you would use the query 'http://hipchat.com/v2/room/513/history?date=2015-06-16T15:33:30%2B01:00' (plus is replaced by '%2B').
+     * - It's possible to specify the date using UNIX timestamp format: 'http://hipchat.com/v2/room/513/history?date=1434465210'.
+     * - Same thing for the end-date parameter.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history
+     * Access: group clients, room clients, users
+     *
+     * @param viewRoomHistory
+     * @return
+     * @throws APIException
+     */
+    public ViewRoomHistoryResponse viewRoomHistory(ViewRoomHistory viewRoomHistory) throws APIException {
+        ViewRoomHistoryRequest viewRoomHistoryRequest = new ViewRoomHistoryRequest(viewRoomHistory, accessToken, baseUrl, httpClient, executorService);
+        return viewRoomHistoryRequest.execute();
     }
 
-    public void viewRecentRoomHistory() {
-
+    /**
+     * Fetch latest chat history for this room.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/history/latest
+     * Access: group clients, room clients, users
+     *
+     * @param viewRecentRoomHistory
+     * @return
+     * @throws APIException
+     */
+    public ViewRecentRoomHistoryResponse viewRecentRoomHistory(ViewRecentRoomHistory viewRecentRoomHistory) throws APIException {
+        ViewRecentRoomHistoryRequest viewRecentRoomHistoryRequest = new ViewRecentRoomHistoryRequest(viewRecentRoomHistory, accessToken, baseUrl, httpClient, executorService);
+        return viewRecentRoomHistoryRequest.execute();
     }
 
     public void inviteUser() {

@@ -3,16 +3,14 @@ package ch.viascom.hipchat.api;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.Card;
-import ch.viascom.hipchat.api.request.models.ReplyMessage;
-import ch.viascom.hipchat.api.models.Topic;
+import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
-import ch.viascom.hipchat.api.request.models.AddMember;
-import ch.viascom.hipchat.api.request.models.GetAllParticipants;
-import ch.viascom.hipchat.api.request.models.SendMessage;
-import ch.viascom.hipchat.api.request.models.SendNotification;
+import ch.viascom.hipchat.api.request.models.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 /**
  * Created by patrickboesch on 11.04.16.
@@ -46,7 +44,7 @@ public class RoomAPITest {
     //@Test
     public void setTopicTest() throws APIException {
         HipChat hipChat = new HipChat(integrationToken);
-        hipChat.roomsAPI().setTopic(new Topic("Test-Room", "New fancy topic for our test room"));
+        hipChat.roomsAPI().setTopic(new SetTopic("Test-Room", "New fancy topic for our test room"));
     }
 
     //@Test
@@ -60,6 +58,12 @@ public class RoomAPITest {
     public void addMemberTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.roomsAPI().addMember(new AddMember(testBotUserId, "Private-Test-Room", null));
+    }
+
+    //@Test
+    public void viewRoomHistoryTest() throws APIException {
+        HipChat hipChat = new HipChat(clientToken);
+        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(new ViewRoomHistory("TestRoom", 0, 100)).getItems();
     }
 
     //@Test

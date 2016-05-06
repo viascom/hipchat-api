@@ -45,6 +45,11 @@ public abstract class Request<T extends Response> {
 
     protected abstract String getPath();
 
+    protected Gson getGson(){
+        Gson gson = new Gson();
+        return gson;
+    }
+
     protected String getEncodedPath() {
         String path = getPath();
         String[] tokens = path.split("/");
@@ -94,7 +99,7 @@ public abstract class Request<T extends Response> {
                     if (getParameterClass() == GenericResponse.class) {
                         output = new GenericResponse(entity);
                     } else {
-                        Gson gson = new Gson();
+                        Gson gson = getGson();
                         output = gson.fromJson(content, getParameterClass());
                     }
                 } else {
