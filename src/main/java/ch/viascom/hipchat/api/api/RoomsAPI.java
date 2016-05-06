@@ -2,10 +2,10 @@ package ch.viascom.hipchat.api.api;
 
 import ch.viascom.hipchat.api.api.generic.GenericAPI;
 import ch.viascom.hipchat.api.exception.APIException;
-import ch.viascom.hipchat.api.models.*;
+import ch.viascom.hipchat.api.models.Room;
+import ch.viascom.hipchat.api.request.*;
 import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.*;
-import ch.viascom.hipchat.api.request.*;
 import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
@@ -376,8 +376,20 @@ public class RoomsAPI extends GenericAPI {
         return addMemberRequest.execute();
     }
 
-    public void removeMember() {
-
+    /**
+     * Removes a member from a private room.
+     * <p>
+     * Method: DELETE
+     * Url:    /v2/room/{room_id_or_name}/member/{user_id_or_email}
+     * Access: group clients, room clients, users.
+     *
+     * @param removeMember
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse removeMember(RemoveMember removeMember) throws APIException {
+        RemoveMemberRequest removeMemberRequest = new RemoveMemberRequest(removeMember, accessToken, baseUrl, httpClient, executorService);
+        return removeMemberRequest.execute();
     }
 
     /**
