@@ -2,6 +2,24 @@ hipchat-api
 ============
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
+### Version:
+[![Release-Version](https://img.shields.io/badge/release-v2.0.1--BETA-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.1-BETA)<br/>
+[![Develop-Version](https://img.shields.io/badge/develop-v2.0.1--BETA-orange.svg)](https://github.com/viascom/hipchat-api)
+
+### Service Implementation Status:
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-21%20of%2041%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2141)<br/>
+[![UsersAPI](https://img.shields.io/badge/Users%20API-13%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-1315)<br/>
+[![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-11)<br/>
+[![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
+[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
+[![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
+[![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
+[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
+[![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
+[![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
+[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-017)
+
+
 ### Build-Status:
 master: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/master)<br/>
 develop: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/develop)
@@ -12,24 +30,57 @@ Java 8 (need for lambda)
 ### Quick Start:
 To add this implementation into your project:
 
-#### maven (coming soon)
+#### Dependency
+
+##### maven
 ```xml
 <dependency>
     <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.0.0-ALPHA</version>
+    <version>2.0.1-BETA</version>
 </dependency>
 ```
 
-Send a notification
+##### gradle
+```
+compile 'ch.viascom:hipchat-api:2.0.1-BETA'
+```
+
+#### Send a notification
 ```java
 HipChat hipChat = new HipChat("<ACCESS_CODE>");
-hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageColor.RED, true));
+hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
 ```
+---
+
+### HipChat-API
+
+#### Validation
+- [ ] Input validation
+
+#### Exception handling
+- [x] Access-Exception handling
+
+#### Wiki, Documentation & JavaDoc
+- [ ] Quick-Start guide
+- [ ] JavaDoc *Ongoing*
+- [ ] Code coverage *Ongoing*
+- [ ] JUnit *Ongoing*
+
+### Inbounds
+
+#### Webhook-Inbound
+- [ ] Inbound models
+- [ ] JWT
+
+#### Glance-Inbound
+- [ ] Inbound models
+- [ ] Glance conditions
+- [ ] JWT
 
 ### API-Methods:
 
-##### Rooms API (11/44)
+##### Rooms API (21/41)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -53,16 +104,16 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Get room web panel
 - [ ] Create room web panel
 - [ ] Delete room web panel
-- [ ] Get room webhook
-- [ ] Create room webhook
-- [ ] Delete room webhook
-- [ ] Get room message
-- [ ] View room history
-- [ ] View recent room history
-- [ ] Invite user
+- [x] Get room webhook
+- [x] Create room webhook
+- [x] Delete room webhook
+- [x] Get room message
+- [x] View room history
+- [x] View recent room history
+- [x] Invite user
 - [x] Get all members
-- [ ] Add member
-- [ ] Remove member
+- [x] Add member
+- [x] Remove member
 - [x] Send message
 - [x] Send room notification
 - [x] Get all participants
@@ -71,30 +122,30 @@ hipChat.roomsAPI().sendRoomNotification(new Notification("Hello World", MessageC
 - [ ] Share link with room
 - [ ] Get room statistics
 - [x] Set topic
-- [ ] Get all webhooks
-- [ ] Create webhook
-- [ ] Get webhook
-- [ ] Delete webhook
+- [x] Get all webhooks
+- [ ] *Create webhook -> Deprecated*
+- [ ] *Get webhook -> Deprecated*
+- [ ] *Delete webhook -> Deprecated*
 
-##### Users API (0/15)
-- [ ] Get all users
-- [ ] Create user
-- [ ] View user
-- [ ] Update user
-- [ ] Delete user
-- [ ] Get privatechat message
-- [ ] View privatechat history
-- [ ] View recent privatechat history
-- [ ] Private message user
-- [ ] Get Photo
-- [ ] Update photo
-- [ ] Delete photo
-- [ ] Get auto join rooms
+##### Users API (10/15)
+- [x] Get all users
+- [x] Create user
+- [x] View user
+- [x] Update user
+- [x] Delete user
+- [x] Get privatechat message
+- [x] View privatechat history
+- [x] View recent privatechat history
+- [x] Private message user
+- [x] Get Photo
+- [x] Update photo
+- [x] Delete photo
+- [x] Get auto join rooms
 - [ ] Share file with user
 - [ ] Share link with user
 
-##### Prefs Publics API (0/1)
-- [ ] Get auto join rooms
+##### Prefs Publics API (1/1)
+- [x] Get auto join rooms
 
 ##### OAuth Sessions API (0/3)
 - [ ] Get session

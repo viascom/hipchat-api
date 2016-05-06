@@ -1,5 +1,7 @@
 package ch.viascom.hipchat.api.util;
 
+import ch.viascom.hipchat.api.exception.models.ForbiddenError;
+import ch.viascom.hipchat.api.exception.models.ForbiddenErrorWrapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,9 +20,15 @@ public class JsonUtil {
         gson = gb.create();
         String json = gson.toJson(o);
 
-        //Replace roomId from body
-        json = json.replaceAll("\"" + pathIdName + "\":\"(\\w+)\",", "");
+        //Replace pathIdName from body
+        json = json.replaceAll("\"" + pathIdName + "\":[\"]{0,1}(\\w+(\\s+\\w+)*)[\"]{0,1}[,]{0,1}", "");
 
         return json;
+    }
+
+    public static ForbiddenError forbiddenErrorMapper(String errorBody) {
+        Gson gson = new Gson();
+        ForbiddenErrorWrapper wrapper = gson.fromJson(errorBody, ForbiddenErrorWrapper.class);
+        return wrapper.getError();
     }
 }
