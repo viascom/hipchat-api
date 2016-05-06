@@ -54,6 +54,8 @@ public abstract class Request<T extends Response> {
             for (String param : params) {
                 Field field = clazz.getDeclaredField(param);
 
+                field.setAccessible(true);
+
                 String paramName = field.getName();
 
                 SerializedName anno = field.getAnnotation(SerializedName.class);
