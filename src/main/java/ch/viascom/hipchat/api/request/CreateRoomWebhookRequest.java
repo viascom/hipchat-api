@@ -6,7 +6,6 @@ import ch.viascom.hipchat.api.response.CreateRoomWebhookResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -23,11 +22,6 @@ public class CreateRoomWebhookRequest extends PutRequest<CreateRoomWebhookRespon
     @Override
     protected String getJsonBody() {
         return JsonUtil.getJsonBody(createRoomWebhook);
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override

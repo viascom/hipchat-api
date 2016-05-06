@@ -1,11 +1,13 @@
 package ch.viascom.hipchat.api.request;
 
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetAllMembers;
 import ch.viascom.hipchat.api.response.GetAllMembersResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -14,9 +16,10 @@ import java.util.concurrent.ExecutorService;
 public class GetAllMembersRequest extends GetRequest<GetAllMembersResponse> {
     private GetAllMembers getAllMembers;
 
-    public GetAllMembersRequest(GetAllMembers getAllMembers, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+    public GetAllMembersRequest(GetAllMembers getAllMembers, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.getAllMembers = getAllMembers;
+        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results")), getAllMembers);
     }
 
     @Override
@@ -24,11 +27,4 @@ public class GetAllMembersRequest extends GetRequest<GetAllMembersResponse> {
         return "/room/" + getAllMembers.getRoomId() + "/member";
     }
 
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        param.put("start-index", String.valueOf(getAllMembers.getStart_index()));
-        param.put("max-results", String.valueOf(getAllMembers.getMax_results()));
-        return param;
-    }
 }

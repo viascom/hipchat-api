@@ -1,11 +1,13 @@
 package ch.viascom.hipchat.api.request;
 
+import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetAllParticipants;
 import ch.viascom.hipchat.api.response.GetAllParticipantsResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -14,9 +16,10 @@ import java.util.concurrent.ExecutorService;
 public class GetAllParticipantsRequest extends GetRequest<GetAllParticipantsResponse> {
     private GetAllParticipants getAllParticipants;
 
-    public GetAllParticipantsRequest(GetAllParticipants getAllParticipants, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
+    public GetAllParticipantsRequest(GetAllParticipants getAllParticipants, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.getAllParticipants = getAllParticipants;
+        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","include-offline")), getAllParticipants);
     }
 
     @Override
@@ -24,12 +27,4 @@ public class GetAllParticipantsRequest extends GetRequest<GetAllParticipantsResp
         return "/room/" + getAllParticipants.getRoomId() + "/participant";
     }
 
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        param.put("start-index", String.valueOf(getAllParticipants.getStart_index()));
-        param.put("max-results", String.valueOf(getAllParticipants.getMax_results()));
-        param.put("include-offline", String.valueOf(getAllParticipants.isInclude_offline()));
-        return param;
-    }
 }

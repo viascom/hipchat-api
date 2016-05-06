@@ -1,10 +1,9 @@
 package ch.viascom.hipchat.api.request;
 
-import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.request.generic.DeleteRequest;
+import ch.viascom.hipchat.api.response.NoContentResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -16,11 +15,6 @@ public class DeleteRoomRequest extends DeleteRequest<NoContentResponse> {
     public DeleteRoomRequest(String roomId, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, baseUrl, httpClient, executorService);
         this.roomId = roomId;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override
