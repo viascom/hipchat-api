@@ -47,7 +47,7 @@ public abstract class Request<T extends Response> {
 
     protected void setQueryParams(ArrayList<String> params, Object o) throws APIException {
         try {
-            Class<T> clazz = getParameterClass();
+            Class clazz = o.getClass();
 
             HashMap<String, String> paramMap = new HashMap<>();
 
