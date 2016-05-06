@@ -6,8 +6,8 @@ import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
 import ch.viascom.hipchat.api.models.message.MessageLink;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
-import ch.viascom.hipchat.api.request.models.ViewRoomHistory;
-import ch.viascom.hipchat.api.response.ViewRoomHistoryResponse;
+import ch.viascom.hipchat.api.request.models.ViewRecentPrivatechatHistory;
+import ch.viascom.hipchat.api.response.ViewRecentPrivatechatHistoryResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.http.client.HttpClient;
@@ -17,20 +17,20 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
 /**
- * Created by Patrick Bösch on 04.05.16.
+ * Created by Nikola Stankovic on 5/6/16.
  */
-public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> {
-    private ViewRoomHistory viewRoomHistory;
+public class ViewRecentPrivatechatHistoryRequest extends GetRequest<ViewRecentPrivatechatHistoryResponse> {
+    private ViewRecentPrivatechatHistory viewRecentPrivatechatHistory;
 
-    public ViewRoomHistoryRequest(ViewRoomHistory viewRoomHistory, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
+    public ViewRecentPrivatechatHistoryRequest(ViewRecentPrivatechatHistory viewRecentPrivatechatHistory, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
-        this.viewRoomHistory = viewRoomHistory;
-        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","isReverse","isInclude_deleted", "date", "timezone", "end_date")), viewRoomHistory);
+        this.viewRecentPrivatechatHistory = viewRecentPrivatechatHistory;
+        setQueryParams(new ArrayList<>(Arrays.asList("maxResults", "includeDeleted", "timezone", "notBefore")), viewRecentPrivatechatHistory);
     }
 
     @Override
     protected String getPath() {
-        return "/room/" + viewRoomHistory.getRoomId() + "/history";
+        return "/user/" + viewRecentPrivatechatHistory.getIdOrEmail() + "/history/latest";
     }
 
     @Override

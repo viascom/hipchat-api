@@ -41,7 +41,7 @@ public abstract class PostRequest<T extends Response> extends Request<T> {
         HttpPost httpPost = new HttpPost(baseUrl + encodedPath);
         // Prepare Query
         URIBuilder builder = new URIBuilder(httpPost.getURI());
-        HashMap<String, String> param = getQueryParam();
+        HashMap<String, String> param = queryParamMap;
         if(param != null && !param.isEmpty()) {
             for (String key : param.keySet()) {
                 builder.setParameter(key, param.get(key).toString());

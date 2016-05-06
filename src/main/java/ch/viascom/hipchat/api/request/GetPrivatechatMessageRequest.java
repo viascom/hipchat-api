@@ -6,8 +6,8 @@ import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
 import ch.viascom.hipchat.api.models.message.MessageLink;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
-import ch.viascom.hipchat.api.request.models.ViewRoomHistory;
-import ch.viascom.hipchat.api.response.ViewRoomHistoryResponse;
+import ch.viascom.hipchat.api.request.models.GetPrivatechatMessage;
+import ch.viascom.hipchat.api.response.GetPrivatechatMessageResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.http.client.HttpClient;
@@ -17,20 +17,16 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
 /**
- * Created by Patrick Bösch on 04.05.16.
+ * Created by Nikola Stankovic on 5/6/16.
  */
-public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> {
-    private ViewRoomHistory viewRoomHistory;
+public class GetPrivatechatMessageRequest extends GetRequest<GetPrivatechatMessageResponse> {
 
-    public ViewRoomHistoryRequest(ViewRoomHistory viewRoomHistory, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
+    private GetPrivatechatMessage getPrivatechatMessage;
+
+    public GetPrivatechatMessageRequest(GetPrivatechatMessage getPrivatechatMessage, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
-        this.viewRoomHistory = viewRoomHistory;
-        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","isReverse","isInclude_deleted", "date", "timezone", "end_date")), viewRoomHistory);
-    }
-
-    @Override
-    protected String getPath() {
-        return "/room/" + viewRoomHistory.getRoomId() + "/history";
+        this.getPrivatechatMessage = getPrivatechatMessage;
+        setQueryParams(new ArrayList<>(Arrays.asList("timezone", "includeDeleted")), getPrivatechatMessage);
     }
 
     @Override
@@ -42,5 +38,10 @@ public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> 
         Gson gson = gsonBuilder.create();
 
         return gson;
+    }
+
+    @Override
+    protected String getPath() {
+        return "/user/" + getPrivatechatMessage.getIdOrName() + "/history/" + getPrivatechatMessage.getMessageId();
     }
 }

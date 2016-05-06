@@ -6,7 +6,6 @@ import ch.viascom.hipchat.api.response.CreateUserResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -23,11 +22,6 @@ public class CreateUserRequest extends PostRequest<CreateUserResponse> {
     @Override
     protected String getJsonBody() {
         return JsonUtil.getJsonBody(createUser);
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override

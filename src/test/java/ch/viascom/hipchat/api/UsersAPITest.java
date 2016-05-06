@@ -6,10 +6,7 @@ import ch.viascom.hipchat.api.models.message.MessageFormat;
 import ch.viascom.hipchat.api.models.user.UserPhotoSize;
 import ch.viascom.hipchat.api.models.user.UserRole;
 import ch.viascom.hipchat.api.request.models.*;
-import ch.viascom.hipchat.api.response.CreateUserResponse;
-import ch.viascom.hipchat.api.response.GenericResponse;
-import ch.viascom.hipchat.api.response.GetAllUsersResponse;
-import ch.viascom.hipchat.api.response.ViewUserResponse;
+import ch.viascom.hipchat.api.response.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -105,5 +102,11 @@ public class UsersAPITest {
     public void getAutoJoinRoomsTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
         hipChat.usersAPI().getAutoJoinRooms(new GetAutoJoinRooms(testBotUserId,0,100));
+    }
+
+    //@Test
+    public void viewPrivatechatHistoryTest() throws APIException {
+        HipChat hipChat = new HipChat(clientToken);
+        ViewPrivatechatHistoryResponse result = hipChat.usersAPI().viewPrivatechatHistory(new ViewPrivatechatHistory(testBotUserId,0,100));
     }
 }

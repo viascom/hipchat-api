@@ -8,6 +8,7 @@ import ch.viascom.hipchat.api.response.generic.ErrorResponse;
 import ch.viascom.hipchat.api.response.generic.Response;
 import ch.viascom.hipchat.api.response.generic.ResponseHeader;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.net.URLCodec;
 import org.apache.http.HttpEntity;
@@ -18,8 +19,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -36,16 +39,49 @@ public abstract class Request<T extends Response> {
     protected String accessToken;
     protected HttpClient httpClient;
     protected AuthorizationMethod authorizationMethod = AuthorizationMethod.HEADER;
+    protected HashMap<String, String> queryParamMap = new HashMap<>();
 
     protected abstract HttpResponse request(AuthorizationMethod authorizationMethod) throws IOException, URISyntaxException;
 
     protected abstract String getJsonBody();
 
-    protected abstract HashMap<String, String> getQueryParam();
+    protected void setQueryParams(ArrayList<String> params, Object o) throws APIException {
+        try {
+            Class clazz = o.getClass();
+
+            HashMap<String, String> paramMap = new HashMap<>();
+
+            for (String param : params) {
+                Field field = clazz.getDeclaredField(param);
+
+                field.setAccessible(true);
+
+                String paramName = field.getName();
+
+                SerializedName anno = field.getAnnotation(SerializedName.class);
+                if (anno != null) {
+                    paramName = anno.value();
+                }
+
+                String value = String.valueOf(field.get(o));
+
+                if (field.get(o) != null && !value.isEmpty()) {
+                    paramMap.put(paramName, value);
+                }
+            }
+
+            queryParamMap = paramMap;
+        } catch (Exception e) {
+            ErrorResponse errorResponse = new ErrorResponse();
+            errorResponse.setErrorMessage(e.getMessage());
+            throw new APIException(errorResponse, e.getMessage());
+        }
+
+    }
 
     protected abstract String getPath();
 
-    protected Gson getGson(){
+    protected Gson getGson() {
         Gson gson = new Gson();
         return gson;
     }
