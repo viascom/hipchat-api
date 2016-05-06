@@ -1,8 +1,10 @@
 package ch.viascom.hipchat.api.request;
 
 import ch.viascom.hipchat.api.deserializer.MessageFromDeserializer;
+import ch.viascom.hipchat.api.deserializer.MessageLinkDeserializer;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
+import ch.viascom.hipchat.api.models.message.MessageLink;
 import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.ViewRoomHistory;
 import ch.viascom.hipchat.api.response.ViewRoomHistoryResponse;
@@ -36,6 +38,7 @@ public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> 
         GsonBuilder gsonBuilder = new GsonBuilder();
         // Use Custom TypeAdapter (MessageFromDeserializer) because "from" can be an object or a string
         gsonBuilder.registerTypeAdapter(MessageFrom.class, new MessageFromDeserializer());
+        gsonBuilder.registerTypeAdapter(MessageLink.class, new MessageLinkDeserializer());
         Gson gson = gsonBuilder.create();
 
         return gson;

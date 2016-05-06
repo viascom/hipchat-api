@@ -1,13 +1,12 @@
 package ch.viascom.hipchat.api.models.message.links;
 
-import ch.viascom.hipchat.api.models.message.MessageLink;
 import lombok.Data;
 
 /**
  * Created by patrickboesch on 21.04.16.
  */
 @Data
-public class TwitterUserMessageLink implements MessageLink {
+public class TwitterUserMessageLink implements MessageLinkContent {
     private int followers;
     private String name;
     private String profileImageUrl;
