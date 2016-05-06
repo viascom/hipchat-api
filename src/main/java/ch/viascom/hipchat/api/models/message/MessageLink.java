@@ -11,6 +11,6 @@ import lombok.Data;
 public class MessageLink {
     private MessageLinkType type;
     private String url;
-    @SerializedName(value = "link", alternate = {"image", "video", "link", "twitter_status", "twitter_user"})
+    @SerializedName(value = "image", alternate = {"video", "link", "twitter_status", "twitter_user"})
     private MessageLinkContent content;
 }
