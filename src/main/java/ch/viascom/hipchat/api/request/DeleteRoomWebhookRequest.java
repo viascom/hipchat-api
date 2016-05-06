@@ -5,7 +5,6 @@ import ch.viascom.hipchat.api.request.models.DeleteRoomWebhook;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -17,11 +16,6 @@ public class DeleteRoomWebhookRequest extends DeleteRequest<NoContentResponse> {
     public DeleteRoomWebhookRequest(DeleteRoomWebhook deleteRoomWebhook, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) {
         super(accessToken, baseUrl, httpClient, executorService);
         this.deleteRoomWebhook = deleteRoomWebhook;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override

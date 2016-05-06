@@ -5,7 +5,6 @@ import ch.viascom.hipchat.api.request.models.GetRoomWebhook;
 import ch.viascom.hipchat.api.response.GetRoomWebhookResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -24,9 +23,4 @@ public class GetRoomWebhookRequest extends GetRequest<GetRoomWebhookResponse> {
         return "/room/" + getRoomWebhook.getRoomId() + "/extension/webhook/" + getRoomWebhook.getWebhookId();
     }
 
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        return param;
-    }
 }

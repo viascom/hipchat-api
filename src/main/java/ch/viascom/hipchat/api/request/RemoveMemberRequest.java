@@ -5,7 +5,6 @@ import ch.viascom.hipchat.api.request.models.RemoveMember;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -17,11 +16,6 @@ public class RemoveMemberRequest extends DeleteRequest<NoContentResponse>{
     public RemoveMemberRequest(RemoveMember removeMember, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService){
         super(accessToken, baseUrl, httpClient, executorService);
         this.removeMember = removeMember;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override

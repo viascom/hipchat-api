@@ -40,7 +40,7 @@ public abstract class PutRequest<T extends Response> extends Request<T> {
         HttpPut httpPut = new HttpPut(baseUrl + encodedPath);
         // Prepare Query
         URIBuilder builder = new URIBuilder(httpPut.getURI());
-        HashMap<String, String> param = getQueryParam();
+        HashMap<String, String> param = queryParamMap;
         if(param != null && !param.isEmpty()) {
             for (String key : param.keySet()) {
                 builder.setParameter(key, param.get(key).toString());

@@ -6,7 +6,6 @@ import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -26,11 +25,6 @@ public class AddMemberRequest extends PutRequest<NoContentResponse> {
         // replace second query field
         json = json.replaceAll("\"userId\":[\"]{0,1}(\\w+(\\s+\\w+)*)[\"]{0,1}[,]{0,1}", "");
         return json;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override

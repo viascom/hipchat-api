@@ -6,7 +6,6 @@ import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -26,11 +25,6 @@ public class InviteUserRequest extends PostRequest<NoContentResponse> {
         // replace second query field
         json = json.replaceAll("\"user_id_or_email\":[\"]?(\\w+(\\s+\\w+)*)[\"]?[,]?", "");
         return json;
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        return null;
     }
 
     @Override
