@@ -1,7 +1,6 @@
 package ch.viascom.hipchat.api.request.models;
 
 import ch.viascom.hipchat.api.models.Room;
-import ch.viascom.hipchat.api.models.room.RoomOwner;
 import lombok.Data;
 
 /**
@@ -9,7 +8,4 @@ import lombok.Data;
  */
 @Data
 public class UpdateRoom extends Room {
-    private boolean is_archived = false;
-    private RoomOwner owner;
-
 }
