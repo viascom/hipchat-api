@@ -340,8 +340,25 @@ public class RoomsAPI extends GenericAPI {
         return viewRecentRoomHistoryRequest.execute();
     }
 
-    public void inviteUser() {
-
+    /**
+     * Invite a user to a public room. This API can only be called using a user token which can be obtained through:
+     * - Your own Personal API Token
+     * - Generating a token using one of the following grant_types:
+     *      - authorization_code -- This is the authorization step of a 3-legged OAuth 2 flow
+     *      - refresh_token -- When a 3-legged OAuth token expires, you can request a new one through this grant_type
+     *      - password -- This grant_type allows you to request a user token by providing a username/password
+     * <p>
+     * Method: POST
+     * Url:    /v2/room/{room_id_or_name}/invite/{user_id_or_email}
+     * Access: users
+     *
+     * @param inviteUser
+     * @return
+     * @throws APIException
+     */
+    public NoContentResponse inviteUser(InviteUser inviteUser) throws APIException {
+        InviteUserRequest inviteUserRequest = new InviteUserRequest(inviteUser, accessToken, baseUrl, httpClient, executorService);
+        return inviteUserRequest.execute();
     }
 
     /**
