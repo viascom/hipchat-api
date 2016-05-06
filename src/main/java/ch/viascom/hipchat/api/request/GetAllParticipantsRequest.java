@@ -19,7 +19,7 @@ public class GetAllParticipantsRequest extends GetRequest<GetAllParticipantsResp
     public GetAllParticipantsRequest(GetAllParticipants getAllParticipants, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.getAllParticipants = getAllParticipants;
-        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","include-offline")), getAllParticipants);
+        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","include_offline")), getAllParticipants);
     }
 
     @Override

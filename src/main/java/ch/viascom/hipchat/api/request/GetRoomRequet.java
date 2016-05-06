@@ -4,7 +4,6 @@ import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.response.GetRoomResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -23,9 +22,4 @@ public class GetRoomRequet extends GetRequest<GetRoomResponse> {
         return "/room/" + roomId;
     }
 
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        return param;
-    }
 }

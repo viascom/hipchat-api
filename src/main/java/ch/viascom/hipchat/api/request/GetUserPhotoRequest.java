@@ -6,7 +6,6 @@ import ch.viascom.hipchat.api.request.models.GetUserPhoto;
 import ch.viascom.hipchat.api.response.GenericResponse;
 import org.apache.http.client.HttpClient;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -23,11 +22,5 @@ public class GetUserPhotoRequest extends GetRequest<GenericResponse> {
     @Override
     protected String getPath() {
         return "/user/" + getUserPhoto.getUserId() + "/photo/" + getUserPhoto.getSize().toString().toLowerCase();
-    }
-
-    @Override
-    protected HashMap<String, String> getQueryParam() {
-        HashMap<String, String> param = new HashMap<>();
-        return param;
     }
 }
