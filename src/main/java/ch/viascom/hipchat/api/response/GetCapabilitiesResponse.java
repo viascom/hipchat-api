@@ -11,5 +11,5 @@ import lombok.Data;
 @Data
 public class GetCapabilitiesResponse implements Response {
     private ResponseHeader responseHeader;
-    private Capability capability;
+    private Capability capabilities;
 }
