@@ -168,7 +168,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 
 ##### Capabilities API (1/2)
 - [x] Get capabilities
-- [ ] Get addon capabilities schema
+- [ ] Get addon capabilities schema *API not ready*
 
 ##### Imports API (0/4)
 - [ ] Import privatechat file
