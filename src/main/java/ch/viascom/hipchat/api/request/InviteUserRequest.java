@@ -23,7 +23,7 @@ public class InviteUserRequest extends PostRequest<NoContentResponse> {
     protected String getJsonBody() {
         String json = JsonUtil.getJsonBody(inviteUser, "room_id_or_name");
         // replace second query field
-        json = json.replaceAll("\"user_id_or_email\":[\"]?(\\w+(\\s+\\w+)*)[\"]?[,]?", "");
+        json = json.replaceAll("\"user_id_or_email\"\"\\:[^\\,\\}]*,", "");
         return json;
     }
 
