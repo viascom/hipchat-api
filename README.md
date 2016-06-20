@@ -21,8 +21,8 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 
 
 ### Build-Status:
-master: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/master)<br/>
-develop: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/develop)
+master: [![Build Status](https://snap-ci.com/Viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/Viascom/hipchat-api/branch/master)<br/>
+develop: [![Build Status](https://snap-ci.com/Viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/Viascom/hipchat-api/branch/develop)
 
 ###  Requirements:
 Java 8 (need for lambda)
