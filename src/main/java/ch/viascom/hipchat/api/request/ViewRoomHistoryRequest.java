@@ -25,7 +25,7 @@ public class ViewRoomHistoryRequest extends GetRequest<ViewRoomHistoryResponse> 
     public ViewRoomHistoryRequest(ViewRoomHistory viewRoomHistory, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.viewRoomHistory = viewRoomHistory;
-        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","isReverse","isInclude_deleted", "date", "timezone", "end_date")), viewRoomHistory);
+        setQueryParams(new ArrayList<>(Arrays.asList("start_index", "max_results","reverse","include_deleted", "date", "timezone", "end_date")), viewRoomHistory);
     }
 
     @Override
