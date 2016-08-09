@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api.models.message;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +10,25 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class MessageMention {
+
+    /**
+     * The user ID
+     */
     private int id;
-    private String mention_name;
+
+    /**
+     * User's @mention name
+     */
+    @SerializedName("mention_name")
+    private String mentionName;
+
+    /**
+     * The display user name
+     */
     private String name;
+
+    /**
+     * An etag-like random version string.
+     */
     private String version;
 }
