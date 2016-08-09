@@ -63,7 +63,9 @@ public class RoomAPITest {
     //@Test
     public void viewRoomHistoryTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(new ViewRoomHistory("TestRoom", 0, 100)).getItems();
+        ViewRoomHistory viewRoomHistory = new ViewRoomHistory("TestRoom", 0, 100);
+        viewRoomHistory.setReverse(false);
+        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(viewRoomHistory).getItems();
     }
 
     //@Test
