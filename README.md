@@ -7,7 +7,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 [![Develop-Version](https://img.shields.io/badge/develop-v2.0.2--SNAPSHOT-orange.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
-[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-22%20of%2041%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2241)<br/>
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-22%20of%2045%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2245)<br/>
 [![UsersAPI](https://img.shields.io/badge/Users%20API-13%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-1315)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-11)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
@@ -17,7 +17,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 [![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
 [![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
 [![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
-[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-017)
+[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2018%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-018)
 
 
 ### Build-Status:
@@ -80,7 +80,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 
 ### API-Methods:
 
-##### Rooms API (22/41)
+##### Rooms API (22/45)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -127,7 +127,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [ ] *Get webhook -> Deprecated*
 - [ ] *Delete webhook -> Deprecated*
 
-##### Users API (10/15)
+##### Users API (13/15)
 - [x] Get all users
 - [x] Create user
 - [x] View user
@@ -186,7 +186,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [ ] User in room addon ui update *BETA*
 - [ ] User addon ui update *BETA*
 
-##### Extensions API (0/17)
+##### Extensions API (0/18)
 - [ ] Get global action
 - [ ] Create global action
 - [ ] Delete global action
