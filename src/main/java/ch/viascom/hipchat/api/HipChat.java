@@ -87,6 +87,10 @@ public class HipChat {
         return new PrefsPublicsAPI(baseUrl, accessToken, httpClient, executorService);
     }
 
+    public InvitesAPI invitesAPI() {
+        return new InvitesAPI(baseUrl, accessToken, httpClient, executorService);
+    }
+
     public void close() {
         log.info("Shutting down...");
         try {
