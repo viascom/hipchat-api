@@ -3,7 +3,7 @@ hipchat-api
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
 ### Version:
-[![Release-Version](https://img.shields.io/badge/release-v2.0.1--BETA-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.1-BETA)<br/>
+[![Release-Version](https://img.shields.io/badge/release-v2.0.2--BETA-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.2-BETA)<br/>
 [![Develop-Version](https://img.shields.io/badge/develop-v2.0.2--SNAPSHOT-orange.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
@@ -37,13 +37,13 @@ To add this implementation into your project:
 <dependency>
     <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.0.1-BETA</version>
+    <version>2.0.2-BETA</version>
 </dependency>
 ```
 
 ##### gradle
 ```
-compile 'ch.viascom:hipchat-api:2.0.1-BETA'
+compile 'ch.viascom:hipchat-api:2.0.2-BETA'
 ```
 
 #### Send a notification
