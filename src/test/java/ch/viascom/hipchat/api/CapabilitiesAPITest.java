@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class CapabilitiesAPITest {
 
-    @Test
+    //@Test
     public void getCapabilitiesTest() throws APIException {
         HipChat hipChat = new HipChat();
         GetCapabilitiesResponse response = hipChat.capabilitiesAPI().getCapabilities();
