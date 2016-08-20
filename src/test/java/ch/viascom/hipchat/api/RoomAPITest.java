@@ -7,6 +7,7 @@ import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.request.models.*;
+import ch.viascom.hipchat.api.response.GetRoomStatisticsResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -63,7 +64,16 @@ public class RoomAPITest {
     //@Test
     public void viewRoomHistoryTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(new ViewRoomHistory("TestRoom", 0, 100)).getItems();
+        ViewRoomHistory viewRoomHistory = new ViewRoomHistory("TestRoom", 0, 100);
+        viewRoomHistory.setReverse(false);
+        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(viewRoomHistory).getItems();
+    }
+
+    //@Test
+    public void getRoomStatisticsTest() throws APIException {
+        HipChat hipChat = new HipChat(clientToken);
+        GetRoomStatisticsResponse response = hipChat.roomsAPI().getRoomStatistics("TestRoom");
+        System.out.println(response.getMessagesSent());
     }
 
     //@Test

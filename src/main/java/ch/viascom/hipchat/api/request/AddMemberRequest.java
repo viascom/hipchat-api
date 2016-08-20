@@ -23,7 +23,7 @@ public class AddMemberRequest extends PutRequest<NoContentResponse> {
     protected String getJsonBody() {
         String json = JsonUtil.getJsonBody(addMember);
         // replace second query field
-        json = json.replaceAll("\"userId\":[\"]{0,1}(\\w+(\\s+\\w+)*)[\"]{0,1}[,]{0,1}", "");
+        json = json.replaceAll("\"userId\"\\:[^\\,\\}]*,", "");
         return json;
     }
 

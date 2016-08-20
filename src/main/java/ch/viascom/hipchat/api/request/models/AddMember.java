@@ -1,6 +1,7 @@
 package ch.viascom.hipchat.api.request.models;
 
 import ch.viascom.hipchat.api.models.user.UserRole;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,6 @@ import java.util.ArrayList;
 public class AddMember {
     private int userId;
     private String roomId;
-    private ArrayList<UserRole> room_roles;
+    @SerializedName("room_roles")
+    private ArrayList<UserRole> roomRoles;
 }
