@@ -11,7 +11,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 [![UsersAPI](https://img.shields.io/badge/Users%20API-13%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-1315)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-11)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
-[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
+[![InvitesAPI](https://img.shields.io/badge/Invites%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#invites-api-11)<br/>
 [![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
 [![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
 [![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
@@ -152,8 +152,8 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [ ] Delete session
 - [ ] Generate token
 
-##### Invites API (0/1)
-- [ ] Invite user to group
+##### Invites API (1/1)
+- [x] Invite user to group
 
 ##### Groups API (5/5)
 - [x] View group
