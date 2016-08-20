@@ -14,7 +14,7 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 [![InvitesAPI](https://img.shields.io/badge/Invites%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#invites-api-11)<br/>
 [![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
 [![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
-[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
+[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-1%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#capabilities-api-12)<br/>
 [![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
 [![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
 [![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2018%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-018)
@@ -166,9 +166,9 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [x] Get emoticon
 - [x] Get all emoticons
 
-##### Capabilities API (0/2)
-- [ ] Get capabilities
-- [ ] Get addon capabilities schema
+##### Capabilities API (1/2)
+- [x] Get capabilities
+- [ ] Get addon capabilities schema *API not ready*
 
 ##### Imports API (0/4)
 - [ ] Import privatechat file

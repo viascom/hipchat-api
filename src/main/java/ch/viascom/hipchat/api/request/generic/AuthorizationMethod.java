@@ -5,5 +5,6 @@ package ch.viascom.hipchat.api.request.generic;
  */
 public enum AuthorizationMethod {
     QUERY,
-    HEADER
+    HEADER,
+    NONE
 }
