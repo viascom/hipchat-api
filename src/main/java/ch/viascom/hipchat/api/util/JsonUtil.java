@@ -21,7 +21,7 @@ public class JsonUtil {
         String json = gson.toJson(o);
 
         //Replace pathIdName from body
-        json = json.replaceAll("\"" + pathIdName + "\":[\"]{0,1}(\\w+(\\s+\\w+)*)[\"]{0,1}[,]{0,1}", "");
+        json = json.replaceAll("\"" + pathIdName + "\"\\:[^\\,\\}]*,", "");
 
         return json;
     }

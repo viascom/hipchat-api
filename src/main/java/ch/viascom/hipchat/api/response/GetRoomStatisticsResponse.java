@@ -1,14 +1,14 @@
 package ch.viascom.hipchat.api.response;
 
+import ch.viascom.hipchat.api.models.room.RoomStatistics;
 import ch.viascom.hipchat.api.response.generic.Response;
 import ch.viascom.hipchat.api.response.generic.ResponseHeader;
 import lombok.Data;
 
 /**
- * Created by patrickboesch on 15.04.16.
+ * @author patrick.boesch@umb.ch
  */
 @Data
-public class GroupStatisticsResponse implements Response {
+public class GetRoomStatisticsResponse extends RoomStatistics implements Response {
     private ResponseHeader responseHeader;
-    private int users;
 }

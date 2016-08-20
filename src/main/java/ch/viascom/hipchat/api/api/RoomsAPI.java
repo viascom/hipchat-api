@@ -433,8 +433,20 @@ public class RoomsAPI extends GenericAPI {
 
     }
 
-    public void getRoomStatistics() {
-
+    /**
+     * Fetch statistics for this room.
+     * <p>
+     * Method: GET
+     * Url:    /v2/room/{room_id_or_name}/statistics
+     * Access: group clients, room clients, users
+     *
+     * @param roomId
+     * @return
+     * @throws APIException
+     */
+    public GetRoomStatisticsResponse getRoomStatistics(String roomId) throws APIException {
+        GetRoomStatisticsRequest getRoomStatisticsRequest = new GetRoomStatisticsRequest(roomId, accessToken, baseUrl, httpClient, executorService);
+        return getRoomStatisticsRequest.execute();
     }
 
     /**

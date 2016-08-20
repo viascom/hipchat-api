@@ -4,25 +4,25 @@ Java implementation for the HipChat V2 API. The implementation is base on - [thi
 
 ### Version:
 [![Release-Version](https://img.shields.io/badge/release-v2.0.1--BETA-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.1-BETA)<br/>
-[![Develop-Version](https://img.shields.io/badge/develop-v2.0.1--BETA-orange.svg)](https://github.com/viascom/hipchat-api)
+[![Develop-Version](https://img.shields.io/badge/develop-v2.0.2--SNAPSHOT-orange.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
-[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-21%20of%2041%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2141)<br/>
+[![RoomsAPI](https://img.shields.io/badge/Rooms%20API-22%20of%2045%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2245)<br/>
 [![UsersAPI](https://img.shields.io/badge/Users%20API-13%20of%2015%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#users-api-1315)<br/>
 [![PrefsPublicsAPI](https://img.shields.io/badge/Prefs%20Publics%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#prefs-publics-api-11)<br/>
 [![OAuthSessonsAPI](https://img.shields.io/badge/OAuth%20Sessions%20API-0%20of%203%20services-red.svg)](https://github.com/viascom/hipchat-api#oauth-sessions-api-03)<br/>
-[![InvitesAPI](https://img.shields.io/badge/Invites%20API-0%20of%201%20services-red.svg)](https://github.com/viascom/hipchat-api#invites-api-01)<br/>
+[![InvitesAPI](https://img.shields.io/badge/Invites%20API-1%20of%201%20services-green.svg)](https://github.com/viascom/hipchat-api#invites-api-11)<br/>
 [![GroupsAPI](https://img.shields.io/badge/Groups%20API-5%20of%205%20services-green.svg)](https://github.com/viascom/hipchat-api#groups-api-55)<br/>
 [![EmoticonsAPI](https://img.shields.io/badge/Emoticons%20API-2%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#emoticons-api-22)<br/>
-[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-0%20of%202%20services-red.svg)](https://github.com/viascom/hipchat-api#capabilities-api-02)<br/>
+[![CapabilitiesAPI](https://img.shields.io/badge/Capabilities%20API-1%20of%202%20services-green.svg)](https://github.com/viascom/hipchat-api#capabilities-api-12)<br/>
 [![ImportsAPI](https://img.shields.io/badge/Imports%20API-0%20of%204%20services-red.svg)](https://github.com/viascom/hipchat-api#imports-api-04)<br/>
 [![IntegrationsAPI](https://img.shields.io/badge/Integrations%20API-0%20of%208%20services-red.svg)](https://github.com/viascom/hipchat-api#integrations-api-08)<br/>
-[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2017%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-017)
+[![ExtensionsAPI](https://img.shields.io/badge/Extensions%20API-0%20of%2018%20services-red.svg)](https://github.com/viascom/hipchat-api#extensions-api-018)
 
 
 ### Build-Status:
-master: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/master)<br/>
-develop: [![Build Status](https://snap-ci.com/viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/viascom/hipchat-api/branch/develop)
+master: [![Build Status](https://snap-ci.com/Viascom/hipchat-api/branch/master/build_image)](https://snap-ci.com/Viascom/hipchat-api/branch/master)<br/>
+develop: [![Build Status](https://snap-ci.com/Viascom/hipchat-api/branch/develop/build_image)](https://snap-ci.com/Viascom/hipchat-api/branch/develop)
 
 ###  Requirements:
 Java 8 (need for lambda)
@@ -80,7 +80,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 
 ### API-Methods:
 
-##### Rooms API (21/41)
+##### Rooms API (22/45)
 - [x] Get all rooms
 - [x] Create room
 - [x] Get room
@@ -120,14 +120,14 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [x] Replay to message
 - [ ] Share file with room
 - [ ] Share link with room
-- [ ] Get room statistics
+- [x] Get room statistics
 - [x] Set topic
 - [x] Get all webhooks
 - [ ] *Create webhook -> Deprecated*
 - [ ] *Get webhook -> Deprecated*
 - [ ] *Delete webhook -> Deprecated*
 
-##### Users API (10/15)
+##### Users API (13/15)
 - [x] Get all users
 - [x] Create user
 - [x] View user
@@ -152,8 +152,8 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [ ] Delete session
 - [ ] Generate token
 
-##### Invites API (0/1)
-- [ ] Invite user to group
+##### Invites API (1/1)
+- [x] Invite user to group
 
 ##### Groups API (5/5)
 - [x] View group
@@ -166,9 +166,9 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [x] Get emoticon
 - [x] Get all emoticons
 
-##### Capabilities API (0/2)
-- [ ] Get capabilities
-- [ ] Get addon capabilities schema
+##### Capabilities API (1/2)
+- [x] Get capabilities
+- [ ] Get addon capabilities schema *API not ready*
 
 ##### Imports API (0/4)
 - [ ] Import privatechat file
@@ -186,7 +186,7 @@ hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello
 - [ ] User in room addon ui update *BETA*
 - [ ] User addon ui update *BETA*
 
-##### Extensions API (0/17)
+##### Extensions API (0/18)
 - [ ] Get global action
 - [ ] Create global action
 - [ ] Delete global action
