@@ -25,7 +25,7 @@ public class ViewRecentRoomHistoryRequest extends GetRequest<ViewRecentRoomHisto
     public ViewRecentRoomHistoryRequest(ViewRecentRoomHistory viewRecentRoomHistory, String accessToken, String baseUrl, HttpClient httpClient, ExecutorService executorService) throws APIException {
         super(accessToken, baseUrl, httpClient, executorService);
         this.viewRecentRoomHistory = viewRecentRoomHistory;
-        setQueryParams(new ArrayList<>(Arrays.asList("max_results","isInclude_deleted", "timezone", "not_before")), viewRecentRoomHistory);
+        setQueryParams(new ArrayList<>(Arrays.asList("max_results","include_deleted", "timezone", "not_before")), viewRecentRoomHistory);
     }
 
     @Override
