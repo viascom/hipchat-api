@@ -1,6 +1,6 @@
 package ch.viascom.hipchat.api;
 
-import ch.viascom.hipchat.api.exception.APIException;
+import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.response.GetCapabilitiesResponse;
 import org.junit.Test;
 
@@ -9,9 +9,9 @@ import org.junit.Test;
  */
 public class CapabilitiesAPITest {
 
-    //@Test
-    public void getCapabilitiesTest() throws APIException {
-        HipChat hipChat = new HipChat();
+    @Test
+    public void getCapabilitiesTest() throws FoxHttpException {
+        HipChat hipChat = new HipChat("ea9e287429c170ab9478707e912029");
         GetCapabilitiesResponse response = hipChat.capabilitiesAPI().getCapabilities();
     }
 }

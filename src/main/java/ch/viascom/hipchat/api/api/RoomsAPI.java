@@ -1,34 +1,35 @@
 package ch.viascom.hipchat.api.api;
 
-import ch.viascom.hipchat.api.api.generic.GenericAPI;
+import ch.viascom.groundwork.foxhttp.FoxHttpResponse;
+import ch.viascom.groundwork.foxhttp.annotation.types.*;
 import ch.viascom.hipchat.api.exception.APIException;
+import ch.viascom.hipchat.api.models.Capabilities;
 import ch.viascom.hipchat.api.models.Room;
 import ch.viascom.hipchat.api.request.*;
 import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.*;
-import org.apache.http.client.HttpClient;
 
-import java.util.concurrent.ExecutorService;
+@Path("{host}")
+public interface RoomsAPI {
 
-/**
- * Created by patrickboesch on 11.04.16.
- */
-public class RoomsAPI extends GenericAPI {
+    @GET("/room/{room}")
+    Room getRoom(@Path("room") String roomIdOrName);
 
-    public RoomsAPI(String baseUrl, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(baseUrl, accessToken, httpClient, executorService);
-    }
+    @POST("/room")
+    FoxHttpResponse createRoom(@Body() Room room);
 
-    /**
-     * Send room notification
-     * <p>
-     * Method: POST
-     * Url:    /v2/room/{room_id_or_name}/notification
-     * Access: group clients, room clients, users
-     *
-     * @param notification
-     * @throws APIException
-     */
+    @PUT("/room/{room}")
+    FoxHttpResponse updateRoom(@Path("room") String roomIdOrName, @Body() Room room);
+
+    @DELETE("/room/{room}")
+    Room deleteRoom(@Path("room") String roomIdOrName);
+
+    @GET("/room")
+    Room getAllRoom(@Query("start-index") String startIndex,
+                    @Query("max-results") String maxResults,
+                    @Query("include-private") String includePrivate,
+                    @Query("include-archived") String includeArchived);
+
     public NoContentResponse sendRoomNotification(SendNotification notification) throws APIException {
         SendNotificationRequest sendNotificationRequest = new SendNotificationRequest(notification, accessToken, baseUrl, httpClient, executorService);
         return sendNotificationRequest.execute();
@@ -77,163 +78,6 @@ public class RoomsAPI extends GenericAPI {
     public NoContentResponse setTopic(SetTopic topic) throws APIException {
         SetTopicRequest setTopicRequest = new SetTopicRequest(topic, accessToken, baseUrl, httpClient, executorService);
         return setTopicRequest.execute();
-    }
-
-    /**
-     * List rooms for this group.
-     * <p>
-     * Method: GET
-     * Url:    /v2/room
-     * Access: group clients, users
-     *
-     * @param getAllRooms
-     * @return
-     * @throws APIException
-     */
-    public GetAllRoomsResponse getAllRooms(GetAllRooms getAllRooms) throws APIException {
-        GetAllRoomsRequest getAllRoomsRequest = new GetAllRoomsRequest(getAllRooms, accessToken, baseUrl, httpClient, executorService);
-        return getAllRoomsRequest.execute();
-    }
-
-    /**
-     * Creates a new room.
-     * <p>
-     * Method: POST
-     * Url:    /v2/room
-     * Access: group clients, users
-     *
-     * @param room
-     * @return
-     * @throws APIException
-     */
-    public CreateRoomResponse createRoom(Room room) throws APIException {
-        CreateRoomRequest createRoomRequest = new CreateRoomRequest(room, accessToken, baseUrl, httpClient, executorService);
-        return createRoomRequest.execute();
-    }
-
-    /**
-     * Get room details.
-     * <p>
-     * Method: GET
-     * Url:    /v2/room/{room_id_or_name}
-     * Access: group clients, room clients, users
-     *
-     * @param roomId
-     * @return
-     * @throws APIException
-     */
-    public GetRoomResponse getRoom(String roomId) throws APIException {
-        GetRoomRequet getRoomRequet = new GetRoomRequet(roomId, accessToken, baseUrl, httpClient, executorService);
-        return getRoomRequet.execute();
-    }
-
-    /**
-     * Updates a room.
-     * <p>
-     * Method: PUT
-     * Url:    /v2/room/{room_id_or_name}
-     * Access: group clients, users
-     *
-     * @param updateRoom
-     * @throws APIException
-     */
-    public NoContentResponse updateRoom(UpdateRoom updateRoom) throws APIException {
-        UpdateRoomRequest updateRoomRequest = new UpdateRoomRequest(updateRoom, accessToken, baseUrl, httpClient, executorService);
-        return updateRoomRequest.execute();
-    }
-
-    /**
-     * Deletes a room and kicks the current participants.
-     * <p>
-     * Method: DELETE
-     * Url:    /v2/room/{room_id_or_name}
-     * Access: group clients, users
-     *
-     * @param roomId
-     * @throws APIException
-     */
-    public NoContentResponse deleteRoom(String roomId) throws APIException {
-        DeleteRoomRequest deleteRoomRequest = new DeleteRoomRequest(roomId, accessToken, baseUrl, httpClient, executorService);
-        return deleteRoomRequest.execute();
-    }
-
-    public void getRoomAvatar() {
-
-    }
-
-    /**
-     * Update a room avatar.
-     * <p>
-     * Method: PUT
-     * Url:    /v2/room/{room_id_or_name}/avatar
-     * Access: group clients, room clients, users
-     */
-    public void updateRoomAvatar(UpdateRoomAvatar updateRoomAvatar) {
-
-    }
-
-    public void deleteRoomAvatar() {
-
-    }
-
-    public void getRoomAction() {
-
-    }
-
-    public void createRoomAction() {
-
-    }
-
-    public void deleteRoomAction() {
-
-    }
-
-    public void getRoomDialog() {
-
-    }
-
-    public void createRoomDialog() {
-
-    }
-
-    public void deleteRoomDialog() {
-
-    }
-
-    public void getRoomExternalPage() {
-
-    }
-
-    public void createRoomExternalPage() {
-
-    }
-
-    public void deleteRoomExternalPage() {
-
-    }
-
-    public void getRoomGlance() {
-
-    }
-
-    public void createRoomGlance() {
-
-    }
-
-    public void deleteRoomGlance() {
-
-    }
-
-    public void getRoomWebPanel() {
-
-    }
-
-    public void createRoomWebPanel() {
-
-    }
-
-    public void deleteRoomWebPanel() {
-
     }
 
     /**
@@ -423,14 +267,6 @@ public class RoomsAPI extends GenericAPI {
     public GetAllParticipantsResponse getAllParticipants(GetAllParticipants getAllParticipants) throws APIException {
         GetAllParticipantsRequest getAllParticipantsRequest = new GetAllParticipantsRequest(getAllParticipants, accessToken, baseUrl, httpClient, executorService);
         return getAllParticipantsRequest.execute();
-    }
-
-    public void shareFileWithRoom() {
-
-    }
-
-    public void shareLinkWithRoom() {
-
     }
 
     /**

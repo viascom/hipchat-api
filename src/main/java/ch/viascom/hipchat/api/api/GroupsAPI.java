@@ -1,102 +1,25 @@
 package ch.viascom.hipchat.api.api;
 
-import ch.viascom.hipchat.api.api.generic.GenericAPI;
-import ch.viascom.hipchat.api.exception.APIException;
-import ch.viascom.hipchat.api.request.*;
-import ch.viascom.hipchat.api.request.models.UpdateGroupAvatar;
-import ch.viascom.hipchat.api.response.GroupStatisticsResponse;
-import ch.viascom.hipchat.api.response.NoContentResponse;
-import ch.viascom.hipchat.api.response.ViewGroupResponse;
-import org.apache.http.client.HttpClient;
+import ch.viascom.groundwork.foxhttp.FoxHttpResponse;
+import ch.viascom.groundwork.foxhttp.annotation.types.*;
+import ch.viascom.hipchat.api.models.Group;
 
-import java.util.concurrent.ExecutorService;
+@Path("{host}")
+public interface GroupsAPI {
 
-/**
- * Created by patrickboesch on 14.04.16.
- */
-public class GroupsAPI extends GenericAPI {
+    @GET("/emoticon/{group_id}")
+    Group viewGroup(@Path("id") String groupId);
 
-    public GroupsAPI(String baseUrl, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(baseUrl, accessToken, httpClient, executorService);
-    }
+    @GET("/emoticon/{group_id}/avatar")
+    FoxHttpResponse getGroupAvatar(@Path("id") String groupId);
 
-    /**
-     * Get a group's details.
-     * <p>
-     * Method: GET
-     * Url:    /v2/group/{group_id}
-     * Access: group clients, users
-     *
-     * @param groupId
-     * @return
-     * @throws APIException
-     */
-    public ViewGroupResponse viewGroup(String groupId) throws APIException {
-        ViewGroupRequest viewGroupRequest = new ViewGroupRequest(groupId, accessToken, baseUrl, httpClient, executorService);
-        return viewGroupRequest.execute();
-    }
+    @PUT("/emoticon/{group_id}/avatar")
+    FoxHttpResponse updateGroupAvatar(@Path("id") String groupId, @Body String avatar);
 
-    /**
-     * Gets a group avatar. *API not ready - Return Statuscode: 302*
-     * <p>
-     * Method: GET
-     * Url:    /v2/group/{group_id}/avatar
-     * Access: group clients, users
-     *
-     * @param groupId
-     * @return
-     * @throws APIException
-     */
-    public NoContentResponse getGroupAvatar(String groupId) throws APIException{
-        GetGroupAvatarRequest getGroupAvatarRequest = new GetGroupAvatarRequest(groupId, accessToken, baseUrl, httpClient, executorService);
-        return getGroupAvatarRequest.execute();
-    }
+    @DELETE("/emoticon/{group_id}/avatar")
+    FoxHttpResponse deleteGroupAvatar(@Path("id") String groupId);
 
-    /**
-     * Update a group avatar. *API not ready*
-     * <p>
-     * Method: PUT
-     * Url:    /v2/group/{group_id}/avatar
-     * Access: group clients, users
-     *
-     * @param updateGroupAvatar
-     * @return
-     * @throws APIException
-     */
-    public NoContentResponse updateGroupAvatar(UpdateGroupAvatar updateGroupAvatar) throws APIException {
-        UpdateGroupAvatarRequest updateGroupAvatarRequest = new UpdateGroupAvatarRequest(updateGroupAvatar, accessToken, baseUrl, httpClient, executorService);
-        return updateGroupAvatarRequest.execute();
-    }
+    @GET("/emoticon/{group_id}/statistics")
+    FoxHttpResponse groupStatistics(@Path("id") String groupId);
 
-    /**
-     * Delete group avatar.
-     * <p>
-     * Method: DELETE
-     * Url:    /v2/group/{group_id}/avatar
-     * Access: group clients, users
-     *
-     * @param groupId
-     * @return
-     * @throws APIException
-     */
-    public NoContentResponse deleteGroupAvatar(String groupId) throws APIException {
-        DeleteGroupAvatarRequest deleteGroupAvatarRequest = new DeleteGroupAvatarRequest(groupId, accessToken, baseUrl, httpClient, executorService);
-        return deleteGroupAvatarRequest.execute();
-    }
-
-    /**
-     * Get a group's details.
-     * <p>
-     * Method: GET
-     * Url:    /v2/group/{group_id}/statistics
-     * Access: group clients, users
-     *
-     * @param groupId
-     * @return
-     * @throws APIException
-     */
-    public GroupStatisticsResponse groupStatistics(String groupId) throws APIException {
-        GroupStatisticsRequest groupStatisticsRequest = new GroupStatisticsRequest(groupId, accessToken, baseUrl, httpClient, executorService);
-        return groupStatisticsRequest.execute();
-    }
 }

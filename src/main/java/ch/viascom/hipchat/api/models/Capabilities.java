@@ -9,7 +9,8 @@ import lombok.Data;
  * Created by Patrick Bösch on 09.05.16.
  */
 @Data
-public class Capability {
+public class Capabilities {
+
     /**
      * The vendor that maintains this application
      */

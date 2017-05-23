@@ -1,5 +1,6 @@
 package ch.viascom.hipchat.api.api;
 
+import ch.viascom.groundwork.foxhttp.annotation.types.Path;
 import ch.viascom.hipchat.api.api.generic.GenericAPI;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.PrivateMessage;
@@ -10,14 +11,8 @@ import org.apache.http.client.HttpClient;
 
 import java.util.concurrent.ExecutorService;
 
-/**
- * Created by patrickboesch on 12.04.16.
- */
-public class UsersAPI extends GenericAPI {
-
-    public UsersAPI(String baseUrl, String accessToken, HttpClient httpClient, ExecutorService executorService) {
-        super(baseUrl, accessToken, httpClient, executorService);
-    }
+@Path("{host}")
+public interface UsersAPI {
 
     /**
      * List all users in the group.

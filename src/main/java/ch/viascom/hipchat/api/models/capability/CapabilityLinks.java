@@ -7,6 +7,12 @@ import lombok.Data;
  */
 @Data
 public class CapabilityLinks {
+
+    /**
+     * The URL to this descriptor.
+     */
+    private String self;
+
     /**
      * The URL to the REST API root.
      */
