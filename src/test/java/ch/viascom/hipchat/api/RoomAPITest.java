@@ -22,9 +22,9 @@ import static org.fest.assertions.api.Assertions.assertThat;
 /**
  * Created by patrickboesch on 11.04.16.
  */
-public class RoomAPITest {
+public class RoomApiTest {
 
-    private static final Logger log = LogManager.getLogger(RoomAPITest.class);
+    private static final Logger log = LogManager.getLogger(RoomApiTest.class);
     private static final String clientToken = "";
     private static final String integrationToken = "";
 

@@ -3,7 +3,7 @@ package ch.viascom.hipchat.api;
 /**
  * Created by Patrick Bösch on 09.05.16.
  */
-public class CapabilitiesAPITest {
+public class CapabilitiesApiTest {
 
 //    @Test
 //    public void getCapabilitiesTest() throws FoxHttpException {

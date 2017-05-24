@@ -3,7 +3,7 @@ package ch.viascom.hipchat.api;
 /**
  * Created by patrickboesch on 14.04.16.
  */
-public class EmoticonsAPITest {
+public class EmoticonsApiTest {
 
 //    private static final Logger log = LogManager.getLogger(EmoticonsAPITest.class);
 //    private static final String clientToken = "";

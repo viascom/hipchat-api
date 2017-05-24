@@ -3,7 +3,7 @@ package ch.viascom.hipchat.api;
 /**
  * Created by nikol on 20.08.2016.
  */
-public class InvitesAPITest {
+public class InvitesApiTest {
 
 //    private static final Logger log = LogManager.getLogger(InvitesAPITest.class);
 //    private static final String clientToken = "";
