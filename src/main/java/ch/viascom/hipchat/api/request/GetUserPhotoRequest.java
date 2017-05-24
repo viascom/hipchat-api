@@ -1,7 +1,6 @@
 package ch.viascom.hipchat.api.request;
 
 import ch.viascom.hipchat.api.request.generic.AuthorizationMethod;
-import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetUserPhoto;
 import ch.viascom.hipchat.api.response.GenericResponse;
 import org.apache.http.client.HttpClient;

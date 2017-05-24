@@ -5,7 +5,6 @@ import ch.viascom.hipchat.api.deserializer.MessageLinkDeserializer;
 import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
 import ch.viascom.hipchat.api.models.message.MessageLink;
-import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetPrivatechatMessage;
 import ch.viascom.hipchat.api.response.GetPrivatechatMessageResponse;
 import com.google.gson.Gson;

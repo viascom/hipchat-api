@@ -1,7 +1,6 @@
 package ch.viascom.hipchat.api.request;
 
 import ch.viascom.hipchat.api.models.PrivateMessage;
-import ch.viascom.hipchat.api.request.generic.PostRequest;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;
 import org.apache.http.client.HttpClient;

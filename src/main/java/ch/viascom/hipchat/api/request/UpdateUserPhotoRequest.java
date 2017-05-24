@@ -1,6 +1,5 @@
 package ch.viascom.hipchat.api.request;
 
-import ch.viascom.hipchat.api.request.generic.PutRequest;
 import ch.viascom.hipchat.api.request.models.UpdateUserPhoto;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import ch.viascom.hipchat.api.util.JsonUtil;

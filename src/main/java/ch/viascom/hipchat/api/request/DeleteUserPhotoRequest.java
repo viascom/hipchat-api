@@ -1,6 +1,5 @@
 package ch.viascom.hipchat.api.request;
 
-import ch.viascom.hipchat.api.request.generic.DeleteRequest;
 import ch.viascom.hipchat.api.response.NoContentResponse;
 import org.apache.http.client.HttpClient;
 

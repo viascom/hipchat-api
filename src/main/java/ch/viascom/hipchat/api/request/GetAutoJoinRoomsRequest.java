@@ -1,7 +1,6 @@
 package ch.viascom.hipchat.api.request;
 
 import ch.viascom.hipchat.api.exception.APIException;
-import ch.viascom.hipchat.api.request.generic.GetRequest;
 import ch.viascom.hipchat.api.request.models.GetAutoJoinRooms;
 import ch.viascom.hipchat.api.response.GetAutoJoinRoomsResponse;
 import org.apache.http.client.HttpClient;
