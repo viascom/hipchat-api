@@ -7,7 +7,7 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.models.User;
 
 @Path("{host}")
-public interface InvitesAPI {
+public interface InvitesApi {
 
     @POST("/invite/user")
     User inviteUserToGroup(@Query("title") String title,

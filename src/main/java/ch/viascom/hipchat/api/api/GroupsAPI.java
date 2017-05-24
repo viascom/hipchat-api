@@ -6,7 +6,7 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.models.Group;
 
 @Path("{host}")
-public interface GroupsAPI {
+public interface GroupsApi {
 
     @GET("/emoticon/{group_id}")
     Group viewGroup(@Path("id") String groupId) throws FoxHttpException;

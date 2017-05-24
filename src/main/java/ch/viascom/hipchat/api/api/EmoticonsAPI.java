@@ -8,7 +8,7 @@ import ch.viascom.hipchat.api.models.Emoticon;
 import ch.viascom.hipchat.api.response.GetAllEmoticonsResponse;
 
 @Path("{host}")
-public interface EmoticonsAPI {
+public interface EmoticonsApi {
 
     @GET("/emoticon/{emoticon}")
     Emoticon getEmoticon(@Path("emoticon") String emoticonIdOrShortcut) throws FoxHttpException;

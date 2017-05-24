@@ -1,7 +1,7 @@
 package ch.viascom.hipchat.api;
 
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
-import ch.viascom.hipchat.api.api.RoomsAPI;
+import ch.viascom.hipchat.api.api.RoomsApi;
 import ch.viascom.hipchat.api.models.Card;
 import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.Notification;
@@ -93,7 +93,7 @@ public class RoomAPITest {
     @Test
     public void sendRoomNotificationCardTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(integrationToken);
-        RoomsAPI roomsAPI = hipChat.roomsAPI();
+        RoomsApi roomsApi = hipChat.roomsAPI();
 
         SendNotification notification = new SendNotification();
         notification.setMessage("Hi from (puzzle) HipChat-API v2");
@@ -135,6 +135,6 @@ public class RoomAPITest {
 
         notification.setCard(card);
 
-        roomsAPI.sendRoomNotification("2640607", notification);
+        roomsApi.sendRoomNotification("2640607", notification);
     }
 }

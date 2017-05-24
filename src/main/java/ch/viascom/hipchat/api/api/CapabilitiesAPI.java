@@ -6,7 +6,7 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.models.Capabilities;
 
 @Path("{host}")
-public interface CapabilitiesAPI {
+public interface CapabilitiesApi {
 
     @GET("/capabilities")
     Capabilities getCapabilities() throws FoxHttpException;

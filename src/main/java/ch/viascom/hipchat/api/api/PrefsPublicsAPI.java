@@ -7,7 +7,7 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.response.GetAutoJoinRoomsResponse;
 
 @Path("{host}")
-public interface PrefsPublicsAPI {
+public interface PrefsPublicsApi {
 
     @GET("/user/{id_or_email}/preference/auto-join")
     GetAutoJoinRoomsResponse getAutoJoinRooms(@Path("id_or_email") String idOrEmail,

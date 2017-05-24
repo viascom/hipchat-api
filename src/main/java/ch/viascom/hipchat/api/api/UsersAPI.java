@@ -16,7 +16,7 @@ import ch.viascom.hipchat.api.response.ViewPrivatechatHistoryResponse;
 import ch.viascom.hipchat.api.response.ViewRecentPrivatechatHistoryResponse;
 
 @Path("{host}")
-public interface UsersAPI {
+public interface UsersApi {
 
     @GET("/user")
     GetAllUsersResponse getAllUsers() throws FoxHttpException;

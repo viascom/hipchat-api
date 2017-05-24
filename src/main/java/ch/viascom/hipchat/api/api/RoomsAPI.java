@@ -13,7 +13,7 @@ import ch.viascom.hipchat.api.response.*;
 
 @Path("{host}")
 @Header(name = "Content-Type", value = "application/json")
-public interface RoomsAPI {
+public interface RoomsApi {
 
     @GET("/room/{room}")
     Room getRoom(@Path("room") String roomIdOrName) throws FoxHttpException;

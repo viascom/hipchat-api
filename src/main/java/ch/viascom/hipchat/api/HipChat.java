@@ -10,8 +10,8 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptor;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptorType;
 import ch.viascom.groundwork.foxhttp.log.SystemOutFoxHttpLogger;
+import ch.viascom.groundwork.foxhttp.parser.GsonParser;
 import ch.viascom.hipchat.api.api.*;
-import ch.viascom.hipchat.api.deserializer.CustomGsonParser;
 import ch.viascom.hipchat.api.deserializer.MessageFromDeserializer;
 import ch.viascom.hipchat.api.deserializer.MessageLinkDeserializer;
 import ch.viascom.hipchat.api.models.message.MessageFrom;
@@ -33,13 +33,13 @@ public class HipChat {
     private String accessToken;
     private FoxHttpClient client;
 
-    private CapabilitiesAPI capabilitiesAPI;
-    private RoomsAPI roomsAPI;
-    private EmoticonsAPI emoticonsAPI;
-    private GroupsAPI groupsAPI;
-    private UsersAPI usersAPI;
-    private PrefsPublicsAPI prefsPublicsAPI;
-    private InvitesAPI invitesAPI;
+    private CapabilitiesApi capabilitiesApi;
+    private RoomsApi roomsApi;
+    private EmoticonsApi emoticonsApi;
+    private GroupsApi groupsApi;
+    private UsersApi usersApi;
+    private PrefsPublicsApi prefsPublicsApi;
+    private InvitesApi invitesApi;
 
 //    private temp() {
 //        OAuth2StoreBuilder oAuth2StoreBuilder = new OAuth2StoreBuilder(GrantType.CLIENT_CREDENTIALS, "{host}/oauth/token")
@@ -60,7 +60,7 @@ public class HipChat {
         gsonBuilder.registerTypeAdapter(MessageFrom.class, new MessageFromDeserializer());
         gsonBuilder.registerTypeAdapter(MessageLink.class, new MessageLinkDeserializer());
 
-        client = new FoxHttpClientBuilder(new CustomGsonParser(gsonBuilder))
+        client = new FoxHttpClientBuilder(new GsonParser(gsonBuilder.create()))
                 .setFoxHttpLogger(new SystemOutFoxHttpLogger(true, "ch.viascom.hipchat")).build();
 
         setAccessToken(accessToken);
@@ -105,53 +105,53 @@ public class HipChat {
         return this;
     }
 
-    public CapabilitiesAPI capabilitiesAPI() throws FoxHttpException {
-        if (capabilitiesAPI == null) {
-            capabilitiesAPI = new FoxHttpAnnotationParser().parseInterface(CapabilitiesAPI.class, client);
+    public CapabilitiesApi capabilitiesAPI() throws FoxHttpException {
+        if (capabilitiesApi == null) {
+            capabilitiesApi = new FoxHttpAnnotationParser().parseInterface(CapabilitiesApi.class, client);
         }
-        return capabilitiesAPI;
+        return capabilitiesApi;
     }
 
-    public RoomsAPI roomsAPI() throws FoxHttpException {
-        if (roomsAPI == null) {
-            roomsAPI = new FoxHttpAnnotationParser().parseInterface(RoomsAPI.class, client);
+    public RoomsApi roomsAPI() throws FoxHttpException {
+        if (roomsApi == null) {
+            roomsApi = new FoxHttpAnnotationParser().parseInterface(RoomsApi.class, client);
         }
-        return roomsAPI;
+        return roomsApi;
     }
 
-    public EmoticonsAPI emoticonsAPI() throws FoxHttpException {
-        if (emoticonsAPI == null) {
-            emoticonsAPI = new FoxHttpAnnotationParser().parseInterface(EmoticonsAPI.class, client);
+    public EmoticonsApi emoticonsAPI() throws FoxHttpException {
+        if (emoticonsApi == null) {
+            emoticonsApi = new FoxHttpAnnotationParser().parseInterface(EmoticonsApi.class, client);
         }
-        return emoticonsAPI;
+        return emoticonsApi;
     }
 
-    public GroupsAPI groupsAPI() throws FoxHttpException {
-        if (groupsAPI == null) {
-            groupsAPI = new FoxHttpAnnotationParser().parseInterface(GroupsAPI.class, client);
+    public GroupsApi groupsAPI() throws FoxHttpException {
+        if (groupsApi == null) {
+            groupsApi = new FoxHttpAnnotationParser().parseInterface(GroupsApi.class, client);
         }
-        return groupsAPI;
+        return groupsApi;
     }
 
-    public UsersAPI usersAPI() throws FoxHttpException {
-        if (usersAPI == null) {
-            usersAPI = new FoxHttpAnnotationParser().parseInterface(UsersAPI.class, client);
+    public UsersApi usersAPI() throws FoxHttpException {
+        if (usersApi == null) {
+            usersApi = new FoxHttpAnnotationParser().parseInterface(UsersApi.class, client);
         }
-        return usersAPI;
+        return usersApi;
     }
 
-    public PrefsPublicsAPI prefsPublicsAPI() throws FoxHttpException {
-        if (prefsPublicsAPI == null) {
-            prefsPublicsAPI = new FoxHttpAnnotationParser().parseInterface(PrefsPublicsAPI.class, client);
+    public PrefsPublicsApi prefsPublicsAPI() throws FoxHttpException {
+        if (prefsPublicsApi == null) {
+            prefsPublicsApi = new FoxHttpAnnotationParser().parseInterface(PrefsPublicsApi.class, client);
         }
-        return prefsPublicsAPI;
+        return prefsPublicsApi;
     }
 
 
-    public InvitesAPI invitesAPI() throws FoxHttpException {
-        if (invitesAPI == null) {
-            invitesAPI = new FoxHttpAnnotationParser().parseInterface(InvitesAPI.class, client);
+    public InvitesApi invitesAPI() throws FoxHttpException {
+        if (invitesApi == null) {
+            invitesApi = new FoxHttpAnnotationParser().parseInterface(InvitesApi.class, client);
         }
-        return invitesAPI;
+        return invitesApi;
     }
 }
