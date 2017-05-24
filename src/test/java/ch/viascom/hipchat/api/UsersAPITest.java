@@ -83,7 +83,7 @@ public class UsersAPITest {
     //@Test
     public void getPhotoTest() throws APIException {
         HipChat hipChat = new HipChat(clientToken);
-        GenericResponse response = hipChat.usersAPI().getPhoto(new GetUserPhoto(testBotUserId, UserPhotoSize.SMALL));
+//        GenericResponse response = hipChat.usersAPI().getPhoto(new GetUserPhoto(testBotUserId, UserPhotoSize.SMALL));
     }
 
     //@Test
