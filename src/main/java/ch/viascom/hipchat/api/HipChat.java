@@ -22,16 +22,13 @@ import java.util.concurrent.ExecutorService;
 
 public class HipChat {
 
-    private static final int MAX_CONNECTIONS = 20;
-    private static final int MAX_CONNECTIONS_PER_ROUTE = 4;
-
     private String baseUrl = "https://api.hipchat.com/v2";
 
     private String accessToken;
 
     private static final Logger log = LogManager.getLogger(HipChat.class);
 
-    FoxHttpClientBuilder clientBuilder = new FoxHttpClientBuilder(new GsonParser())
+    private FoxHttpClientBuilder clientBuilder = new FoxHttpClientBuilder(new GsonParser())
             .setFoxHttpLogger(new DefaultFoxHttpLogger(true));
 
     public HipChat(String accessToken) {
