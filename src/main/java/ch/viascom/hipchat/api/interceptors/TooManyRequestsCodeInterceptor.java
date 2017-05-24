@@ -13,20 +13,20 @@ import java.util.function.BiConsumer;
 /**
  * @author patrick.boesch@viascom.ch
  */
-public class RateLimitsInterceptor implements FoxHttpResponseInterceptor {
+public class TooManyRequestsCodeInterceptor implements FoxHttpResponseInterceptor {
 
     @Getter
     @Setter
-    private int weight;
+    private int weight = 600;
 
-    private BiConsumer<FoxHttpResponseInterceptorContext, FoxHttpHeader> rateLimitCallback;
+    private BiConsumer<FoxHttpResponseInterceptorContext, FoxHttpHeader> tooManyRequestsCodeCallback;
 
     @Getter
     private ArrayList<String> rateLimitHeaderNames = new ArrayList<>();
 
 
-    public RateLimitsInterceptor(BiConsumer<FoxHttpResponseInterceptorContext, FoxHttpHeader> rateLimitCallback) {
-        this.rateLimitCallback = rateLimitCallback;
+    public TooManyRequestsCodeInterceptor(BiConsumer<FoxHttpResponseInterceptorContext, FoxHttpHeader> tooManyRequestsCodeCallback) {
+        this.tooManyRequestsCodeCallback = tooManyRequestsCodeCallback;
 
         //Set headers from API rate limits
         rateLimitHeaderNames.add("X-Ratelimit-Limit");
@@ -49,7 +49,7 @@ public class RateLimitsInterceptor implements FoxHttpResponseInterceptor {
                     .filter(headerEntry -> rateLimitHeaderNames.contains(headerEntry.getValue()))
                     .forEach(headerEntry -> limitHeaders.getHeaderEntries().add(headerEntry));
 
-            rateLimitCallback.accept(context, limitHeaders);
+            tooManyRequestsCodeCallback.accept(context, limitHeaders);
         }
 
 
