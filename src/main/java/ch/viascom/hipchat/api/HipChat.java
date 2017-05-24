@@ -7,34 +7,43 @@ import ch.viascom.groundwork.foxhttp.authorization.BearerTokenAuthorization;
 import ch.viascom.groundwork.foxhttp.authorization.FoxHttpAuthorizationScope;
 import ch.viascom.groundwork.foxhttp.builder.FoxHttpClientBuilder;
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
+import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptor;
+import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptorType;
+import ch.viascom.groundwork.foxhttp.interceptor.response.context.FoxHttpResponseInterceptorContext;
 import ch.viascom.groundwork.foxhttp.log.DefaultFoxHttpLogger;
 import ch.viascom.groundwork.foxhttp.parser.GsonParser;
 import ch.viascom.hipchat.api.api.*;
-import lombok.NoArgsConstructor;
+import ch.viascom.hipchat.api.exception.HipChatAPIException;
+import ch.viascom.hipchat.api.interceptors.BadRequestCodeInterceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.ExecutorService;
+import java.util.ArrayList;
 
 /**
- * Created by patrickboesch on 11.04.16.
+ * Created by patrick.boesch@viascom.ch on 11.04.16.
  */
 
 public class HipChat {
 
-    private String baseUrl = "https://api.hipchat.com/v2";
-
-    private String accessToken;
-
     private static final Logger log = LogManager.getLogger(HipChat.class);
+    private String baseUrl = "https://api.hipchat.com/v2";
+    private String accessToken;
+    private FoxHttpClient client = new FoxHttpClientBuilder(new GsonParser())
+            .setFoxHttpLogger(new DefaultFoxHttpLogger(true)).build();
 
-    private FoxHttpClientBuilder clientBuilder = new FoxHttpClientBuilder(new GsonParser())
-            .setFoxHttpLogger(new DefaultFoxHttpLogger(true));
+    private CapabilitiesAPI capabilitiesAPI;
 
-    public HipChat(String accessToken) {
+    public HipChat(String accessToken) throws FoxHttpException {
         setAccessToken(accessToken);
         setBaseUrl(baseUrl);
+
+        //Add default code interceptors
+
+        //client.register(FoxHttpInterceptorType.RESPONSE,new BadRequestCodeInterceptor(this::defaultBadRequestCodeMethod));
+
     }
+
 
     public HipChat(String accessToken, String baseUrl) {
         setAccessToken(accessToken);
@@ -43,18 +52,36 @@ public class HipChat {
 
     public HipChat setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
-        clientBuilder.addFoxHttpPlaceholderEntry("host", baseUrl);
+        client.getFoxHttpPlaceholderStrategy().addPlaceholder("host", baseUrl);
         return this;
     }
 
     public HipChat setAccessToken(String accessToken) {
         this.accessToken = accessToken;
-        clientBuilder.addFoxHttpAuthorization(FoxHttpAuthorizationScope.ANY, new BearerTokenAuthorization(accessToken));
+        client.getFoxHttpAuthorizationStrategy().addAuthorization(FoxHttpAuthorizationScope.ANY, new BearerTokenAuthorization(accessToken));
+        return this;
+    }
+
+    public HipChat replaceResponseInterceptor(FoxHttpInterceptor foxHttpInterceptor) {
+
+        ArrayList<FoxHttpInterceptor> responseInterceptors = client.getFoxHttpInterceptors().get(FoxHttpInterceptorType.RESPONSE);
+        responseInterceptors.stream()
+                .filter(interceptor -> !interceptor.getClass().isAssignableFrom(foxHttpInterceptor.getClass()))
+                .forEach(responseInterceptors::add);
+
+        responseInterceptors.add(foxHttpInterceptor);
+
+        client.getFoxHttpInterceptors().get(FoxHttpInterceptorType.RESPONSE).clear();
+        client.getFoxHttpInterceptors().put(FoxHttpInterceptorType.RESPONSE, responseInterceptors);
+
         return this;
     }
 
     public CapabilitiesAPI capabilitiesAPI() throws FoxHttpException {
-        return new FoxHttpAnnotationParser().parseInterface(CapabilitiesAPI.class, clientBuilder.build());
+        if (capabilitiesAPI == null) {
+            capabilitiesAPI = new FoxHttpAnnotationParser().parseInterface(CapabilitiesAPI.class, client);
+        }
+        return capabilitiesAPI;
     }
 
     public RoomsAPI roomsAPI() {
@@ -76,7 +103,6 @@ public class HipChat {
     public PrefsPublicsAPI prefsPublicsAPI() {
         return new PrefsPublicsAPI(baseUrl, accessToken, httpClient, executorService);
     }
-
 
 
     public InvitesAPI invitesAPI() {

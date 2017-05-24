@@ -1,8 +1,8 @@
 package ch.viascom.hipchat.api.interceptors;
 
-import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.groundwork.foxhttp.interceptor.response.FoxHttpResponseInterceptor;
 import ch.viascom.groundwork.foxhttp.interceptor.response.context.FoxHttpResponseInterceptorContext;
+import ch.viascom.hipchat.api.exception.HipChatAPIException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +25,7 @@ public class BadRequestCodeInterceptor implements FoxHttpResponseInterceptor {
     }
 
     @Override
-    public void onIntercept(FoxHttpResponseInterceptorContext context) throws FoxHttpException {
+    public void onIntercept(FoxHttpResponseInterceptorContext context) throws HipChatAPIException {
         if (context.getResponseCode() == 400) {
             unauthorizedCodeCallback.accept(context);
         }
