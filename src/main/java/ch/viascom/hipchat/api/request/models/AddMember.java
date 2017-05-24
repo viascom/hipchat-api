@@ -15,8 +15,6 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddMember {
-    private int userId;
-    private String roomId;
     @SerializedName("room_roles")
     private ArrayList<UserRole> roomRoles;
 }
