@@ -5,18 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 04.05.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewRoomHistory {
-    /**
-     * The id or url encoded name of the room.
-     * Valid length range: 1 - 100.
-     */
-    private String roomId;
+public class ViewRoomHistory implements Serializable {
 
     /**
      * The offset for the messages to return. Only valid with a non-recent data query.
@@ -68,12 +65,10 @@ public class ViewRoomHistory {
     /**
      * Small Constructor
      *
-     * @param roomId
      * @param start_index
      * @param max_results
      */
-    public ViewRoomHistory(String roomId, int start_index, int max_results) {
-        this.roomId = roomId;
+    public ViewRoomHistory(int start_index, int max_results) {
         this.start_index = start_index;
         this.max_results = max_results;
     }

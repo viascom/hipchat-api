@@ -1,15 +1,23 @@
 package ch.viascom.hipchat.api;
 
+import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.api.RoomsAPI;
 import ch.viascom.hipchat.api.models.Card;
 import ch.viascom.hipchat.api.models.Message;
+import ch.viascom.hipchat.api.models.Notification;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
+import ch.viascom.hipchat.api.models.room.RoomRole;
+import ch.viascom.hipchat.api.models.room.RoomStatistics;
 import ch.viascom.hipchat.api.request.models.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Created by patrickboesch on 11.04.16.
@@ -20,67 +28,74 @@ public class RoomAPITest {
     private static final String clientToken = "";
     private static final String integrationToken = "";
 
-    private static int testBotUserId;
+    private static String testBotUserId = "";
 
-    //@Test
-    public void sendRoomNotificationTest() throws APIException {
+    @Test
+    public void sendRoomNotificationTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(integrationToken);
-        hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
+        hipChat.roomsAPI().sendRoomNotification("2640607", new Notification(null, null, MessageColor.RED, null, true, "Hello World", null));
     }
 
-    //@Test
-    public void sendRoomMessageTest() throws APIException {
+    @Test
+    public void sendRoomMessageTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.roomsAPI().sendRoomMessage(new SendMessage("Test-Room", "Hello World"));
+        hipChat.roomsAPI().sendRoomMessage("2640607", new MessageRequestBody("Hello World"));
     }
 
-    //@Test
-    public void replyToMessageTest() throws APIException {
+
+    @Test
+    public void replyToMessageTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.roomsAPI().replyToMessage(new ReplyMessage("Test-Room", "Reply", "")); // Fill out last parameter with parentId
+        hipChat.roomsAPI().replyToMessage("2640607", new ReplyMessage( "Reply", "95e30c9d-b143-4475-9f98-b8b54ef6ed73")); // Fill out last parameter with parentId
     }
 
-    //@Test
-    public void setTopicTest() throws APIException {
+    @Test
+    public void setTopicTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(integrationToken);
-        hipChat.roomsAPI().setTopic(new SetTopic("Test-Room", "New fancy topic for our test room"));
+        hipChat.roomsAPI().setTopic("2640607", new SetTopic("New fancy topic for our test room"));
     }
 
-    //@Test
-    public void getAllParticipantsTest() throws APIException {
+    @Test
+    public void getAllParticipantsTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(integrationToken);
-        log.debug(hipChat.roomsAPI().getAllParticipants(new GetAllParticipants("Test-Room", 0, 100, true)));
-
+        log.debug(hipChat.roomsAPI().getAllParticipants("2640607", "0", "100", "true"));
     }
 
-    //@Test
-    public void addMemberTest() throws APIException {
+
+    @Test
+    public void addMemberTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.roomsAPI().addMember(new AddMember(testBotUserId, "Private-Test-Room", null));
+        hipChat.roomsAPI().addMember("2640607",
+                testBotUserId,
+                new AddMember(new ArrayList<>(Collections.singletonList(RoomRole.ROOM_MEMBER))));
     }
 
-    //@Test
-    public void viewRoomHistoryTest() throws APIException {
+    @Test
+    public void viewRoomHistoryTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        ViewRoomHistory viewRoomHistory = new ViewRoomHistory("TestRoom", 0, 100);
+        ViewRoomHistory viewRoomHistory = new ViewRoomHistory(0, 100);
         viewRoomHistory.setReverse(false);
-        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory(viewRoomHistory).getItems();
+        ArrayList<Message> messages = hipChat.roomsAPI().viewRoomHistory("2640607", viewRoomHistory).getItems();
+
+        System.out.println(messages);
     }
 
-    //@Test
-    public void getRoomStatisticsTest() throws APIException {
+    @Test
+    public void getRoomStatisticsTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        GetRoomStatisticsResponse response = hipChat.roomsAPI().getRoomStatistics("TestRoom");
-        System.out.println(response.getMessagesSent());
+        RoomStatistics statistics = hipChat.roomsAPI().getRoomStatistics("TestRoom");
+
+        System.out.println(statistics);
+
+        assertThat(statistics.getLastActive()).isNotEmpty();
     }
 
-    //@Test
-    public void sendRoomNotificationCardTest() throws APIException {
+    @Test
+    public void sendRoomNotificationCardTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(integrationToken);
         RoomsAPI roomsAPI = hipChat.roomsAPI();
 
         SendNotification notification = new SendNotification();
-        notification.setRoomId("Test-Room");
         notification.setMessage("Hi from (puzzle) HipChat-API v2");
         notification.setColor(MessageColor.RED);
         notification.setNotify(true);
@@ -120,6 +135,6 @@ public class RoomAPITest {
 
         notification.setCard(card);
 
-        roomsAPI.sendRoomNotification(notification);
+        roomsAPI.sendRoomNotification("2640607", notification);
     }
 }

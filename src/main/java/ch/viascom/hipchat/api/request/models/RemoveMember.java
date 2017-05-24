@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Nikola Stankovic on 06.05.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RemoveMember {
+public class RemoveMember implements Serializable {
 
     /**
      * The id, email address, or mention name (beginning with an '@') of the user.

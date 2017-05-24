@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Nikola Stankovic on 5/6/16.
  */
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewPrivatechatHistory {
+public class ViewPrivatechatHistory implements Serializable {
 
     /**
      * The id or email of the user

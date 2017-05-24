@@ -4,6 +4,7 @@ import ch.viascom.groundwork.foxhttp.FoxHttpResponse;
 import ch.viascom.groundwork.foxhttp.annotation.types.*;
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.models.Message;
+import ch.viascom.hipchat.api.models.Notification;
 import ch.viascom.hipchat.api.models.Room;
 import ch.viascom.hipchat.api.models.Webhook;
 import ch.viascom.hipchat.api.models.room.RoomStatistics;
@@ -11,13 +12,14 @@ import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.*;
 
 @Path("{host}")
+@Header(name = "Content-Type", value = "application/json")
 public interface RoomsAPI {
 
     @GET("/room/{room}")
     Room getRoom(@Path("room") String roomIdOrName) throws FoxHttpException;
 
     @POST("/room")
-    FoxHttpResponse createRoom(@Body() Room room) throws FoxHttpException;
+    FoxHttpResponse createRoom(@Body Room room) throws FoxHttpException;
 
     @PUT("/room/{room}")
     @SkipResponseBody(true)
@@ -35,11 +37,11 @@ public interface RoomsAPI {
 
     @POST("/room/{room}/notification")
     FoxHttpResponse sendRoomNotification(@Path("room") String roomIdOrName,
-                                         @Body SendNotification notification) throws FoxHttpException;
+                                         @Body Notification notification) throws FoxHttpException;
 
     @POST("/room/{room}/message")
     FoxHttpResponse sendRoomMessage(@Path("room") String roomIdOrName,
-                                    @Body SendMessage message) throws FoxHttpException;
+                                    @Body MessageRequestBody message) throws FoxHttpException;
 
     @POST("/room/{room}/reply")
     @SkipResponseBody(true)
@@ -64,7 +66,7 @@ public interface RoomsAPI {
 
     @GET("/room/{room}/history/{message_id}")
     Message getRoomMessage(@Path("room") String roomIdOrName, @Path("message_id") String messageId,
-                           @Query("timezone") String timezone, @Query("include_deleted") boolean includeDeleted)
+                           @Query("timezone") String timezone, @Query("include_deleted") String includeDeleted)
             throws FoxHttpException;
 
     @GET("/room/{room}/history")
@@ -87,7 +89,7 @@ public interface RoomsAPI {
                                         @Query("max-results") String maxResults) throws FoxHttpException;
 
     @PUT("/room/{room}/member/{user}")
-    @SkipResponseBody(true)
+//    @SkipResponseBody(true)
     FoxHttpResponse addMember(@Path("room") String roomIdOrName, @Path("user") String userIdOrEmail,
                               @Body AddMember addMember) throws FoxHttpException;
 

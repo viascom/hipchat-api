@@ -7,13 +7,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 11.04.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notification {
+public class Notification implements Serializable {
     /**
      * A label to be shown in addition to the sender's name
      * Valid length range: 0 - 64.

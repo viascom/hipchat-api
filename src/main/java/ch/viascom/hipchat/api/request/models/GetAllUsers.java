@@ -5,13 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 18.04.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllUsers {
+public class GetAllUsers implements Serializable {
     @SerializedName("start-index")
     private int	start_index = 0;
     @SerializedName("max-results")

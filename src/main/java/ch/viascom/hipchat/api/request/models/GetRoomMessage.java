@@ -2,11 +2,13 @@ package ch.viascom.hipchat.api.request.models;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 04.05.16.
  */
 @Data
-public class GetRoomMessage {
+public class GetRoomMessage implements Serializable {
     /**
      * The id or url encoded name of the room.
      * Valid length range: 1 - 100.

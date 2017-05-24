@@ -9,9 +9,14 @@ import ch.viascom.groundwork.foxhttp.builder.FoxHttpClientBuilder;
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptor;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptorType;
-import ch.viascom.groundwork.foxhttp.log.DefaultFoxHttpLogger;
-import ch.viascom.groundwork.foxhttp.parser.GsonParser;
+import ch.viascom.groundwork.foxhttp.log.SystemOutFoxHttpLogger;
 import ch.viascom.hipchat.api.api.*;
+import ch.viascom.hipchat.api.deserializer.CustomGsonParser;
+import ch.viascom.hipchat.api.deserializer.MessageFromDeserializer;
+import ch.viascom.hipchat.api.deserializer.MessageLinkDeserializer;
+import ch.viascom.hipchat.api.models.message.MessageFrom;
+import ch.viascom.hipchat.api.models.message.MessageLink;
+import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,12 +31,38 @@ public class HipChat {
     private static final Logger log = LogManager.getLogger(HipChat.class);
     private String baseUrl = "https://api.hipchat.com/v2";
     private String accessToken;
-    private FoxHttpClient client = new FoxHttpClientBuilder(new GsonParser())
-            .setFoxHttpLogger(new DefaultFoxHttpLogger(true)).build();
+    private FoxHttpClient client;
 
     private CapabilitiesAPI capabilitiesAPI;
+    private RoomsAPI roomsAPI;
+    private EmoticonsAPI emoticonsAPI;
+    private GroupsAPI groupsAPI;
+    private UsersAPI usersAPI;
+    private PrefsPublicsAPI prefsPublicsAPI;
+    private InvitesAPI invitesAPI;
+
+//    private temp() {
+//        OAuth2StoreBuilder oAuth2StoreBuilder = new OAuth2StoreBuilder(GrantType.CLIENT_CREDENTIALS, "{host}/oauth/token")
+//                .setAuthRequestType(RequestType.POST)
+//                .addFoxHttpAuthorizationScope(FoxHttpAuthorizationScope.ANY)
+//                .activateClientCredentialsUse()
+//                .setUsername(solaraTestUser)
+//                .setPassword(solaraTestPassword)
+//                .setClientId("Ba")
+//                .setClientSecret(solaraClientSecret)
+//                .setRequestScopes("solara-read");
+//    }
 
     public HipChat(String accessToken) throws FoxHttpException {
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+
+        gsonBuilder.registerTypeAdapter(MessageFrom.class, new MessageFromDeserializer());
+        gsonBuilder.registerTypeAdapter(MessageLink.class, new MessageLinkDeserializer());
+
+        client = new FoxHttpClientBuilder(new CustomGsonParser(gsonBuilder))
+                .setFoxHttpLogger(new SystemOutFoxHttpLogger(true, "ch.viascom.hipchat")).build();
+
         setAccessToken(accessToken);
         setBaseUrl(baseUrl);
 
@@ -81,29 +112,46 @@ public class HipChat {
         return capabilitiesAPI;
     }
 
-    public RoomsAPI roomsAPI() {
-        return new RoomsAPI(baseUrl, accessToken, httpClient, executorService);
+    public RoomsAPI roomsAPI() throws FoxHttpException {
+        if (roomsAPI == null) {
+            roomsAPI = new FoxHttpAnnotationParser().parseInterface(RoomsAPI.class, client);
+        }
+        return roomsAPI;
     }
 
-    public EmoticonsAPI emoticonsAPI() {
-        return new EmoticonsAPI(baseUrl, accessToken, httpClient, executorService);
+    public EmoticonsAPI emoticonsAPI() throws FoxHttpException {
+        if (emoticonsAPI == null) {
+            emoticonsAPI = new FoxHttpAnnotationParser().parseInterface(EmoticonsAPI.class, client);
+        }
+        return emoticonsAPI;
     }
 
-    public GroupsAPI groupsAPI() {
-        return new GroupsAPI(baseUrl, accessToken, httpClient, executorService);
+    public GroupsAPI groupsAPI() throws FoxHttpException {
+        if (groupsAPI == null) {
+            groupsAPI = new FoxHttpAnnotationParser().parseInterface(GroupsAPI.class, client);
+        }
+        return groupsAPI;
     }
 
-    public UsersAPI usersAPI() {
-        return new UsersAPI(baseUrl, accessToken, httpClient, executorService);
+    public UsersAPI usersAPI() throws FoxHttpException {
+        if (usersAPI == null) {
+            usersAPI = new FoxHttpAnnotationParser().parseInterface(UsersAPI.class, client);
+        }
+        return usersAPI;
     }
 
-    public PrefsPublicsAPI prefsPublicsAPI() {
-        return new PrefsPublicsAPI(baseUrl, accessToken, httpClient, executorService);
+    public PrefsPublicsAPI prefsPublicsAPI() throws FoxHttpException {
+        if (prefsPublicsAPI == null) {
+            prefsPublicsAPI = new FoxHttpAnnotationParser().parseInterface(PrefsPublicsAPI.class, client);
+        }
+        return prefsPublicsAPI;
     }
 
 
-    public InvitesAPI invitesAPI() {
-        return new InvitesAPI(baseUrl, accessToken, httpClient, executorService);
-
+    public InvitesAPI invitesAPI() throws FoxHttpException {
+        if (invitesAPI == null) {
+            invitesAPI = new FoxHttpAnnotationParser().parseInterface(InvitesAPI.class, client);
+        }
+        return invitesAPI;
     }
 }

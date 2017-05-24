@@ -4,11 +4,13 @@ import ch.viascom.hipchat.api.models.group.GroupPlan;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 14.04.16.
  */
 @Data
-public class Group {
+public class Group implements Serializable {
     /**
      * The Google Apps domain, if applicable
      * May be null.

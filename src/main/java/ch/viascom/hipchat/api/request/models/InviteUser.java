@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 06.05.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InviteUser {
+public class InviteUser implements Serializable {
     /**
      * The id, email address, or mention name (beginning with an '@') of the user to invite
      * Valid length range: 1 - 100.

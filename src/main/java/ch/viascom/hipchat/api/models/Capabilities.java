@@ -5,11 +5,13 @@ import ch.viascom.hipchat.api.models.capability.CapabilityLinks;
 import ch.viascom.hipchat.api.models.capability.CapabilityVendor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 09.05.16.
  */
 @Data
-public class Capabilities {
+public class Capabilities implements Serializable {
 
     /**
      * The vendor that maintains this application

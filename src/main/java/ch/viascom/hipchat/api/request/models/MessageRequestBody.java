@@ -6,13 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-/**
- * Created by patrickboesch on 18.04.16.
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteRoomWebhook implements Serializable {
-    private String roomId;
-    private String webhookId;
+public class MessageRequestBody implements Serializable {
+    private String message;
 }

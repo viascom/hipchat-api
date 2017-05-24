@@ -5,13 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 12.04.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllMembers {
+public class GetAllMembers implements Serializable {
     private String roomId;
     @SerializedName("start-index")
     private int	start_index = 0;

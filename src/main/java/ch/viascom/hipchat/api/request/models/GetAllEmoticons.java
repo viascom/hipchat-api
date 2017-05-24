@@ -6,13 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 14.04.16.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllEmoticons {
+public class GetAllEmoticons implements Serializable {
     private EmoticonType type = EmoticonType.ALL;
     @SerializedName("start-index")
     private int	start_index = 0;
