@@ -1,13 +1,11 @@
 package ch.viascom.hipchat.api;
 
 import ch.viascom.hipchat.api.api.RoomsAPI;
-import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.Card;
 import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.card.*;
 import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.request.models.*;
-import ch.viascom.hipchat.api.response.GetRoomStatisticsResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,6 +1,5 @@
 package ch.viascom.hipchat.api;
 
-import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.models.GetAllEmoticons;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

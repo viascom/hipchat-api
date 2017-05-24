@@ -9,12 +9,9 @@ import ch.viascom.groundwork.foxhttp.builder.FoxHttpClientBuilder;
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptor;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptorType;
-import ch.viascom.groundwork.foxhttp.interceptor.response.context.FoxHttpResponseInterceptorContext;
 import ch.viascom.groundwork.foxhttp.log.DefaultFoxHttpLogger;
 import ch.viascom.groundwork.foxhttp.parser.GsonParser;
 import ch.viascom.hipchat.api.api.*;
-import ch.viascom.hipchat.api.exception.HipChatAPIException;
-import ch.viascom.hipchat.api.interceptors.BadRequestCodeInterceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

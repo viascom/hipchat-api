@@ -1,7 +1,6 @@
 package ch.viascom.hipchat.api;
 
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
-import ch.viascom.hipchat.api.response.GetCapabilitiesResponse;
 import org.junit.Test;
 
 /**

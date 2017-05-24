@@ -1,8 +1,6 @@
 package ch.viascom.hipchat.api;
 
-import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.request.models.InviteUserToGroup;
-import ch.viascom.hipchat.api.response.InviteUserToGroupResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

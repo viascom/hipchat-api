@@ -1,9 +1,7 @@
 package ch.viascom.hipchat.api;
 
-import ch.viascom.hipchat.api.exception.APIException;
 import ch.viascom.hipchat.api.models.PrivateMessage;
 import ch.viascom.hipchat.api.models.message.MessageFormat;
-import ch.viascom.hipchat.api.models.user.UserPhotoSize;
 import ch.viascom.hipchat.api.models.user.UserRole;
 import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.*;
