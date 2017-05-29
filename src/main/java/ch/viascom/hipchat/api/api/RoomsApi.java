@@ -18,9 +18,6 @@ public interface RoomsApi {
     @GET("/room/{room}")
     Room getRoom(@Path("room") String roomIdOrName) throws FoxHttpException;
 
-    @POST("/room")
-    FoxHttpResponse createRoom(@Body Room room) throws FoxHttpException;
-
     @PUT("/room/{room}")
     @SkipResponseBody(true)
     FoxHttpResponse updateRoom(@Path("room") String roomIdOrName, @Body() Room room) throws FoxHttpException;
@@ -34,6 +31,12 @@ public interface RoomsApi {
                     @Query("max-results") String maxResults,
                     @Query("include-private") String includePrivate,
                     @Query("include-archived") String includeArchived) throws FoxHttpException;
+
+    @POST("/room")
+    FoxHttpResponse createRoom(@Body Room room) throws FoxHttpException;
+
+//    @GET("/room/{room}/extension/action/{key}")
+//    Room getRoomAction(@Path("room") String roomIdOrName, @Path("key") String key) throws FoxHttpException;
 
     @POST("/room/{room}/notification")
     FoxHttpResponse sendRoomNotification(@Path("room") String roomIdOrName,
@@ -90,7 +93,7 @@ public interface RoomsApi {
 
     @PUT("/room/{room}/member/{user}")
 //    @SkipResponseBody(true)
-    FoxHttpResponse addMember(@Path("room") String roomIdOrName, @Path("user") String userIdOrEmail,
+    FoxHttpResponse addMember(@Path("user") String userIdOrEmail, @Path("room") String roomIdOrName,
                               @Body AddMember addMember) throws FoxHttpException;
 
     @DELETE("/room/{room}/member/{user}")

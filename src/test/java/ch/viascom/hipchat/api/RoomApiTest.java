@@ -64,8 +64,7 @@ public class RoomApiTest {
     @Test
     public void addMemberTest() throws FoxHttpException {
         HipChat hipChat = new HipChat(clientToken);
-        hipChat.roomsApi().addMember("2640607",
-                testBotUserId,
+        hipChat.roomsApi().addMember(testBotUserId, "2640607",
                 new AddMember(new ArrayList<>(Collections.singletonList(RoomRole.ROOM_MEMBER))));
     }
 
