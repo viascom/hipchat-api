@@ -6,20 +6,18 @@ import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.hipchat.api.models.Message;
 import ch.viascom.hipchat.api.models.PrivateMessage;
 import ch.viascom.hipchat.api.models.User;
-import ch.viascom.hipchat.api.request.models.CreateUser;
-import ch.viascom.hipchat.api.request.models.UpdateUser;
-import ch.viascom.hipchat.api.request.models.ViewPrivatechatHistory;
-import ch.viascom.hipchat.api.request.models.ViewRecentPrivatechatHistory;
+import ch.viascom.hipchat.api.request.models.*;
 import ch.viascom.hipchat.api.response.GetAllUsersResponse;
 import ch.viascom.hipchat.api.response.GetAutoJoinRoomsResponse;
 import ch.viascom.hipchat.api.response.ViewPrivatechatHistoryResponse;
 import ch.viascom.hipchat.api.response.ViewRecentPrivatechatHistoryResponse;
 
 @Path("{host}")
+@Header(name = "Content-Type", value = "application/json")
 public interface UsersApi {
 
     @GET("/user")
-    GetAllUsersResponse getAllUsers() throws FoxHttpException;
+    GetAllUsersResponse getAllUsers(@QueryObject GetAllUsers getAllUsers) throws FoxHttpException;
 
     @POST("/user")
     FoxHttpResponse createUser(@Body CreateUser createUser) throws FoxHttpException;

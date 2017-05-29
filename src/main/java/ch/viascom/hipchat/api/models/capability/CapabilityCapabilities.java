@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * Created by Patrick Bösch on 09.05.16.
- */
 @Data
 public class CapabilityCapabilities implements Serializable {
     /**

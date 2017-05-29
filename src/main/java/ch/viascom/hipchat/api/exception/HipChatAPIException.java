@@ -18,6 +18,4 @@ public class HipChatAPIException extends FoxHttpException {
     public HipChatAPIException(String message, Throwable cause) {
         super(message, cause);
     }
-
-
 }

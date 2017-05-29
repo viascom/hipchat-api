@@ -5,6 +5,5 @@ import ch.viascom.groundwork.foxhttp.annotation.types.Path;
 
 @Path("{host}")
 @Header(name = "Content-Type", value = "application/json")
-public interface OAuthSessionsApi {
-
+public interface IntegrationsApi {
 }

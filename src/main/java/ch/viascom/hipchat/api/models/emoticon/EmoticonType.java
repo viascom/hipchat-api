@@ -9,9 +9,20 @@ import java.io.Serializable;
  */
 public enum EmoticonType implements Serializable {
     @SerializedName("global")
-    GLOBAL,
+    GLOBAL("global"),
     @SerializedName("group")
-    GROUP,
+    GROUP("group"),
     @SerializedName("all")
-    ALL
+    ALL("all");
+
+    private final String text;
+
+    EmoticonType(final String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return text;
+    }
 }

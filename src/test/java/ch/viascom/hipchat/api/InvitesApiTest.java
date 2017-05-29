@@ -1,17 +1,19 @@
 package ch.viascom.hipchat.api;
 
-/**
- * Created by nikol on 20.08.2016.
- */
+import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
+import ch.viascom.hipchat.api.models.User;
+import org.junit.Ignore;
+import org.junit.Test;
+
 public class InvitesApiTest {
 
-//    private static final Logger log = LogManager.getLogger(InvitesAPITest.class);
-//    private static final String clientToken = "";
-//    private static String testBotUserEmail = "";
-//
-//    //@Test
-//    public void inviteUserToGroupTest() throws APIException {
-//        HipChat hipChat = new HipChat(clientToken);
-//        InviteUserToGroupResponse inviteUserToGroupResponse = hipChat.invitesAPI().inviteUserToGroup(new InviteUserToGroup("",testBotUserEmail,"HipChat-Bot"));
-//    }
+    private static final String clientToken = "";
+    private static String testBotUserEmail = "info@viascom.ch";
+
+    @Test
+    @Ignore // HipChat doesn't work here
+    public void inviteUserToGroupTest() throws FoxHttpException {
+        HipChat hipChat = new HipChat(clientToken);
+        User user = hipChat.invitesApi().inviteUserToGroup("", testBotUserEmail, "HipChat-Bot");
+    }
 }
