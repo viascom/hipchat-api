@@ -9,6 +9,7 @@ import ch.viascom.groundwork.foxhttp.builder.FoxHttpClientBuilder;
 import ch.viascom.groundwork.foxhttp.exception.FoxHttpException;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptor;
 import ch.viascom.groundwork.foxhttp.interceptor.FoxHttpInterceptorType;
+import ch.viascom.groundwork.foxhttp.interceptor.request.HttpErrorResponseInterceptor;
 import ch.viascom.groundwork.foxhttp.log.SystemOutFoxHttpLogger;
 import ch.viascom.groundwork.foxhttp.parser.GsonParser;
 import ch.viascom.hipchat.api.api.*;
@@ -41,18 +42,6 @@ public class HipChat {
     private PrefsPublicsApi prefsPublicsApi;
     private InvitesApi invitesApi;
 
-//    private temp() {
-//        OAuth2StoreBuilder oAuth2StoreBuilder = new OAuth2StoreBuilder(GrantType.CLIENT_CREDENTIALS, "{host}/oauth/token")
-//                .setAuthRequestType(RequestType.POST)
-//                .addFoxHttpAuthorizationScope(FoxHttpAuthorizationScope.ANY)
-//                .activateClientCredentialsUse()
-//                .setUsername(solaraTestUser)
-//                .setPassword(solaraTestPassword)
-//                .setClientId("Ba")
-//                .setClientSecret(solaraClientSecret)
-//                .setRequestScopes("solara-read");
-//    }
-
     public HipChat(String accessToken) throws FoxHttpException {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -61,15 +50,13 @@ public class HipChat {
         gsonBuilder.registerTypeAdapter(MessageLink.class, new MessageLinkDeserializer());
 
         client = new FoxHttpClientBuilder(new GsonParser(gsonBuilder.create()))
-                .setFoxHttpLogger(new SystemOutFoxHttpLogger(true, "ch.viascom.hipchat")).build();
+                .setFoxHttpLogger(new SystemOutFoxHttpLogger(true, "ch.viascom.hipchat"))
+                .addFoxHttpInterceptor(FoxHttpInterceptorType.RESPONSE,new HttpErrorResponseInterceptor())
+                .addFoxHttpPlaceholderEntry()
+                .build();
 
         setAccessToken(accessToken);
         setBaseUrl(baseUrl);
-
-        //Add default code interceptors
-
-        //client.register(FoxHttpInterceptorType.RESPONSE,new BadRequestCodeInterceptor(this::defaultBadRequestCodeMethod));
-
     }
 
 

@@ -12,8 +12,8 @@ public class UsersApiTest {
 //    private static String testBotUserId = "";
 //    private static final String privateMessageUserId = "";
 //
-//    //@Test
-//    public void getAllUsersTest() throws APIException {
+//    @Test
+//    public void getAllUsersTest() throws FoxHttpException {
 //        HipChat hipChat = new HipChat(clientToken);
 //        GetAllUsersResponse getAllUsersResponse = hipChat.usersAPI().getAllUsers(new GetAllUsers(0, 100, true, true));
 //    }
