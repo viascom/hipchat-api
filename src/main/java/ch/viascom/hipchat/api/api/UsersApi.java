@@ -12,6 +12,8 @@ import ch.viascom.hipchat.api.response.GetAutoJoinRoomsResponse;
 import ch.viascom.hipchat.api.response.ViewPrivatechatHistoryResponse;
 import ch.viascom.hipchat.api.response.ViewRecentPrivatechatHistoryResponse;
 
+import java.io.InputStream;
+
 @Path("{host}")
 @Header(name = "Content-Type", value = "application/json")
 public interface UsersApi {
@@ -40,13 +42,13 @@ public interface UsersApi {
                                        @Body PrivateMessage privateMessage) throws FoxHttpException;
 
     @GET("/user/{id}/photo/{size}")
-    FoxHttpResponse getPhoto(@Path("id") String idOrEmail,
-                             @Path("size") String size) throws FoxHttpException;
+    InputStream getPhoto(@Path("id") String idOrEmail,
+                         @Path("size") String size) throws FoxHttpException;
 
     @PUT("/user/{id}/photo")
     @SkipResponseBody(true)
     FoxHttpResponse updatePhoto(@Path("id") String idOrEmail,
-                                @Body String photo) throws FoxHttpException;
+                                @Body UpdateUserPhoto photo) throws FoxHttpException;
 
     @DELETE("/user/{id}/photo")
     @SkipResponseBody(true)

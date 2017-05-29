@@ -2,7 +2,9 @@ package ch.viascom.hipchat.api.request.models;
 
 import ch.viascom.hipchat.api.models.user.UserRole;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
  * Created by patrickboesch on 19.04.16.
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateUser implements Serializable {
     private String name;
     private ArrayList<UserRole> roles = new ArrayList<>();

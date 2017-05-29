@@ -33,12 +33,15 @@ public class HipChat {
     private FoxHttpClient client;
 
     private CapabilitiesApi capabilitiesApi;
-    private RoomsApi roomsApi;
     private EmoticonsApi emoticonsApi;
+    private ExtensionsApi extensionsApi;
     private GroupsApi groupsApi;
-    private UsersApi usersApi;
-    private PrefsPublicsApi prefsPublicsApi;
+    private IntegrationsApi integrationsApi;
     private InvitesApi invitesApi;
+    private OAuthSessionsApi oAuthSessionsApi;
+    private PrefsPublicsApi prefsPublicsApi;
+    private RoomsApi roomsApi;
+    private UsersApi usersApi;
 
     public HipChat(String accessToken) throws FoxHttpException {
 
@@ -74,14 +77,14 @@ public class HipChat {
 
         client.getFoxHttpAuthorizationStrategy().addAuthorization(
                 Arrays.asList(
-                        FoxHttpAuthorizationScope.create("{host}/emoticon/*"),
-                        FoxHttpAuthorizationScope.create("{host}/extension/*"),
-                        FoxHttpAuthorizationScope.create("{host}/group/*"),
-                        FoxHttpAuthorizationScope.create("{host}/addon/*"),
-                        FoxHttpAuthorizationScope.create("{host}/invite/*"),
-                        FoxHttpAuthorizationScope.create("{host}/oauth/*"),
-                        FoxHttpAuthorizationScope.create("{host}/room/*"),
-                        FoxHttpAuthorizationScope.create("{host}/user/*")
+                        FoxHttpAuthorizationScope.create("{host}/emoticon*"),
+                        FoxHttpAuthorizationScope.create("{host}/extension*"),
+                        FoxHttpAuthorizationScope.create("{host}/group*"),
+                        FoxHttpAuthorizationScope.create("{host}/addon*"),
+                        FoxHttpAuthorizationScope.create("{host}/invite*"),
+                        FoxHttpAuthorizationScope.create("{host}/oauth*"),
+                        FoxHttpAuthorizationScope.create("{host}/room*"),
+                        FoxHttpAuthorizationScope.create("{host}/user*")
                 ), new BearerTokenAuthorization(accessToken));
 
         return this;
@@ -95,20 +98,20 @@ public class HipChat {
         return capabilitiesApi;
     }
 
-    public RoomsApi roomsApi() throws FoxHttpException {
-        if (roomsApi == null) {
-            roomsApi = new FoxHttpAnnotationParser().parseInterface(RoomsApi.class, client);
-        }
-
-        return roomsApi;
-    }
-
     public EmoticonsApi emoticonsApi() throws FoxHttpException {
         if (emoticonsApi == null) {
             emoticonsApi = new FoxHttpAnnotationParser().parseInterface(EmoticonsApi.class, client);
         }
 
         return emoticonsApi;
+    }
+
+    public ExtensionsApi extensionsApi() throws FoxHttpException {
+        if (extensionsApi == null) {
+            extensionsApi = new FoxHttpAnnotationParser().parseInterface(ExtensionsApi.class, client);
+        }
+
+        return extensionsApi;
     }
 
     public GroupsApi groupsApi() throws FoxHttpException {
@@ -119,12 +122,28 @@ public class HipChat {
         return groupsApi;
     }
 
-    public UsersApi usersApi() throws FoxHttpException {
-        if (usersApi == null) {
-            usersApi = new FoxHttpAnnotationParser().parseInterface(UsersApi.class, client);
+    public IntegrationsApi integrationsApi() throws FoxHttpException {
+        if (integrationsApi == null) {
+            integrationsApi = new FoxHttpAnnotationParser().parseInterface(IntegrationsApi.class, client);
         }
 
-        return usersApi;
+        return integrationsApi;
+    }
+
+    public InvitesApi invitesApi() throws FoxHttpException {
+        if (invitesApi == null) {
+            invitesApi = new FoxHttpAnnotationParser().parseInterface(InvitesApi.class, client);
+        }
+
+        return invitesApi;
+    }
+
+    public OAuthSessionsApi oAuthSessionsApi() throws FoxHttpException {
+        if (oAuthSessionsApi == null) {
+            oAuthSessionsApi = new FoxHttpAnnotationParser().parseInterface(OAuthSessionsApi.class, client);
+        }
+
+        return oAuthSessionsApi;
     }
 
     public PrefsPublicsApi prefsPublicsApi() throws FoxHttpException {
@@ -135,12 +154,19 @@ public class HipChat {
         return prefsPublicsApi;
     }
 
-
-    public InvitesApi invitesApi() throws FoxHttpException {
-        if (invitesApi == null) {
-            invitesApi = new FoxHttpAnnotationParser().parseInterface(InvitesApi.class, client);
+    public RoomsApi roomsApi() throws FoxHttpException {
+        if (roomsApi == null) {
+            roomsApi = new FoxHttpAnnotationParser().parseInterface(RoomsApi.class, client);
         }
 
-        return invitesApi;
+        return roomsApi;
+    }
+
+    public UsersApi usersApi() throws FoxHttpException {
+        if (usersApi == null) {
+            usersApi = new FoxHttpAnnotationParser().parseInterface(UsersApi.class, client);
+        }
+
+        return usersApi;
     }
 }

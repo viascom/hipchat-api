@@ -12,6 +12,7 @@ import ch.viascom.hipchat.api.models.room.RoomStatistics;
 import ch.viascom.hipchat.api.request.models.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,9 +20,7 @@ import java.util.Collections;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-/**
- * Created by patrickboesch on 11.04.16.
- */
+@Ignore
 public class RoomApiTest {
 
     private static final Logger log = LogManager.getLogger(RoomApiTest.class);

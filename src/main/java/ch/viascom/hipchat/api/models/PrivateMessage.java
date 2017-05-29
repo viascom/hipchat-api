@@ -14,7 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrivateMessage implements Serializable {
-    private String userId;
     private String message;
     private boolean notify = false;
     private MessageFormat message_format = MessageFormat.TEXT;

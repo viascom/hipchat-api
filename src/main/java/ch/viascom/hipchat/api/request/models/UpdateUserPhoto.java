@@ -13,7 +13,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateUserPhoto implements Serializable {
-    private String userId;
     /**
      * The room avatar is a base64 encoded string of a image.
      * Accepted image types are JPEG, PNG and GIF.

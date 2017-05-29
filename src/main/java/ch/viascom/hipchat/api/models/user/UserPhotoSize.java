@@ -9,7 +9,18 @@ import java.io.Serializable;
  */
 public enum UserPhotoSize implements Serializable {
     @SerializedName("big")
-    BIG,
+    BIG("big"),
     @SerializedName("small")
-    SMALL
+    SMALL("small");
+
+    private final String text;
+
+    UserPhotoSize(final String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return text;
+    }
 }

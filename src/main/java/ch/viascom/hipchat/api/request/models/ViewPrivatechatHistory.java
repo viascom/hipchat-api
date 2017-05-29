@@ -17,13 +17,6 @@ import java.io.Serializable;
 public class ViewPrivatechatHistory implements Serializable {
 
     /**
-     * The id or email of the user
-     * Valid length range: 1 - 100.
-     */
-    @SerializedName("id_or_email")
-    private String idOrEmail;
-
-    /**
      * The offset for the messages to return. Only valid with a non-recent data query.
      * Defaults to 0.
      */
@@ -74,12 +67,10 @@ public class ViewPrivatechatHistory implements Serializable {
     /**
      * Small Constructor
      *
-     * @param idOrEmail
      * @param startIndex
      * @param maxResults
      */
-    public ViewPrivatechatHistory(String idOrEmail, int startIndex, int maxResults) {
-        this.idOrEmail = idOrEmail;
+    public ViewPrivatechatHistory(int startIndex, int maxResults) {
         this.startIndex = startIndex;
         this.maxResults = maxResults;
     }

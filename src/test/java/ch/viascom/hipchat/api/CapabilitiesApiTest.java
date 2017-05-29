@@ -6,9 +6,6 @@ import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-/**
- * Created by Patrick Bösch on 09.05.16.
- */
 public class CapabilitiesApiTest {
 
     @Test

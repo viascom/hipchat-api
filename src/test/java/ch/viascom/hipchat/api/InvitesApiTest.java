@@ -8,7 +8,7 @@ import org.junit.Test;
 public class InvitesApiTest {
 
     private static final String clientToken = "";
-    private static String testBotUserEmail = "info@viascom.ch";
+    private static String testBotUserEmail = "";
 
     @Test
     @Ignore // HipChat doesn't work here
