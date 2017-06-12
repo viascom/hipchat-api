@@ -24,7 +24,7 @@ public class Notification implements Serializable {
 
     /**
      * Determines how the message is treated by our server and rendered inside HipChat applications
-     * - html - Message is rendered as HTML and receives no special treatment. Must be valid HTML and entities must be escaped (e.g.: '&amp;' instead of '&'). May contain basic tags: a, b, i, strong, em, br, img, pre, code, lists, tables.
+     * - html - Message is rendered as HTML and receives no special treatment. Must be valid HTML and entities must be escaped &#40;e.g.: '&amp;amp;' instead of '&amp;'&#41;. May contain basic tags: a, b, i, strong, em, br, img, pre, code, lists, tables.
      * - text - Message is treated just like a message sent by a user. Can include @mentions, emoticons, pastes, and auto-detected URLs (Twitter, YouTube, images, etc).
      * Valid values: html, text.
      * Defaults to 'html'.
