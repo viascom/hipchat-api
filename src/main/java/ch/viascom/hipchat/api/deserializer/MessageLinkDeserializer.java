@@ -14,10 +14,9 @@ public class MessageLinkDeserializer implements JsonDeserializer<MessageLink> {
 
     @Override
     public MessageLink deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+
         MessageLink messageLink = new MessageLink();
-
         MessageLinkType linktype = new Gson().fromJson(jsonElement.getAsJsonObject().getAsJsonPrimitive("type"), MessageLinkType.class);
-
         MessageLinkContent linkContent = null;
 
         switch (linktype) {

@@ -12,13 +12,14 @@ public class MessageFromDeserializer implements JsonDeserializer<MessageFrom> {
 
     @Override
     public MessageFrom deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+
         MessageFrom messageFrom = new MessageFrom();
         if (jsonElement.isJsonObject()) {
             messageFrom = new Gson().fromJson(jsonElement, MessageFrom.class);
         } else {
             messageFrom.setName(jsonElement.getAsString());
         }
+
         return messageFrom;
     }
-
 }

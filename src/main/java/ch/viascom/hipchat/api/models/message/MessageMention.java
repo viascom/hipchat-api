@@ -4,12 +4,14 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 20.04.16.
  */
 @Data
 @NoArgsConstructor
-public class MessageMention {
+public class MessageMention implements Serializable {
 
     /**
      * The user ID

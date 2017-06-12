@@ -4,11 +4,13 @@ import ch.viascom.hipchat.api.models.webhook.WebhookAuthentication;
 import ch.viascom.hipchat.api.models.webhook.WebhookEvent;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 18.04.16.
  */
 @Data
-public class Webhook {
+public class Webhook implements Serializable {
     private String name;
     private String url;
     private String pattern;

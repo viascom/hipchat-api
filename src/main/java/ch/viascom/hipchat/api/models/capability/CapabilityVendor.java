@@ -2,11 +2,13 @@ package ch.viascom.hipchat.api.models.capability;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 09.05.16.
  */
 @Data
-public class CapabilityVendor {
+public class CapabilityVendor implements Serializable {
     /**
      * The vendor's home page URL
      */

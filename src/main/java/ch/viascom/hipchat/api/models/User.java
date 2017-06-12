@@ -4,13 +4,14 @@ import ch.viascom.hipchat.api.models.user.UserPresence;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by patrickboesch on 18.04.16.
  */
 @Data
-public class User extends Member {
+public class User extends Member implements Serializable {
     /**
      * XMPP/Jabber ID of the user.
      */

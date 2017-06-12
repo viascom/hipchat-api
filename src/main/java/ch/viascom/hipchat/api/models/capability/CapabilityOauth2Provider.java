@@ -2,11 +2,13 @@ package ch.viascom.hipchat.api.models.capability;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by Patrick Bösch on 09.05.16.
  */
 @Data
-public class CapabilityOauth2Provider {
+public class CapabilityOauth2Provider implements Serializable {
     /**
      * The OAuth 2 token endpoint for retrieving an access token
      */
