@@ -1,13 +1,19 @@
 package ch.viascom.hipchat.api.request.models;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * Created by Patrick Bösch on 04.05.16.
  */
 @Data
-public class ViewRecentRoomHistory {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ViewRecentRoomHistory implements Serializable {
     /**
      * The id or url encoded name of the room.
      * Valid length range: 1 - 100.

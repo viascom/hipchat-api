@@ -3,8 +3,8 @@ hipchat-api
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
 ### Version:
-[![Release-Version](https://img.shields.io/badge/release-v2.0.2--BETA-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.2-BETA)<br/>
-[![Develop-Version](https://img.shields.io/badge/develop-v2.0.2--SNAPSHOT-orange.svg)](https://github.com/viascom/hipchat-api)
+[![Release-Version](https://img.shields.io/badge/release-v2.1--RC1-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.0.2-BETA)<br/>
+[![Develop-Version](https://img.shields.io/badge/develop-v2.1--RC1-orange.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
 [![RoomsAPI](https://img.shields.io/badge/Rooms%20API-22%20of%2045%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2245)<br/>
@@ -37,7 +37,7 @@ To add this implementation into your project:
 <dependency>
     <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.0.2-BETA</version>
+    <version>2.1-RC1</version>
 </dependency>
 ```
 
@@ -49,7 +49,7 @@ compile 'ch.viascom:hipchat-api:2.0.2-BETA'
 #### Send a notification
 ```java
 HipChat hipChat = new HipChat("<ACCESS_CODE>");
-hipChat.roomsAPI().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
+hipChat.roomsApi().sendRoomNotification(new SendNotification("Test-Room", "Hello World", MessageColor.RED, true));
 ```
 ---
 

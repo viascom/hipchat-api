@@ -1,11 +1,12 @@
 package ch.viascom.hipchat.api.request.models;
 
-import ch.viascom.hipchat.api.models.user.UserRole;
+import ch.viascom.hipchat.api.models.room.RoomRole;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -14,9 +15,7 @@ import java.util.ArrayList;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddMember {
-    private int userId;
-    private String roomId;
+public class AddMember implements Serializable {
     @SerializedName("room_roles")
-    private ArrayList<UserRole> roomRoles;
+    private ArrayList<RoomRole> roomRoles;
 }

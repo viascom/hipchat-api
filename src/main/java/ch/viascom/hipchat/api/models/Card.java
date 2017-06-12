@@ -3,13 +3,14 @@ package ch.viascom.hipchat.api.models;
 import ch.viascom.hipchat.api.models.card.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by patrickboesch on 11.04.16.
  */
 @Data
-public class Card {
+public class Card implements Serializable {
     private CardStyle style;
     private CardDescription description;
     private CardFormat format;

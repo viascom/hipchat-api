@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Nikola Stankovic on 5/6/16.
  */
@@ -12,14 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ViewPrivatechatHistory {
-
-    /**
-     * The id or email of the user
-     * Valid length range: 1 - 100.
-     */
-    @SerializedName("id_or_email")
-    private String idOrEmail;
+public class ViewPrivatechatHistory implements Serializable {
 
     /**
      * The offset for the messages to return. Only valid with a non-recent data query.
@@ -72,12 +67,10 @@ public class ViewPrivatechatHistory {
     /**
      * Small Constructor
      *
-     * @param idOrEmail
      * @param startIndex
      * @param maxResults
      */
-    public ViewPrivatechatHistory(String idOrEmail, int startIndex, int maxResults) {
-        this.idOrEmail = idOrEmail;
+    public ViewPrivatechatHistory(int startIndex, int maxResults) {
         this.startIndex = startIndex;
         this.maxResults = maxResults;
     }

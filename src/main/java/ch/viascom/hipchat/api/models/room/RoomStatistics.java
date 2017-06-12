@@ -3,11 +3,13 @@ package ch.viascom.hipchat.api.models.room;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author patrick.boesch@viascom.ch
  */
 @Data
-public class RoomStatistics {
+public class RoomStatistics implements Serializable {
     /**
      * The number of messages sent in this room for its entire history.
      */

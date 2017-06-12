@@ -4,11 +4,13 @@ import ch.viascom.hipchat.api.models.room.RoomPrivacy;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 12.04.16.
  */
 @Data
-public class Room {
+public class Room implements Serializable {
     /**
      * Name of the room.
      */

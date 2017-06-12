@@ -3,11 +3,13 @@ package ch.viascom.hipchat.api.models;
 import ch.viascom.hipchat.api.models.emoticon.EmoticonType;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickboesch on 14.04.16.
  */
 @Data
-public class Emoticon {
+public class Emoticon implements Serializable {
     /**
      * ID of the emoticon.
      */
