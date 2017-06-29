@@ -50,6 +50,8 @@ compile 'ch.viascom:hipchat-api:2.1-RC2'
 ```java
 HipChat hipChat = new HipChat("<ACCESS_CODE>");
 hipChat.roomsApi().sendRoomNotification("2640607", new Notification(null, null, MessageColor.RED, null, true, "Hello World", null));```
+```
+
 ---
 
 ### HipChat-API
