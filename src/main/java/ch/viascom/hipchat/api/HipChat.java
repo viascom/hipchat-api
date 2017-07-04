@@ -31,7 +31,6 @@ public class HipChat {
     private String baseUrl = "https://api.hipchat.com/v2";
     private String accessToken;
     private FoxHttpClient client;
-
     private CapabilitiesApi capabilitiesApi;
     private EmoticonsApi emoticonsApi;
     private ExtensionsApi extensionsApi;
@@ -51,18 +50,16 @@ public class HipChat {
         gsonBuilder.registerTypeAdapter(MessageLink.class, new MessageLinkDeserializer());
 
         client = new FoxHttpClientBuilder(new GsonParser(gsonBuilder.create()))
-                .setFoxHttpLogger(new SystemOutFoxHttpLogger(true, "ch.viascom.hipchat"))
+                .setFoxHttpLogger(new SystemOutFoxHttpLogger(false, "ch.viascom.hipchat"))
                 .addFoxHttpInterceptor(FoxHttpInterceptorType.RESPONSE, new HttpErrorResponseInterceptor())
                 .addFoxHttpPlaceholderEntry("host", baseUrl)
                 .build();
 
         setAccessToken(accessToken);
-        setBaseUrl(baseUrl);
     }
 
-
-    public HipChat(String accessToken, String baseUrl) {
-        setAccessToken(accessToken);
+    public HipChat(String accessToken, String baseUrl) throws FoxHttpException {
+        this(accessToken);
         setBaseUrl(baseUrl);
     }
 
@@ -88,6 +85,20 @@ public class HipChat {
                 ), new BearerTokenAuthorization(accessToken));
 
         return this;
+    }
+
+    public HipChat activateFoxHttpLogging(){
+        client.getFoxHttpLogger().setLoggingEnabled(true);
+        return this;
+    }
+
+    public HipChat deactivateFoxHttpLogging(){
+        client.getFoxHttpLogger().setLoggingEnabled(false);
+        return this;
+    }
+
+    public FoxHttpClient getInternalFoxHttpClient(){
+        return this.client;
     }
 
     public CapabilitiesApi capabilitiesApi() throws FoxHttpException {
