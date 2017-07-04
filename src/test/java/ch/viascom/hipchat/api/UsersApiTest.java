@@ -22,7 +22,7 @@ public class UsersApiTest {
 
     @Test
     public void getAllUsersTest() throws FoxHttpException {
-        HipChat hipChat = new HipChat(clientToken);
+        HipChat hipChat = new HipChat(clientToken, "https://api.hipchat.com/v2");
         GetAllUsersResponse getAllUsersResponse = hipChat.usersApi().getAllUsers(new GetAllUsers(0, 100, true, true));
     }
 
