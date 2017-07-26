@@ -3,8 +3,8 @@ hipchat-api
 Java implementation for the HipChat V2 API. The implementation is base on - [this doc](https://www.hipchat.com/docs/apiv2).
 
 ### Version:
-[![Release-Version](https://img.shields.io/badge/release-v2.1--RC2-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.1-RC2)<br/>
-[![Develop-Version](https://img.shields.io/badge/develop-v2.1--RC2-orange.svg)](https://github.com/viascom/hipchat-api)
+[![Release-Version](https://img.shields.io/badge/release-v2.1--RC3-orange.svg)](http://mvnrepository.com/artifact/ch.viascom/hipchat-api/2.1-RC3)<br/>
+[![Develop-Version](https://img.shields.io/badge/develop-v2.1--RC3-orange.svg)](https://github.com/viascom/hipchat-api)
 
 ### Service Implementation Status:
 [![RoomsAPI](https://img.shields.io/badge/Rooms%20API-22%20of%2045%20services-yellowgreen.svg)](https://github.com/viascom/hipchat-api#rooms-api-2245)<br/>
@@ -37,13 +37,13 @@ To add this implementation into your project:
 <dependency>
     <groupId>ch.viascom</groupId>
     <artifactId>hipchat-api</artifactId>
-    <version>2.1-RC2</version>
+    <version>2.1-RC3</version>
 </dependency>
 ```
 
 ##### gradle
 ```
-compile 'ch.viascom:hipchat-api:2.1-RC2'
+compile 'ch.viascom:hipchat-api:2.1-RC3'
 ```
 
 #### Send a notification
