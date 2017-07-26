@@ -74,11 +74,11 @@ public interface RoomsApi {
 
     @GET("/room/{room}/history")
     ViewRoomHistoryResponse viewRoomHistory(@Path("room") String roomIdOrName,
-                                            @QueryObject() ViewRoomHistory viewRoomHistory) throws FoxHttpException;
+                                            @QueryObject(parseSerializedName = true) ViewRoomHistory viewRoomHistory) throws FoxHttpException;
 
     @GET("/room/{room}/history/latest")
     ViewRecentRoomHistoryResponse viewRecentRoomHistory(@Path("room") String roomIdOrName,
-                                                        @QueryObject() ViewRecentRoomHistory viewRecentRoomHistory)
+                                                        @QueryObject(parseSerializedName = true) ViewRecentRoomHistory viewRecentRoomHistory)
             throws FoxHttpException;
 
     @POST("room/{room}/invite/{user}")

@@ -10,6 +10,7 @@ import ch.viascom.hipchat.api.models.message.MessageColor;
 import ch.viascom.hipchat.api.models.room.RoomRole;
 import ch.viascom.hipchat.api.models.room.RoomStatistics;
 import ch.viascom.hipchat.api.request.models.*;
+import ch.viascom.hipchat.api.response.ViewRecentRoomHistoryResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Ignore;
@@ -24,7 +25,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class RoomApiTest {
 
     private static final Logger log = LogManager.getLogger(RoomApiTest.class);
-    private static final String clientToken = "";
+    private static final String clientToken = "IVYY1W42TvERTjWT1jmUSJNAcmt2KmqcqKzkqCZg";
     private static final String integrationToken = "";
 
     private static String testBotUserId = "";
@@ -76,6 +77,20 @@ public class RoomApiTest {
         ArrayList<Message> messages = hipChat.roomsApi().viewRoomHistory("2640607", viewRoomHistory).getItems();
 
         System.out.println(messages);
+    }
+
+    @Test
+    public void viewRecentRoomHistoryTest() throws FoxHttpException {
+        HipChat hipChat = new HipChat(clientToken);
+
+        ViewRecentRoomHistory history = new ViewRecentRoomHistory();
+        history.setMax_results(15);
+        history.setNot_before("56a0eb46-3d8c-46f9-b614-13074e066473");
+        ViewRecentRoomHistoryResponse response = hipChat.roomsApi().viewRecentRoomHistory("2640607", history);
+
+        System.out.println(response.getItems());
+
+        assertThat(response.getItems().size()).isEqualTo(15);
     }
 
     @Test
