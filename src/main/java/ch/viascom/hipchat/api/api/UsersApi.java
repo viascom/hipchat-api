@@ -19,7 +19,7 @@ import java.io.InputStream;
 public interface UsersApi {
 
     @GET("/user")
-    GetAllUsersResponse getAllUsers(@QueryObject GetAllUsers getAllUsers) throws FoxHttpException;
+    GetAllUsersResponse getAllUsers(@QueryObject(parseSerializedName = true) GetAllUsers getAllUsers) throws FoxHttpException;
 
     @POST("/user")
     FoxHttpResponse createUser(@Body CreateUser createUser) throws FoxHttpException;
@@ -67,9 +67,9 @@ public interface UsersApi {
 
     @GET("/user/{id}/history")
     ViewPrivatechatHistoryResponse viewPrivatechatHistory(@Path("id") String idOrEmail,
-                                                          @QueryObject ViewPrivatechatHistory viewPrivatechatHistory) throws FoxHttpException;
+                                                          @QueryObject(parseSerializedName = true) ViewPrivatechatHistory viewPrivatechatHistory) throws FoxHttpException;
 
     @GET("/user/{id}/history/latest")
     ViewRecentPrivatechatHistoryResponse viewRecentPrivatechatHistory(@Path("id") String idOrEmail,
-                                                                      @QueryObject ViewRecentPrivatechatHistory viewRecentPrivatechatHistory) throws FoxHttpException;
+                                                                      @QueryObject(parseSerializedName = true) ViewRecentPrivatechatHistory viewRecentPrivatechatHistory) throws FoxHttpException;
 }
